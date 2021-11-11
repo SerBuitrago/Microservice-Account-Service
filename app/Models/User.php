@@ -22,7 +22,7 @@ class User extends Model {
      * @var array
      */
     protected $fillable = [
-        'name', 'student_email', 'password',
+        'student_code', 'student_email', 'password',
     ];
 
     /**

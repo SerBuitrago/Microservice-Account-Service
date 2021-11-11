@@ -76,6 +76,8 @@ $app->register(Spatie\Permission\PermissionServiceProvider::class);
 
 $app->register(App\Providers\AuthServiceProvider::class);
 
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware

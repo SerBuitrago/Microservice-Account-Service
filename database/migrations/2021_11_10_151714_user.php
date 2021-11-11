@@ -15,9 +15,12 @@ class User extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->String('name');
+            $table->Integer('student_code');
             $table->String('student_email');
             $table->String('password');
+            $table->foreign('student_code')
+                ->references('code')
+                ->on('students');
             $table->timestamps();
         });
     }

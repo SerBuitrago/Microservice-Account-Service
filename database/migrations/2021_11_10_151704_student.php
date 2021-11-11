@@ -14,7 +14,15 @@ class Student extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
+            $table->integer('code')->primary();
+            $table->String('name');
+            $table->String('last_name');
+            $table->String('address');
+            $table->String('age');
+            $table->String('phone');
+            $table->String('email');
+            $table->String('semester');
+            $table->String('university_career');
             $table->timestamps();
         });
     }
