@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Model {
+class User extends Model{
 
     use HasRoles;
 
-    //protected $guard_name = 'api';
+    protected $guard_name = 'api';
 
     /**
      * The attributes that are mass assignable.

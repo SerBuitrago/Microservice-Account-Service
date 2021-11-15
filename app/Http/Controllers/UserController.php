@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -14,6 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 class UserController extends Controller
 {
     
+    // -- HU 1
     public function login(Request $request){
         $this->validateLogin($request);
         return $this->sendLoginResponse($request);
@@ -37,19 +40,20 @@ class UserController extends Controller
             $user->api_token = Str::random(150);
             $user->save();
             return response()->json([
-                'res' => true,
+                'response' => true,
                 'token'=> $user->api_token,
                 'message' => 'Welcome'
             ]);
         }else{
             return response()->json([
-                'res' => false,
+                'response' => false,
                 'message' => '¡Los datos ingresados son incorrectos!'
             ]);
         }     
 
     }
 
+    // -- HU 2
     public function redirectToProvider()
     {
        return Socialite::driver('google')->stateless()->redirect();
@@ -66,14 +70,14 @@ class UserController extends Controller
             $user->save();
 
             return response()->json([
-                'res' => true,
+                'response' => true,
                 'token'=> $user->api_token,
                 'message' => 'Welcome'
             ]);
         } catch (PDOException $e) {
             return response()->json([
-                'res' => false,
-                'message' => '¡Los datos ingresados son incorrectos!'
+                'response' => false,
+                'message' => '¡Los datos no estan regsitrados!'
             ]);
         }
 
@@ -87,10 +91,34 @@ class UserController extends Controller
         $user->save();
 
         return response()->json([
-            'res' => true,
+            'response' => true,
             'message' => 'Good Bye!'
         ]);
     }
+
+
+    public function assigRol(Request $request){
+
+        $user = User::where('student_code', $request['code'] )->first();
+        //return response()->json($user);
+        $user->assignRole('Admin');
+        return response()->json([
+            'response' => true,
+            'message' => 'Assigned role'
+        ]);
+    }
+
+    // -- HU 5
+    public function show(Request $request){
+        $user = User::find($request->id);
+        return response()->json([
+            'response' => true,
+            'message' =>  $user
+        ]);
+    }
+
+
+
 
     
 }

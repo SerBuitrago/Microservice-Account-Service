@@ -12,23 +12,8 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
-$router->get('/', function () use ($router) {
-    /*$role = Role::create(['name' => 'Admin']);
-    //$permission = Permission::create(['name' => 'ver data'])->assignRole($role);
-
-    $user = User::create([
-        'name' => 'Admin',
-        'student_email' => 'gabriel@gmail.com',
-        'password' => '123'
-    ])->assignRole('Admin');
-   
-    return $router->app->version();*/
-});
 
 //---------------------------------------------------------------------------//
 
@@ -46,12 +31,10 @@ $router->get('/logout', 'UserController@logout');
 //---- Login con Google ----
 $router->get('login/google', 'UserController@redirectToProvider');
 $router->get('login/google/callback', 'UserController@handleProviderCallback');
-
-
-
-$router->group(['middleware' => 'auth'], function () use ($router) {
- 
-});
+//---- Asignar Rol ----
+$router->post('/user/rol', 'UserController@assigRol');
+//---- Editar Usuario ----
+$router->post('/user/edit/{id}', 'UserController@show');
 
 
 
@@ -61,5 +44,24 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 $router->get('/students', 'StudentController@index');
 //---- Registrar ----
 $router->post('/student/register', 'StudentController@store');
+
+
+
+//AUTENTICACION POR API_TOKEN
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    
+});
+
+
+
+//PROTECCION DE RUTRAS POR ROLES
+
+$router->group(['middleware' => ['role:Admin']], function () use ($router) {
+    //---- REGISTRAR STUDENT ----
+    $router->post('/student/admin/register', 'StudentController@storeAdmin');
+});
+
+
 
 

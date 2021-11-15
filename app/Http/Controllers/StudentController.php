@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Hask;
 use App\Models\User;
 use App\Models\Student;
-use Hask;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
+
 
 class StudentController extends Controller
 {
@@ -16,15 +20,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return response()->json(Student::all());
+        return response()->json([
+            'data' => Student::all()
+        ]);
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // -- HU 3
     public function store(Request $request)
     {
 
@@ -63,9 +65,12 @@ class StudentController extends Controller
         try {
             $user->save();
             return response()->json([
-                'res' =>true,
+                'response' =>true,
                 'message' => 'user create'
             ]);
+           
+         
+
         } catch (\PDOException  $e) {
             return response()->json($e);
         }
@@ -92,47 +97,105 @@ class StudentController extends Controller
 
    }
 
+   // -- HU 4
+   public function storeAdmin(Request $request)
+   {
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $this->validateCreateAdmin($request);
+
+        //CREAMOS EL ESTUDIANTE
+
+        $student = new Student();
+
+        $student->age = $request->input('age');
+        $student->code = $request->input('code');
+        $student->name = $request->input('name');
+        $student->phone = $request->input('phone');
+        $student->email = $request->input('email');
+        $student->address = $request->input('address');
+        $student->semester = $request->input('semester');
+        $student->last_name = $request->input('last_name');
+        $student->university_career = $request->input('university_career');
+
+
+        //CREAMOS EL USUARIO
+
+        $user = new User();
+
+        $user->student_code = $request->input('code');
+        $user->student_email = $request->input('email');
+        $user->password = app('hash')->make($request->input('password'));
+
+
+        //CAPTURAR ROLE
+
+        $role = $request->input('role');
+        $user->assignRole($role);
+
+        
+        try {
+            $student->save();
+        } catch (\PDOException  $e) {
+            return response()->json($e);
+        }
+
+        try {
+            $user->save();
+            return response()->json([
+                'response' =>true,
+                'message' => 'user create'
+            ]);
+        
+            
+
+        } catch (\PDOException  $e) {
+            return response()->json($e);
+        }
+
+   }
+
+
+   protected function validateCreateAdmin(Request $request){
+
+    $this->validate($request, [
+
+        'age' => 'required|integer',
+        'code' => 'required|integer|unique:students',
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => 'required|email|unique:students',
+        'address' => 'required',
+        'semester' => 'required',
+        'last_name' => 'required',
+        'university_career' => 'required',
+        'password' => 'required',
+        'role' => 'required'
+
+    ]);
+
+}
+
+
+
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         //
