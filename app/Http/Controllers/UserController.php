@@ -59,15 +59,21 @@ class UserController extends Controller
     public function handleProviderCallback(Request $request)
     {
         try{
-            $user = Socialite::driver('google')->stateless()->user();
+            $data = Socialite::driver('google')->stateless()->user();
+            $user = User::where('student_email', $data['email'] )->first();
+
+            $user->api_token = Str::random(150);
+            $user->save();
+
             return response()->json([
-                $user
+                'res' => true,
+                'token'=> $user->api_token,
+                'message' => 'Welcome'
             ]);
-           
-        } catch (\Exception $e) {
+        } catch (PDOException $e) {
             return response()->json([
                 'res' => false,
-                'message' => $e->Message()
+                'message' => '¡Los datos ingresados son incorrectos!'
             ]);
         }
 
