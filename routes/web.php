@@ -12,12 +12,13 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 $router->get('/', function () use ($router) {
-    //$role = Role::create(['name' => 'Admin']);
+    /*$role = Role::create(['name' => 'Admin']);
     //$permission = Permission::create(['name' => 'ver data'])->assignRole($role);
 
     $user = User::create([
@@ -26,5 +27,39 @@ $router->get('/', function () use ($router) {
         'password' => '123'
     ])->assignRole('Admin');
    
-    return $router->app->version();
+    return $router->app->version();*/
 });
+
+//---------------------------------------------------------------------------//
+
+// ---ORDEN--- //
+/* ---USER--- */
+/* ---STUDENT--- */
+
+
+
+//METODOS DE USER 
+
+//---- Login ----
+$router->post('/login', 'UserController@login');
+$router->get('/logout', 'UserController@logout');
+//---- Login con Google ----
+$router->get('login/google', 'UserController@redirectToProvider');
+$router->get('login/google/callback', 'UserController@handleProviderCallback');
+
+
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+ 
+});
+
+
+
+//METODOS DE STUDENT 
+
+//---- Listar ----
+$router->get('/students', 'StudentController@index');
+//---- Registrar ----
+$router->post('/student/register', 'StudentController@store');
+
+

@@ -60,7 +60,7 @@ $app->singleton(
 */
 
 $app->configure('app');
-
+$app->configure('services');
 
 //Laravel Permission
 
@@ -73,10 +73,19 @@ $app->routeMiddleware([
 $app->configure('permission');
 $app->alias('cache', \Illuminate\Cache\CacheManager::class);  // if you don't have this already
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
-
 $app->register(App\Providers\AuthServiceProvider::class);
-
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
+
+
+
+// Laravel Socialite
+
+$app->alias('Socialite', Laravel\Socialite\Facades\Socialite::class);  
+$app->register(Laravel\Socialite\SocialiteServiceProvider::class); 
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -93,9 +102,9 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +118,7 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*

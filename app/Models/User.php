@@ -14,7 +14,7 @@ class User extends Model {
 
     use HasRoles;
 
-    protected $guard_name = 'api';
+    //protected $guard_name = 'api';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +22,7 @@ class User extends Model {
      * @var array
      */
     protected $fillable = [
-        'student_code', 'student_email', 'password',
+        'student_code', 'student_email', 'password','api_token',
     ];
 
     /**

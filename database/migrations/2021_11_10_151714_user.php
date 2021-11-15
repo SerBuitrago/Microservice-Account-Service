@@ -18,9 +18,10 @@ class User extends Migration
             $table->Integer('student_code');
             $table->String('student_email');
             $table->String('password');
+            $table->String('api_token')->nullable();
             $table->foreign('student_code')
                 ->references('code')
-                ->on('students');
+                ->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }
