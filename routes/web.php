@@ -1,19 +1,7 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 //---------------------------------------------------------------------------//
 
@@ -37,6 +25,8 @@ $router->post('/user/rol', 'UserController@assigRol');
 $router->post('/user/edit/{id}', 'UserController@show');
 
 
+// RECUERDE QUE HABRÁ UNA SERIE DE RUTAS PARA LOS USUARIOS NO AUTENTICADOS, GUEST, QUE ESTARÁN PARA EL PÚBLICO
+
 
 //METODOS DE STUDENT 
 
@@ -50,18 +40,22 @@ $router->post('/student/register', 'StudentController@store');
 //AUTENTICACION POR API_TOKEN
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
-    
 });
 
 
 
 //PROTECCION DE RUTRAS POR ROLES
 
-$router->group(['middleware' => ['role:Admin']], function () use ($router) {
+$router->group(['middleware' => ['role:Admin'], 'prefix' => 'admin'], function () use ($router) {
     //---- REGISTRAR STUDENT ----
     $router->post('/student/admin/register', 'StudentController@storeAdmin');
 });
 
 
+/**
+ * APIGATEWAY MICROSERVICES 
+ */
 
-
+$router->get('/test', function () {
+    return response()->json(data: ['message' => 'Todo ok']);
+});
