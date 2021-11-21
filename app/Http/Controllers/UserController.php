@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Permission;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -96,17 +94,6 @@ class UserController extends Controller
         ]);
     }
 
-
-    public function assigRol(Request $request){
-
-        $user = User::where('student_code', $request['code'] )->first();
-        //return response()->json($user);
-        $user->assignRole('Admin');
-        return response()->json([
-            'response' => true,
-            'message' => 'Assigned role'
-        ]);
-    }
 
     // -- HU 5
     public function show(Request $request){
