@@ -111,10 +111,52 @@ class UserController extends Controller
     // -- HU 5
     public function show(Request $request){
         $user = User::find($request->id);
-        return response()->json([
-            'response' => true,
-            'message' =>  $user
-        ]);
+        if(!empty($user)){
+            return response()->json([
+                'response' => true,
+                'message' =>  $user
+            ]);
+        }else{
+            return response()->json([
+                'response' => false,
+                'message' =>  $user
+            ]);
+        }
+        
+    }
+
+    public function editAdmin(Request $request){
+        $user = User::find($request->id)->student;
+
+        if(empty($user)){
+            return response()->json([
+                'response' => false,
+                'message' =>  "User no register!"
+            ]);
+        }else{
+            $user->name = $request['name'];
+            $user->last_name =  $request['last_name'];
+           // $user->code = 
+            /*
+            $user->last_name
+            $user->address
+            $user->age
+            $user->phone
+            $user->email
+            $user->semester
+            $user->university_career*/
+
+            $user->save();
+
+
+
+            return response()->json([
+                'response' => true,
+                'message' =>  'User edited'
+            ]);
+        }
+
+
     }
 
 

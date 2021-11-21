@@ -60,6 +60,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 $router->group(['middleware' => ['role:Admin']], function () use ($router) {
     //---- REGISTRAR STUDENT ----
     $router->post('/student/admin/register', 'StudentController@storeAdmin');
+    $router->post('/student/admin/edit/{id}', 'UserController@editAdmin');
 });
 
 

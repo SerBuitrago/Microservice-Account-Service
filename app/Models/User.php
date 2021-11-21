@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Auth\Authorizable;
+
+
+use App\Models\Student;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class User extends Model{
 
@@ -33,4 +33,9 @@ class User extends Model{
     protected $hidden = [
         'password',
     ];
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'code', 'student_code');
+    }
 }
