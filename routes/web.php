@@ -31,18 +31,17 @@ $router->post('/user/edit/{id}', 'UserController@show');
 // si, por ahora mapear todo, luego middleware.Hay que verificarque todo sirva primero //
 
 
-//METODOS DE STUDENT 
-
-//---- Listar ----
-$router->get('/students', 'StudentController@index');
-//---- Registrar ----
-$router->post('/student/register', 'StudentController@store');
-
 
 
 //AUTENTICACION POR API_TOKEN
 
+$router->get('/students', 'StudentController@index');
+$router->post('/student/register', 'StudentController@store');
+
+
 $router->group(['middleware' => 'auth'], function () use ($router) {
+
+
 });
 
 
@@ -51,11 +50,18 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
 $router->post('/student/admin/register', 'StudentController@storeAdmin');
 $router->post('/student/admin/edit/{id}', 'UserController@editAdmin');
+$router->post('/student/admin/delete/{id}', 'UserController@deleteAdmin');
+
 
 $router->group(['middleware' => ['role:Admin'], 'prefix' => 'admin'], function () use ($router) {
-    //---- REGISTRAR STUDENT ----
+   
     
 });
+
+
+//RESET PASSWORD
+$router->post('send/password', 'AccountsController@sendPassword');
+$router->post('reset/password', 'AccountsController@resetPassword');
 
 
 /**

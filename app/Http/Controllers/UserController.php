@@ -47,7 +47,7 @@ class UserController extends Controller
         }else{
             return response()->json([
                 'response' => false,
-                'message' => '¡Los datos ingresados son incorrectos!'
+                'message' => '¡data incorrect!'
             ]);
         }     
 
@@ -72,12 +72,12 @@ class UserController extends Controller
             return response()->json([
                 'response' => true,
                 'token'=> $user->api_token,
-                'message' => 'Welcome'
+                'message' => 'welcome'
             ]);
         } catch (PDOException $e) {
             return response()->json([
                 'response' => false,
-                'message' => '¡Los datos no estan regsitrados!'
+                'message' => '¡data incorrect!'
             ]);
         }
 
@@ -142,7 +142,7 @@ class UserController extends Controller
 
             try {
 
-                $user->student_email = $request['student_email'];
+                $user->student_email = $request['email'];
                 $user->student->name = $request['name'];
                 $user->student->last_name =  $request['last_name'];
                 $user->student->address = $request['address'];
@@ -186,12 +186,47 @@ class UserController extends Controller
             'address' => 'required',
             'semester' => 'required',
             'last_name' => 'required',
-            'university_career' => 'required',
-            'student_email' => 'required'
+            'university_career' => 'required'
 
         ]);
 
    }
+
+
+   // -- HU 7
+   public function deleteAdmin(Request $request){
+
+
+    $user = User::find($request->id);
+
+    if(empty($user)){
+        return response()->json([
+            'response' => false,
+            'message' =>  "User no register!"
+        ]);
+    }
+
+    try {
+        $user->delete();
+        $user->student->delete();
+        return response()->json([
+            'response' => true,
+            'message' =>  'User delete'
+        ]);
+            
+    } catch (\Throwable $th) {
+
+        return response()->json([
+            'response' => false,
+            'message' =>  'Error'
+        ]);
+
+    }
+        
+    
+
+
+}
 
 
 
