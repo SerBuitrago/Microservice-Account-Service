@@ -21,7 +21,7 @@ class RolController extends Controller
             $role = Role::create(['name' =>  $request['name']]);
             return response()->json([
                 'response' => true,
-                'message' => 'Assigned role'
+                'message' => 'create role'
             ]);
 
         } catch (\Illuminate\Database\QueryException $e) {

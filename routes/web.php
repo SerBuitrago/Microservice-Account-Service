@@ -55,7 +55,6 @@ $router->post('/student/register', 'StudentController@store');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
 
-  
 });
 
 
@@ -72,7 +71,6 @@ $router->post('/student/admin/delete/{id}', 'UserController@deleteAdmin');
 
 $router->group(['middleware' => ['role:Admin'], 'prefix' => 'admin'], function () use ($router) {
    
-    
 });
 
 
@@ -86,9 +84,19 @@ $router->post('/rol/update', 'RolController@edit');
 $router->post('/rol/delete/{id}', 'RolController@destroy');
 
 
+//-----ACCIONES DE SUPER
+
+$router->get('/permission/list', 'PermissionController@index');
+$router->post('/permission/register', 'PermissionController@store');
+
+
 $router->group(['middleware' => ['role:Super'], 'prefix' => 'super'], function () use ($router) {
-    $router->post('/rol/register', 'RolController@store');
+  
 });
+
+
+
+
 
 
 
