@@ -125,8 +125,13 @@ class UserController extends Controller
         
     }
 
+    // -- HU 6
     public function editAdmin(Request $request){
-        $user = User::find($request->id)->student;
+
+        $this->validateditAdmin($request);
+
+        $user = User::find($request->id);
+
 
         if(empty($user)){
             return response()->json([
@@ -134,30 +139,59 @@ class UserController extends Controller
                 'message' =>  "User no register!"
             ]);
         }else{
-            $user->name = $request['name'];
-            $user->last_name =  $request['last_name'];
-           // $user->code = 
-            /*
-            $user->last_name
-            $user->address
-            $user->age
-            $user->phone
-            $user->email
-            $user->semester
-            $user->university_career*/
 
-            $user->save();
+            try {
+
+                $user->student_email = $request['student_email'];
+                $user->student->name = $request['name'];
+                $user->student->last_name =  $request['last_name'];
+                $user->student->address = $request['address'];
+                $user->student->age = $request['age'];
+                $user->student->phone = $request['phone'];
+                $user->student->email = $request['email'];
+                $user->student->semester = $request['semester'];
+                $user->student->university_career = $request['university_career'];
+
+                $user->save();
 
 
 
-            return response()->json([
-                'response' => true,
-                'message' =>  'User edited'
-            ]);
+                return response()->json([
+                    'response' => true,
+                    'message' =>  'User edited'
+                ]);
+                
+            } catch (\Throwable $th) {
+
+                return response()->json([
+                    'response' => false,
+                    'message' =>  'Data incomplet'
+                ]);
+
+            }
+            
         }
 
 
     }
+
+    protected function validateditAdmin(Request $request){
+
+        $this->validate($request, [
+
+            'age' => 'required|integer',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email|unique:students',
+            'address' => 'required',
+            'semester' => 'required',
+            'last_name' => 'required',
+            'university_career' => 'required',
+            'student_email' => 'required'
+
+        ]);
+
+   }
 
 
 

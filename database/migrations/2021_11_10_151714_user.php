@@ -21,7 +21,7 @@ class User extends Migration
             $table->String('api_token')->nullable();
             $table->foreign('student_code')
                 ->references('code')
-                ->on('students')->onDelete('cascade');
+                ->on('students')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -25,7 +25,10 @@ $router->post('/user/rol', 'UserController@assigRol');
 $router->post('/user/edit/{id}', 'UserController@show');
 
 
-// RECUERDE QUE HABRÁ UNA SERIE DE RUTAS PARA LOS USUARIOS NO AUTENTICADOS, GUEST, QUE ESTARÁN PARA EL PÚBLICO
+// RECUERDE QUE HABRÁ UNA SERIE DE RUTAS PARA LOS USUARIOS NO AUTENTICADOS, GUEST, QUE ESTARÁN PARA EL PÚBLICO- 
+
+
+// si, por ahora mapear todo, luego middleware.Hay que verificarque todo sirva primero //
 
 
 //METODOS DE STUDENT 
@@ -46,10 +49,12 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
 //PROTECCION DE RUTRAS POR ROLES
 
+$router->post('/student/admin/register', 'StudentController@storeAdmin');
+$router->post('/student/admin/edit/{id}', 'UserController@editAdmin');
+
 $router->group(['middleware' => ['role:Admin'], 'prefix' => 'admin'], function () use ($router) {
     //---- REGISTRAR STUDENT ----
-    $router->post('/student/admin/register', 'StudentController@storeAdmin');
-    $router->post('/student/admin/edit/{id}', 'UserController@editAdmin');
+    
 });
 
 
@@ -58,5 +63,5 @@ $router->group(['middleware' => ['role:Admin'], 'prefix' => 'admin'], function (
  */
 
 $router->get('/test', function () {
-    return response()->json(data: ['message' => 'Todo ok']);
+    //return response()->json(data: ['message' => 'Todo ok']);
 });

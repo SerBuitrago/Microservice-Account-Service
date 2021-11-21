@@ -14,6 +14,6 @@ class Student extends Model
     ,'email', 'semester','university_career'];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'code');
     }
 }
