@@ -7,26 +7,11 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    
-    public function index()
-    {
-        return response()->json([
-            'response' => true, 
-            'message' => Permission::all()
-        ]);
-    }
 
-
-    public function create()
-    {
-        //
-    }
-
-    // -- HU 17
+     // -- HU 18
     public function store(Request $request)
     {
         
-        //return response()->json($user);$user = User::where('student_code', $request['code'] )->first();$user->assignRole('Admin');
         $this->validateStore($request);
 
         try {
@@ -43,7 +28,7 @@ class PermissionController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
-        
+    
     }
 
     protected function validateStore(Request $request){
@@ -54,48 +39,124 @@ class PermissionController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    // -- HU 12
+    public function show(Request $request)
     {
-        //
+        $this->validateShow($request);
+        $perms = Permission::find($request->id);
+
+        if(empty($perms)){
+
+            return response()->json([
+                'response' => false,
+                'message' => 'Permission not found'
+            ]);
+
+        }
+
+        return response()->json([
+            'response' => true,
+            'message' => $perms
+        ]);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    protected function validateShow(Request $request){
+
+        $this->validate($request, [
+            'id' => 'required',
+        ]);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+
+    // -- HU 20
+    public function edit(Request $request)
     {
-        //
+        $this->validateEdit($request);
+        $perms = Permission::find($request->id);
+
+        if(empty($perms)){
+
+            return response()->json([
+                'response' => false,
+                'message' => 'Permission not found'
+            ]);
+
+        }
+
+        try {
+
+            $perms->name = $request->name;
+            $perms->guard_name = $request->guard_name;
+
+            $perms->update();
+
+            return response()->json([
+                'response' => true,
+                'message' => 'Permission update'
+            ]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return response()->json([
+                'response' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    protected function validateEdit(Request $request){
+        $this->validate($request, [
+            'id' => 'required',
+            'name' => 'required',
+            'guard_name' => 'required'
+        ]);
+    }
+
+
+    // -- HU 21
+    public function index()
     {
-        //
+        return response()->json([
+            'response' => true, 
+            'message' => Permission::all()
+        ]);
+    }
+
+    
+    // -- HU 22
+    public function destroy(Request $request)
+    {
+        $perms = Permission::find($request->id);
+
+        if(empty($perms)){
+            return response()->json([
+                'response' => false,
+                'message' =>  "Permission no register!"
+            ]);
+        }
+
+    try {
+
+        $perms->delete();
+        return response()->json([
+            'response' => true,
+            'message' =>  'Permission delete'
+        ]);
+                
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return response()->json([
+                'response' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+
     }
 }

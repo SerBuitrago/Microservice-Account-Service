@@ -51,7 +51,7 @@ class RolController extends Controller
         if(empty($role)){
 
             return response()->json([
-                'response' => true,
+                'response' => false,
                 'message' => 'role not found'
             ]);
 

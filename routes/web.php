@@ -88,6 +88,9 @@ $router->post('/rol/delete/{id}', 'RolController@destroy');
 
 $router->get('/permission/list', 'PermissionController@index');
 $router->post('/permission/register', 'PermissionController@store');
+$router->post('/permission/show/', 'PermissionController@show');
+$router->post('/permission/update', 'PermissionController@edit');
+$router->post('/permission/delete/{id}', 'PermissionController@destroy');
 
 
 $router->group(['middleware' => ['role:Super'], 'prefix' => 'super'], function () use ($router) {
