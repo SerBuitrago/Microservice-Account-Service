@@ -1,0 +1,51 @@
+.contenedor{
+
+    display: inline-flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.cabeza{
+    background-image: url("../ufps_resource/1\ \(2\).png");
+    width: 100%;
+}
+
+.titulo_registro{
+    color: whitesmoke;
+}
+
+::placeholder{
+    font-weight: bolder;
+}
+
+form{
+    display: inline-flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+ 
+input{
+    border-radius: 10px;
+    width: 200%;
+    padding-top: 15px;
+    margin-top: 15px;
+    border: 3px solid #e04356;
+    transition: all .3s;
+    background-color: whitesmoke;
+} 
+
+button{
+    margin-top: 15px;
+    border-radius: 50px;
+    height: 50px;
+    width: 200px;
+    color: whitesmoke;
+    background-color: #e04356 ;
+    font-weight: bolder;
+    border: 0px;
+}

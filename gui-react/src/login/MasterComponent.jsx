@@ -33,6 +33,8 @@ class MasterComponent extends Component {
                 {/* <LoginComponent></LoginComponent>
         <RegistroComponent></RegistroComponent> */ }
                 {this.state.formularioLogin === true ? <LoginComponent></LoginComponent> : <RegistroComponent></RegistroComponent>}
+
+                <br />
                 
                 <button onClick={this.cambioDeFormulario}> Cambio </button>
 
