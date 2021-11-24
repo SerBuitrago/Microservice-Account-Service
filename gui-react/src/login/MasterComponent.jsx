@@ -21,7 +21,7 @@ class MasterComponent extends Component {
         this.setState((prevState, prevProps) => {
             return { 'formularioLogin': !prevState.formularioLogin }
         });
-        console.log(this.state)git 
+        console.log(this.state) 
     }
 
 
