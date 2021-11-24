@@ -1,0 +1,14 @@
+.headerComponent {
+    color: whitesmoke;
+    background-color: #e04356 ;
+}
+
+.acceder:hover {
+    background-color: #a32e3c;
+    cursor: pointer;
+}
+
+.registro:hover {
+    background-color: #a32e3c;
+    cursor: pointer;
+}
