@@ -9,17 +9,25 @@ class MasterComponent extends Component {
         super(props)
 
         this.state = {
-            'formularioLogin': false
+            'formularioLogin': true
         }
 
-        this.cambioDeFormulario = this.cambioDeFormulario.bind(this);
+/*         this.cambioDeFormulario = this.cambioDeFormulario.bind(this); */
 
     }
 
-    cambioDeFormulario() {
-        console.log("entra")
-        this.setState((prevState, prevProps) => {
-            return { 'formularioLogin': !prevState.formularioLogin }
+    cambioDeFormularioLogin=() => {
+        console.log()
+        this.setState(() => {
+            return { 'formularioLogin': true }
+        });
+        console.log(this.state) 
+    }
+
+    cambioDeFormularioRegistro=() => {
+        console.log()
+        this.setState(() => {
+            return { 'formularioLogin': false }
         });
         console.log(this.state) 
     }
@@ -29,14 +37,14 @@ class MasterComponent extends Component {
         return (
             <div className="masterComponentLogin">
 
-                <HeaderComponent></HeaderComponent>
+                <HeaderComponent className="headerComponent" key={1} login={()=>this.cambioDeFormularioLogin()} registro={()=>this.cambioDeFormularioRegistro()}></HeaderComponent>
                 {/* <LoginComponent></LoginComponent>
         <RegistroComponent></RegistroComponent> */ }
                 {this.state.formularioLogin === true ? <LoginComponent></LoginComponent> : <RegistroComponent></RegistroComponent>}
 
                 <br />
                 
-                <button onClick={this.cambioDeFormulario}> Cambio </button>
+                
 
             </div>
         );
