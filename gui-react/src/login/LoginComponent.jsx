@@ -8,6 +8,7 @@ class LoginComponent extends Component {
             <div className="loginComponent">
                 <div className="UFPS">
                     <p className="bienvenido">Bienvenido al Portal.</p>
+                    
                 </div>
 
                 <form>
@@ -23,11 +24,12 @@ class LoginComponent extends Component {
                         placeholder="Contraseña"
                     />
 
-                    <button>Acceder</button>
+                    <button  type="submit" value="Acceder">Acceder </button>
+                    
                 </form>
-                {/* <div>
-                <input type="checkbox">Recuerdame</input>
-                </div> */}
+               <label > <input  className="chec"  type="checkbox" value="Recuerdame"/>Recuerdame</label>
+                <a  className="href" href="#">Olvidar Costraseña </a>
+                
             </div>
         );
     }
