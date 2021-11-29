@@ -9,7 +9,7 @@ class MasterComponent extends Component {
         super(props)
 
         this.state = {
-            'formularioLogin': false
+            'formularioLogin': true
         }
 
         this.cambioDeFormulario = this.cambioDeFormulario.bind(this);
@@ -28,15 +28,15 @@ class MasterComponent extends Component {
     render() {
         return (
             <div className="masterComponentLogin">
-
-                <HeaderComponent></HeaderComponent>
                 {/* <LoginComponent></LoginComponent>
         <RegistroComponent></RegistroComponent> */ }
+
+                <HeaderComponent></HeaderComponent>
                 {this.state.formularioLogin === true ? <LoginComponent></LoginComponent> : <RegistroComponent></RegistroComponent>}
+                <button onClick={this.cambioDeFormulario}> Cambio </button>
 
                 <br />
                 
-                <button onClick={this.cambioDeFormulario}> Cambio </button>
 
             </div>
         );

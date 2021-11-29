@@ -52,7 +52,6 @@ class RegistroComponent extends Component {
             <div className={css.contenedor}>
                 <div className={css.cabeza}>
                     <h3 className={css.titulo_registro}> Formulario de registro </h3>
-
                 </div>
                 <form action="">                    
                 {this.getInput}
