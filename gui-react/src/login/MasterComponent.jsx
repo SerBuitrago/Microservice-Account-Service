@@ -12,14 +12,22 @@ class MasterComponent extends Component {
             'formularioLogin': true
         }
 
-        this.cambioDeFormulario = this.cambioDeFormulario.bind(this);
+/*         this.cambioDeFormulario = this.cambioDeFormulario.bind(this); */
 
     }
 
-    cambioDeFormulario() {
-        console.log("entra")
-        this.setState((prevState, prevProps) => {
-            return { 'formularioLogin': !prevState.formularioLogin }
+    cambioDeFormularioLogin=() => {
+        console.log()
+        this.setState(() => {
+            return { 'formularioLogin': true }
+        });
+        console.log(this.state) 
+    }
+
+    cambioDeFormularioRegistro=() => {
+        console.log()
+        this.setState(() => {
+            return { 'formularioLogin': false }
         });
         console.log(this.state) 
     }
@@ -28,6 +36,8 @@ class MasterComponent extends Component {
     render() {
         return (
             <div className="masterComponentLogin">
+
+                <HeaderComponent className="headerComponent" key={1} login={()=>this.cambioDeFormularioLogin()} registro={()=>this.cambioDeFormularioRegistro()}></HeaderComponent>
                 {/* <LoginComponent></LoginComponent>
         <RegistroComponent></RegistroComponent> */ }
 
@@ -36,6 +46,7 @@ class MasterComponent extends Component {
                 <button onClick={this.cambioDeFormulario}> Cambio </button>
 
                 <br />
+                
                 
 
             </div>
