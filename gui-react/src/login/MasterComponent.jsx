@@ -12,24 +12,24 @@ class MasterComponent extends Component {
             'formularioLogin': true
         }
 
-/*         this.cambioDeFormulario = this.cambioDeFormulario.bind(this); */
+        /*         this.cambioDeFormulario = this.cambioDeFormulario.bind(this); */
 
     }
 
-    cambioDeFormularioLogin=() => {
+    cambioDeFormularioLogin = () => {
         console.log()
         this.setState(() => {
             return { 'formularioLogin': true }
         });
-        console.log(this.state) 
+        console.log(this.state)
     }
 
-    cambioDeFormularioRegistro=() => {
+    cambioDeFormularioRegistro = () => {
         console.log()
         this.setState(() => {
             return { 'formularioLogin': false }
         });
-        console.log(this.state) 
+        console.log(this.state)
     }
 
 
@@ -37,17 +37,13 @@ class MasterComponent extends Component {
         return (
             <div className="masterComponentLogin">
 
-                <HeaderComponent className="headerComponent" key={1} login={()=>this.cambioDeFormularioLogin()} registro={()=>this.cambioDeFormularioRegistro()}></HeaderComponent>
+                <HeaderComponent className="headerComponent" key={1} login={() => this.cambioDeFormularioLogin()} registro={() => this.cambioDeFormularioRegistro()}></HeaderComponent>
                 {/* <LoginComponent></LoginComponent>
         <RegistroComponent></RegistroComponent> */ }
-
-                <HeaderComponent></HeaderComponent>
                 {this.state.formularioLogin === true ? <LoginComponent></LoginComponent> : <RegistroComponent></RegistroComponent>}
-                <button onClick={this.cambioDeFormulario}> Cambio </button>
-
                 <br />
-                
-                
+
+
 
             </div>
         );

@@ -9,11 +9,11 @@ const HeaderComponent = (props) =>  {
         return (
             <div className="headerComponent">
                 <Grid container>
-                    <Grid item xs={6} className="acceder">
-                        <h3 onClick={()=>props.login()}> Acceder </h3>
+                    <Grid onClick={()=>props.login()} item xs={6} className="acceder">
+                        <h3> Acceder </h3>
                     </Grid>
-                    <Grid item xs={6} className="registro">
-                        <h3 onClick={()=>props.registro()}> Registro </h3>
+                    <Grid onClick={()=>props.registro()} item xs={6} className="registro">
+                        <h3> Registro </h3>
                     </Grid>
                 </Grid>
                 

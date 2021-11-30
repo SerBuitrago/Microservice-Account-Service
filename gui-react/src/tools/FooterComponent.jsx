@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import '../css/App.css';
 
 
 class FooterComponent extends Component {
 
     render(){
         return(
-            <div className="FooterComponent">
-                Copyright © Universidad Francisco de Paula Santander 2021
-            </div>
+            <footer className="FooterComponent">
+                Copyright © - Universidad Francisco de Paula Santander - 2021
+            </footer>
         );
     }
 

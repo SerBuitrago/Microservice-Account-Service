@@ -41,12 +41,12 @@ form{
     background-color: whitesmoke;
 } 
 .bienvenido{
-   width: 100%;
-top:400%;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   font-style: italic;
-   font-size:35px;
-   color: cornsilk;
+    width: 100%;
+    top:400%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size:35px;
+    color: cornsilk;
 }
 ::placeholder{
     font-weight: bolder;
