@@ -5,6 +5,7 @@ import React from 'react';
 import { Component } from 'react';
 
 import MasterComponentLogin from './login/MasterComponent';
+import ControlComponent from './control/ControlComponente';
 
 class App extends Component {
 
@@ -22,8 +23,10 @@ class App extends Component {
     return (
 
       <div className="app">
-        <MasterComponentLogin></MasterComponentLogin>
-        {/* <MasterComponentControl></MasterComponentControl> */}
+        {/*         <MasterComponentLogin></MasterComponentLogin> */}
+
+        <ControlComponent></ControlComponent>
+
 
         <FooterComponent></FooterComponent>
       </div>
