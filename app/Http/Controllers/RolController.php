@@ -112,7 +112,6 @@ class RolController extends Controller
 
     }
 
-
     protected function validateEdit(Request $request){
         $this->validate($request, [
             'role_id' => 'required',
@@ -120,6 +119,58 @@ class RolController extends Controller
             'guard_name' => 'required'
         ]);
     }
+
+    // -- HU 14
+    public function assigRol(Request $request)
+    {
+        
+        $this->validateassigRol($request);
+
+        $role = Role::where('name', $request['name'] )->first();
+        $perm = Permission::where('name', $request['name_permission'] )->first();
+
+        if(empty($role)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Role not found'
+            ]);
+        }
+
+        if(empty($perm)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Permission not found'
+            ]);
+        }
+
+        try {
+
+        $role->givePermissionTo($request['name_permission']);
+
+            return response()->json([
+                'response' => true,
+                'message' => 'permission asigne a rol'
+            ]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'response' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+        
+    }
+
+
+    protected function validateassigRol(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'name_permission' => 'required',
+        ]);
+
+    }
+
 
     // -- HU 16
     public function index()
@@ -159,5 +210,41 @@ class RolController extends Controller
             ]);
         }
 
+    }
+
+    public function deleteRolPerm(Request $request)
+    {
+        $role = Role::where('name', $request['name'] )->first();
+        $perm = Permission::where('name', $request['name_permission'] )->first();
+
+        if(empty($role)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Role not found'
+            ]);
+        }
+
+        if(empty($perm)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Permission not found'
+            ]);
+        }
+
+        try {
+
+        $role->revokePermissionTo($request['name_permission']);
+
+            return response()->json([
+                'response' => true,
+                'message' => 'permission quit a rol'
+            ]);
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'response' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }

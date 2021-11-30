@@ -70,7 +70,6 @@ class PermissionController extends Controller
     }
 
 
-
     // -- HU 20
     public function edit(Request $request)
     {

@@ -32,8 +32,6 @@ $router->post('reset/password', 'AccountsController@resetPassword');
 
 
 
-
-
 /**
  * METODOS DE USER
  */
@@ -96,6 +94,19 @@ $router->post('/permission/delete/{id}', 'PermissionController@destroy');
 $router->group(['middleware' => ['role:Super'], 'prefix' => 'super'], function () use ($router) {
   
 });
+
+
+//-----ACCIONES DE ASINAR O QUITAR PERMISOS AL ROL
+
+$router->post('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
+$router->post('/permission/aggRol', 'RolController@assigRol');
+
+
+
+$router->group(['middleware' => ['role:Super'], 'prefix' => 'super'], function () use ($router) {
+  
+});
+
 
 
 
