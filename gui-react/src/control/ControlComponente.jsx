@@ -14,15 +14,14 @@ class ControlComponent extends Component {
             <Router>
                 <div className="controlComponent">
 
-                    <NavbarComponent></NavbarComponent>
                     <div className="uno">
                         <SidebarComponent></SidebarComponent>
                     </div>
 
                     <Routes>
-                        <Route path="/" exact={true} component={ControlComponent} > </Route>
-                        <Route path="/usuarios" exact={true} element={<Students />} ></Route>
-                        <Route path="/permisos" element={<Permisos />} ></Route>
+                        <Route path="/"  component={ControlComponent} > </Route>
+                        <Route path="/Students"  element={<Students />} ></Route>
+                        <Route path="/Permisos" element={<Permisos />} ></Route>
                     </Routes>
 
 

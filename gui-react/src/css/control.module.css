@@ -1,23 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap');
 .navbar{
     text-align: left;
-    border-bottom: 1px solid;
-    border-color: black;
     display: flex;
     align-items: center;
 
 }
 
 .sidebar{
-    display: flex;
     border-right: 1px solid;
     border-color: black;
-    width: auto;
-    height: 100%;
 }
 
 .navbar > img {
-    height: 100px;
+    width: 250px;
 }
 
 h1, h2, h3, h4{

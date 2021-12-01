@@ -8,7 +8,7 @@ class NavbarComponent extends Component{
 
                 <img src="https://ww2.ufps.edu.co/public/imagenes/template/header/logo_ufps.png" alt=""/>
 
-                <h3>Sistema de gestión de cuentas</h3>
+                <h4>Sistema de gestión de cuentas</h4>
 
             </nav>
         );
