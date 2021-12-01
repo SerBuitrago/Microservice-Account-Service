@@ -12,7 +12,7 @@
     display: flex;
     border-right: 1px solid;
     border-color: black;
-    width: 15%;
+    width: auto;
     height: 100%;
 }
 
