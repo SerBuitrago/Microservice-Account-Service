@@ -55,7 +55,7 @@ class RegistroComponent extends Component {
                 </div>
                 <form action="">                    
                 {this.getInput}
-                <button>Registrar</button>
+                <button className="button_registro">Registrar</button>
                 </form>
             </div>
         );

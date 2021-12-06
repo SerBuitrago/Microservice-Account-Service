@@ -158,7 +158,7 @@ export default function MiniDrawer() {
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
                     <DrawerHeader>
-                        <IconButton onClick={handleDrawerClose}>
+                        <IconButton onClick={handleDrawerClose} width="200px">
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </DrawerHeader>

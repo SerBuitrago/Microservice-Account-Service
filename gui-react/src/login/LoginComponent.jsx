@@ -24,7 +24,7 @@ class LoginComponent extends Component {
                         placeholder="Contraseña"
                     />
 
-                    <button type="submit" value="Acceder">Acceder </button>
+                    <button className="button_registro" type="submit" value="Acceder">Acceder </button>
 
                     <label > <input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
                     <a className="href" href="#">Olvidar Costraseña </a>

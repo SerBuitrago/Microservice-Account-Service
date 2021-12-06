@@ -12,21 +12,14 @@ class ControlComponent extends Component {
     render() {
         return (
             <Router>
-                <div className="controlComponent">
-
-                    <div className="uno">
-                        <SidebarComponent></SidebarComponent>
-                    </div>
+                <div className={classes.controlComponent}>
 
                     <Routes>
-                        <Route path="/"  component={ControlComponent} > </Route>
-                        <Route path="/Students"  element={<Students />} ></Route>
+                        <Route path="/" component={ControlComponent} > </Route>
+                        <Route path="/Students" element={<Students />} ></Route>
                         <Route path="/Permisos" element={<Permisos />} ></Route>
                     </Routes>
-
-
-
-
+                    <SidebarComponent></SidebarComponent>
                 </div>
             </Router>
         );
