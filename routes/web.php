@@ -38,7 +38,7 @@ $router->post('reset/password', 'AccountsController@resetPassword');//-
  * METODOS DE USER
  */
 
-
+$router->post('/student/register', 'StudentController@store');//-
 
 
 
@@ -56,7 +56,6 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     //---- ACCIONES DE ESTUDIANTE
     $router->get('/students', 'StudentController@index');//-
-    $router->post('/student/register', 'StudentController@store');//-
     $router->post('/student/show', 'StudentController@show');//-
     
 });
