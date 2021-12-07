@@ -130,8 +130,19 @@ class StudentController extends Controller
         //CAPTURAR ROLE
 
         $role = $request->input('role');
-        $user->assignRole($role);
 
+        $raw = Role::where('name',$role)->get();
+
+        if(empty($raw)){
+
+            return response()->json([
+                'response' => false,
+                'message' => 'role not found'
+            ]);
+
+        }
+
+        $user->assignRole($role);
         
         try {
             $student->save();
@@ -173,6 +184,22 @@ class StudentController extends Controller
 
     ]);
 
+    }
+
+    public function show(Request $request){
+        $user = Student::where('code', $request->code)->get();
+        if(!empty($user)){
+            return response()->json([
+                'response' => true,
+                'message' =>  $user
+            ]);
+        }else{
+            return response()->json([
+                'response' => false,
+                'message' =>  $user
+            ]);
+        }
+        
     }
 
 

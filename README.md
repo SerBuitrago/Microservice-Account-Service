@@ -9,9 +9,10 @@ Esta aplicacion fue realizada en Lumen Laravel con persistencia de datos en MySQ
 ### USUARIO
 - Iniciar sesión de usuario en el portal
 - Inicar sesion a traves de correo personal/institucional
-- Registro de usuario en el portal
-- Registrar un usuario al portal educativo
+- Registro de usuario en el portal (normal)
+- Registrar un usuario al portal educativo (admin)
 - Obtener detalles de usuario
+- Obtener detalles de estudiante
 - Editar información del usuario
 - Listar usuarios
 - Eliminar usuarios
@@ -70,7 +71,7 @@ Opción BODY - RAW - TypeJSON
 ```sh
 http://localhost:8000/login/google http://localhost:8000/logout
 ```
-**Peticion POST, Registro de usuario en el portal**
+**Peticion POST, Registro de usuario en el portal (normal)**
 ```sh
 http://localhost:8000/student/register
 Opción BODY - RAW - TypeJSON
@@ -87,11 +88,33 @@ Opción BODY - RAW - TypeJSON
     "password" : "hola"
 }
 ```
-**Peticion GET, Listar usuarios del portal**
+**Peticion POST, Registro de usuario en el portal (admin)**
 ```sh
-http://localhost:8000/student
+http://localhost:8000/student/admin/register
+Opción BODY - RAW - TypeJSON
+{
+    "age" : "21",
+    "code" : "1151651",
+    "name" : "gabriel",
+    "phone" : "14131",
+    "email" : "gabrielarturo@gmail.com",
+    "address" : "calle 23",
+    "semester" : "decimo",
+    "last_name" : "garcia",
+    "university_career" : "ing. sistemas",
+    "password" : "hola",
+    "role": "Student"
+}
 ```
 **Peticion POST, Obtener detalles de usuario**
+```sh
+http://localhost:8000/user/show
+Opción BODY - RAW - TypeJSON
+{
+    "code" : "1151651",
+}
+```
+**Peticion POST, Obtener detalles de estudiante**
 ```sh
 http://localhost:8000/student/show
 Opción BODY - RAW - TypeJSON
@@ -116,6 +139,10 @@ Opción BODY - RAW - TypeJSON
     "student_email" : "gabrielarturo@gmail.com",
     "code" : "1151652"
 }
+```
+**Peticion GET, Listar usuarios del portal**
+```sh
+http://localhost:8000/student
 ```
 **Peticion POST, Eliminar usuarios**
 ```sh
@@ -153,3 +180,4 @@ Opción BODY - RAW - TypeJSON
 MIT
 
 **SOFTWARE LIBRE**
+

@@ -39,7 +39,7 @@ class UserController extends Controller
             $user->save();
             return response()->json([
                 'response' => true,
-                'token'=> $user->api_token,
+                'api_token'=> $user->api_token,
                 'message' => 'Welcome'
             ]);
         }else{
@@ -85,19 +85,16 @@ class UserController extends Controller
     public function logout(){
 
         $user = auth()->user();
-        $user->api_token = null;
-        $user->save();
-
         return response()->json([
             'response' => true,
-            'message' => 'Good Bye!'
+            'message' =>  'Good Bye!'
         ]);
     }
 
 
     // -- HU 5
     public function show(Request $request){
-        $user = User::find($request->id);
+        $user = User::where('student_code', $request->code)->get();
         if(!empty($user)){
             return response()->json([
                 'response' => true,
@@ -213,7 +210,27 @@ class UserController extends Controller
     
 
 
-}
+    }
+
+    public function token(){
+
+        $user = auth()->user();
+
+
+        if(!empty($user)){
+            return response()->json([
+                'response' => true,
+                'token' => $user->api_token
+            ]);
+        }else{
+            return response()->json([
+                'response' => false,
+                'token' => "No user api_token"
+            ]);
+        }
+
+        
+    }
 
 
 
