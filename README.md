@@ -67,13 +67,17 @@ Opción BODY - RAW - TypeJSON
     "password" : "hola"
 }
 ```
-**Peticion GET, traer un producto, Inicar sesion a traves de correo personal/institucional**
+**Peticion POST, Inicar sesion a traves de correo personal/institucional**
 ```sh
-http://localhost:8000/login/google http://localhost:8000/logout
+http://localhost:8000/login/google
+```
+**Peticion GET, Cerra sesion**
+```sh
+http://localhost:8000/logout
 ```
 **Peticion POST, Registro de usuario en el portal (normal)**
 ```sh
-http://localhost:8000/student/register
+
 Opción BODY - RAW - TypeJSON
 {
     "age" : "21",
@@ -167,6 +171,46 @@ Opción BODY - RAW - TypeJSON
     "token" : "oxerLarFqRs2lwNUXozWF01kv11yTTeg8LnjiFADcx5TsfDtpIvrTgUdfdzk"
 }
 ```
+---------------------------------
+### ROLES
+- Registrar rol
+- Obtener detalles del rol
+- Editar información del rol
+- Listar roles 
+- Eliminar roles
+
+**Peticion POST, Registrar rol**
+```sh
+http://localhost:8000/rol/register
+Opción BODY - RAW - TypeJSON
+ {
+    "name": "Admin"
+ }
+```
+**Peticion GET, Obtener detalles del rol**
+```sh
+http://localhost:8000/rol/show/
+Opción BODY - RAW - TypeJSON
+{
+    "role_id":3
+}
+```
+**Peticion POST, Editar información del rol**
+```sh
+http://localhost:8000/rol/update
+Opción BODY - RAW - TypeJSON
+{
+    "role_id":3
+}
+```
+**Peticion GET, Listar roles**
+```sh
+http://localhost:8000/rol/list/
+```
+**Peticion POST, Eliminar roles**
+```sh
+http://localhost:8000/rol/delete/3
+```
 
 
 ## 🔗 Links
@@ -180,4 +224,3 @@ Opción BODY - RAW - TypeJSON
 MIT
 
 **SOFTWARE LIBRE**
-
