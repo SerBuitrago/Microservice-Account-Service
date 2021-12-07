@@ -77,7 +77,7 @@ http://localhost:8000/logout
 ```
 **Peticion POST, Registro de usuario en el portal (normal)**
 ```sh
-
+http://localhost:8000/student/register
 Opción BODY - RAW - TypeJSON
 {
     "age" : "21",
@@ -210,6 +210,69 @@ http://localhost:8000/rol/list/
 **Peticion POST, Eliminar roles**
 ```sh
 http://localhost:8000/rol/delete/3
+```
+
+---------------------------------
+### PERMISOS
+- Registrar un permiso (funcionalidad)
+- Asignación de permisos al rol
+- Desvincular permisos al rol
+- Obtener detalles de un permiso
+- Editar información del permiso
+- Listar permisos
+- Eliminar permiso
+
+**Peticion POST, Registrar un permiso (funcionalidad)**
+```sh
+http://localhost:8000/permission/register
+Opción BODY - RAW - TypeJSON
+{
+    "name" : "create user"
+}
+```
+**Peticion POST, Asignación de permisos al rol**
+```sh
+http://localhost:8000/permission/aggRol
+Opción BODY - RAW - TypeJSON
+{
+    "name": "Teacher",
+    "name_permission": "create user"
+}
+```
+**Peticion POST, Desvincular permisos al rol**
+```sh
+http://localhost:8000/permission/deleteRolPerm
+Opción BODY - RAW - TypeJSON
+{
+    "name": "Teacher",
+    "name_permission": "create user"
+}
+```
+**Peticion POST, Obtener detalles de un permiso**
+```sh
+http://localhost:8000/permission/show
+Opción BODY - RAW - TypeJSON
+{
+    "id" : "1"
+}
+```
+**Peticion POST, Editar información del permiso**
+```sh
+http://localhost:8000/permission/update
+Opción BODY - RAW - TypeJSON
+{
+    "id" : "2",
+    "name" : "create admin",
+    "guard_name" : "api"
+}
+```
+**Peticion GET , Listar permisos**
+```sh
+http://localhost:8000/permission/list
+```
+**Peticion POST , Eliminar permiso**
+```sh
+http://localhost:8000/permission/delete/1
 ```
 
 

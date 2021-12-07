@@ -1,0 +1,34 @@
+
+
+AUTENTICADA----
+    
+'/user/auth'
+'/user/show'
+'/students'
+'/student/show'
+
+AUTENTICADA Y ROLE ADMIN----
+    
+'/student/admin/register'
+'/student/admin/edit/{id}'
+'/student/admin/delete/{id}'
+
+
+AUTENTICADA Y ROLE SUPER----
+
+'/rol/list'
+'/rol/register'
+'/rol/show/'
+'/rol/update'
+'/rol/delete/{id}'
+'/permission/list'
+'/permission/register'
+'/permission/show/'
+'/permission/update'
+'/permission/delete/{id}'
+
+
+AUTENTICADA Y ROLE SUPER----
+
+'/permission/deleteRolPerm'
+'/permission/aggRol'

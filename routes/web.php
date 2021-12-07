@@ -66,50 +66,52 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
  */
 
 //-----ACCIONES DE ESTUDIANTE
-
+$router->post('/student/admin/register', 'StudentController@storeAdmin');//-
+$router->post('/student/admin/edit/{id}', 'UserController@editAdmin');//-
+$router->post('/student/admin/delete/{id}', 'UserController@deleteAdmin');//-
 
 $router->group(['middleware' => ['role:Admin', 'auth']], function () use ($router) {
 
-    $router->post('/student/admin/register', 'StudentController@storeAdmin');//-
-    $router->post('/student/admin/edit/{id}', 'UserController@editAdmin');//-
-    $router->post('/student/admin/delete/{id}', 'UserController@deleteAdmin');//-
+ 
 
 });
 
 
 
+ //-----ACCIONES DE SUPER
 
+ $router->get('/rol/list', 'RolController@index');
+ $router->post('/rol/register', 'RolController@store');
+ $router->post('/rol/show/', 'RolController@show');
+ $router->post('/rol/update', 'RolController@edit');
+ $router->post('/rol/delete/{id}', 'RolController@destroy');
+
+
+ //-----ACCIONES DE SUPER
+
+ $router->get('/permission/list', 'PermissionController@index');
+ $router->post('/permission/register', 'PermissionController@store');
+ $router->post('/permission/show/', 'PermissionController@show');
+ $router->post('/permission/update', 'PermissionController@edit');
+ $router->post('/permission/delete/{id}', 'PermissionController@destroy');
 
 
 $router->group(['middleware' => ['role:Super', 'auth']], function () use ($router) {
     
-    //-----ACCIONES DE SUPER
-
-    $router->get('/rol/list', 'RolController@index');
-    $router->post('/rol/register', 'RolController@store');
-    $router->post('/rol/show/', 'RolController@show');
-    $router->post('/rol/update', 'RolController@edit');
-    $router->post('/rol/delete/{id}', 'RolController@destroy');
-
-
-    //-----ACCIONES DE SUPER
-
-    $router->get('/permission/list', 'PermissionController@index');
-    $router->post('/permission/register', 'PermissionController@store');
-    $router->post('/permission/show/', 'PermissionController@show');
-    $router->post('/permission/update', 'PermissionController@edit');
-    $router->post('/permission/delete/{id}', 'PermissionController@destroy');
+   
 
 });
 
 
+
+$router->post('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
+$router->post('/permission/aggRol', 'RolController@assigRol');
 
 $router->group(['middleware' => ['role:Super', 'auth']], function () use ($router) {
   
     //-----ACCIONES DE ASINAR O QUITAR PERMISOS AL ROL
 
-    $router->post('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
-    $router->post('/permission/aggRol', 'RolController@assigRol');
+    
 });
 
 
