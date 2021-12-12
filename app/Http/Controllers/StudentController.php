@@ -76,6 +76,7 @@ class StudentController extends Controller
 
         
         try {
+            $user->assignRole('Student');
             $student->save();
         } catch (\PDOException  $e) {
             return response()->json($e);

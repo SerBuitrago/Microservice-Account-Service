@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Spatie\Permission\Models\Role;
 
 
 
@@ -230,6 +231,96 @@ class UserController extends Controller
         }
 
         
+    }
+    //--------------------------------------------------
+
+    public function aggRole(Request $request){
+
+        $this->validateaggRole($request);
+
+        $user = User::where('student_code', $request->student_code)->first();
+        $role = Role::where('name', $request->role )->first();
+
+
+
+        if(empty($role)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Role not found'
+            ]);
+        }
+        
+
+        if(!empty($user)){
+
+            $user->assignRole($role);
+
+            return response()->json([
+                'response' => true,
+                'token' => 'Rol agg'
+            ]);
+
+
+        }else{
+            
+            return response()->json([
+                'response' => false,
+                'token' => "User no found"
+            ]);
+        }
+
+       
+    }
+
+    //--------------------------------------------------
+
+    public function deleteRole(Request $request){
+
+        $this->validateaggRole($request);
+
+        $user = User::where('student_code', $request->student_code)->first();
+        $role = Role::where('name', $request->role )->first();
+
+
+
+        if(empty($role)){
+            return response()->json([
+                'response' => false,
+                'message' => 'Role not found'
+            ]);
+        }
+        
+
+        if(!empty($user)){
+
+            $user->removeRole($role);
+
+            return response()->json([
+                'response' => true,
+                'token' => 'Rol delete'
+            ]);
+
+
+        }else{
+            
+            return response()->json([
+                'response' => false,
+                'token' => "User no found"
+            ]);
+        }
+
+       
+    }
+
+    protected function validateaggRole(Request $request){
+
+        $this->validate($request, [
+
+            'student_code' => 'required',
+            'role' => 'required'
+
+        ]);
+
     }
 
 
