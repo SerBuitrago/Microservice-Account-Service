@@ -1,11 +1,17 @@
+import { Routes, Route , BrowserRouter as Router } from "react-router-dom";
 import logo from './logo.svg';
 import FooterComponent from './tools/FooterComponent.jsx';
 import '../src/css/App.css';
-import React from 'react';
 import { Component } from 'react';
 
-import MasterComponentLogin from './login/MasterComponent';
 import ControlComponent from './control/ControlComponente';
+
+
+
+import Students from "./control/pages/students"
+/* import classes from './css/'; */
+import Permisos from "./control/pages/permisos.jsx";
+import MasterComponent from "./login/MasterComponent";
 
 class App extends Component {
 
@@ -17,19 +23,22 @@ class App extends Component {
 
   } */
 
-
-
   render() {
     return (
 
       <div className="app">
-       {/*  <MasterComponentLogin></MasterComponentLogin>
- */}
-         <ControlComponent></ControlComponent>
-
-
-        <FooterComponent></FooterComponent>
+        <Router>
+          <Routes>
+            <Route path="/" element={<MasterComponent></MasterComponent>} > </Route>
+            <Route path="/dash" element={<ControlComponent></ControlComponent>} > </Route>
+            <Route path="/Students" element={<Students></Students>} ></Route>
+            <Route path="/Permisos" element={<Permisos></Permisos>} ></Route>
+          </Routes>
+        </Router>
+          {/*  <MasterComponent></MasterComponent> */}
+          {/* <FooterComponent></FooterComponent> */}
       </div>
+
     );
   }
 }

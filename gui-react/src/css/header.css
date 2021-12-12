@@ -1,6 +1,7 @@
 .headerComponent {
     color: whitesmoke;
     background-color: #e04356 ;
+    flex: content;
 }
 
 .acceder:hover {

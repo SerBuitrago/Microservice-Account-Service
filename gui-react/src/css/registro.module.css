@@ -29,15 +29,15 @@ form{
     
 }
  
-input{
+/* input{
     border-radius: 10px;
-    width: 200%;
+    height: auto;
     padding-top: 15px;
     margin-top: 15px;
     border: 3px solid #e04356;
     transition: all .3s;
     background-color: whitesmoke;
-} 
+}  */
 
 .button_registro{
     margin-top: 15px;
