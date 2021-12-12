@@ -56,6 +56,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     //---- ACCIONES DE ESTUDIANTE
     $router->get('/students', 'StudentController@index');//-
+    $router->post('/students', 'StudentController@indexPost');//-
     $router->post('/student/show', 'StudentController@show');//-
     
 });

@@ -26,6 +26,25 @@ class StudentController extends Controller
         
     }
 
+    public function indexPost(Request $request)
+    {
+        $this->validateIndexPost($request);
+        return response()->json([
+            'data' => Student::all()
+        ]);
+        
+    }
+
+    public function validateIndexPost(Request $request){
+
+        $this->validate($request, [
+
+            'api_token' => 'required',
+           
+        ]);
+
+    }
+
     // -- HU 3
     public function store(Request $request)
     {
