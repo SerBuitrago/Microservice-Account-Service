@@ -44,13 +44,13 @@ Luego se Instala/Actualiza las dependencias composer en la terminal del proyecto
 Corremos el proyecto a traves del siguiente comando.
 
 ```sh
-  php -S localhost:8000 -t public
+  php -S 18.235.152.56 -t public
 ```
 Verifique la implementación navegando a la dirección de su servidor en
 su navegador preferido.
 
 ```sh
-  http://localhost:8000/
+  http://18.235.152.56/
 ```
 ## Rutas
 `Para enviar data en el body a las peticiones POST utilizamos POSTMAN`
@@ -60,7 +60,7 @@ su navegador preferido.
 
 **Peticion POST, Iniciar sesión de usuario en el portal**
 ```sh
-http://localhost:8000/login
+http://18.235.152.56/login
 Opción BODY - RAW - TypeJSON
 {
     "student_code" : "1151651",
@@ -69,15 +69,15 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Inicar sesion a traves de correo personal/institucional**
 ```sh
-http://localhost:8000/login/google
+http://18.235.152.56/login/google
 ```
 **Peticion GET, Cerra sesion**
 ```sh
-http://localhost:8000/logout
+http://18.235.152.56/logout
 ```
 **Peticion POST, Registro de usuario en el portal (normal)**
 ```sh
-http://localhost:8000/student/register
+http://18.235.152.56/student/register
 Opción BODY - RAW - TypeJSON
 {
     "age" : "21",
@@ -94,7 +94,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Registro de usuario en el portal (admin)**
 ```sh
-http://localhost:8000/student/admin/register
+http://18.235.152.56/student/admin/register
 Opción BODY - RAW - TypeJSON
 {
     "age" : "21",
@@ -112,7 +112,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Obtener detalles de usuario**
 ```sh
-http://localhost:8000/user/show
+http://18.235.152.56/user/show
 Opción BODY - RAW - TypeJSON
 {
     "code" : "1151651",
@@ -120,7 +120,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Obtener detalles de estudiante**
 ```sh
-http://localhost:8000/student/show
+http://18.235.152.56/student/show
 Opción BODY - RAW - TypeJSON
 {
     "code" : "1151651",
@@ -128,7 +128,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Editar información del usuario**
 ```sh
-http://localhost:8000/student/admin/edit/{id}
+http://18.235.152.56/student/admin/edit/{id}
 Opción BODY - RAW - TypeJSON
 {
     "api_token": "nno8VgkrTVWvY4zqStSly5ehwiaTf7Te7tSW1lAws2fcCPVnBii5PcylOf5AsoBuxC3cfTKKuuj3akee9qug4FqM3WUc4xfSK1mjSvLe5uzFxJwm95K1BAdDMev7bSoUkvEuv7ggO3T5dxHghUWUqX",
@@ -146,15 +146,15 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET, Listar usuarios del portal**
 ```sh
-http://localhost:8000/student
+http://18.235.152.56/student
 ```
 **Peticion POST, Eliminar usuarios**
 ```sh
-http://localhost:8000/student/admin/delete/{id}
+http://18.235.152.56/student/admin/delete/{id}
 ```
 **Peticion POST, Recuperar contraseña**
 ```sh
-http://localhost:8000/send/password
+http://18.235.152.56/send/password
 Opción BODY - RAW - TypeJSON
 {
     "email": "gabrielarturo@gmail.com"
@@ -162,7 +162,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Cambiar contraseña**
 ```sh
-http://localhost:8000/reset/password
+http://18.235.152.56/reset/password
 Opción BODY - RAW - TypeJSON
 {
     "email" :  "gabrielarturo@gmail.com",
@@ -178,10 +178,12 @@ Opción BODY - RAW - TypeJSON
 - Editar información del rol
 - Listar roles 
 - Eliminar roles
+- Agregar Rol al Usuario
+- Eliminar Rol al Usuario
 
 **Peticion POST, Registrar rol**
 ```sh
-http://localhost:8000/rol/register
+http://18.235.152.56/rol/register
 Opción BODY - RAW - TypeJSON
  {
     "name": "Admin"
@@ -189,7 +191,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET, Obtener detalles del rol**
 ```sh
-http://localhost:8000/rol/show/
+http://18.235.152.56/rol/show/
 Opción BODY - RAW - TypeJSON
 {
     "role_id":3
@@ -197,7 +199,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Editar información del rol**
 ```sh
-http://localhost:8000/rol/update
+http://18.235.152.56/rol/update
 Opción BODY - RAW - TypeJSON
 {
     "role_id":3
@@ -205,11 +207,29 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET, Listar roles**
 ```sh
-http://localhost:8000/rol/list/
+http://18.235.152.56/rol/list/
 ```
 **Peticion POST, Eliminar roles**
 ```sh
-http://localhost:8000/rol/delete/3
+http://18.235.152.56/rol/delete/3
+```
+**Peticion POST, Agregar Rol al Usuario**
+```sh
+http://18.235.152.56/student/rol/add
+Opción BODY - RAW - TypeJSON
+{
+   "student_code":"115165",
+   "role": "Admin"
+}
+```
+**Peticion POST, Eliminar Rol al Usuario**
+```sh
+http://18.235.152.56/student/rol/delete
+Opción BODY - RAW - TypeJSON
+{
+   "student_code":"115165",
+   "role": "Admin"
+}
 ```
 
 ---------------------------------
@@ -224,7 +244,7 @@ http://localhost:8000/rol/delete/3
 
 **Peticion POST, Registrar un permiso (funcionalidad)**
 ```sh
-http://localhost:8000/permission/register
+http://18.235.152.56/permission/register
 Opción BODY - RAW - TypeJSON
 {
     "name" : "create user"
@@ -232,7 +252,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Asignación de permisos al rol**
 ```sh
-http://localhost:8000/permission/aggRol
+http://18.235.152.56/permission/aggRol
 Opción BODY - RAW - TypeJSON
 {
     "name": "Teacher",
@@ -241,7 +261,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Desvincular permisos al rol**
 ```sh
-http://localhost:8000/permission/deleteRolPerm
+http://18.235.152.56/permission/deleteRolPerm
 Opción BODY - RAW - TypeJSON
 {
     "name": "Teacher",
@@ -250,7 +270,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Obtener detalles de un permiso**
 ```sh
-http://localhost:8000/permission/show
+http://18.235.152.56/permission/show
 Opción BODY - RAW - TypeJSON
 {
     "id" : "1"
@@ -258,7 +278,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion POST, Editar información del permiso**
 ```sh
-http://localhost:8000/permission/update
+http://18.235.152.56/permission/update
 Opción BODY - RAW - TypeJSON
 {
     "id" : "2",
@@ -268,11 +288,11 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET , Listar permisos**
 ```sh
-http://localhost:8000/permission/list
+http://18.235.152.56/permission/list
 ```
 **Peticion POST , Eliminar permiso**
 ```sh
-http://localhost:8000/permission/delete/1
+http://18.235.152.56/permission/delete/1
 ```
 
 
