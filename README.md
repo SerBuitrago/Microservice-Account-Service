@@ -126,7 +126,7 @@ Opción BODY - RAW - TypeJSON
     "code" : "1151651",
 }
 ```
-**Peticion POST, Editar información del usuario**
+**Peticion PUT, Editar información del usuario**
 ```sh
 http://18.235.152.56/student/admin/edit/{id}
 Opción BODY - RAW - TypeJSON
@@ -148,7 +148,7 @@ Opción BODY - RAW - TypeJSON
 ```sh
 http://18.235.152.56/student
 ```
-**Peticion POST, Eliminar usuarios**
+**Peticion DELTE, Eliminar usuarios**
 ```sh
 http://18.235.152.56/student/admin/delete/{id}
 ```
@@ -197,7 +197,7 @@ Opción BODY - RAW - TypeJSON
     "role_id":3
 }
 ```
-**Peticion POST, Editar información del rol**
+**Peticion PUT, Editar información del rol**
 ```sh
 http://18.235.152.56/rol/update
 Opción BODY - RAW - TypeJSON
@@ -209,7 +209,7 @@ Opción BODY - RAW - TypeJSON
 ```sh
 http://18.235.152.56/rol/list/
 ```
-**Peticion POST, Eliminar roles**
+**Peticion DELETE, Eliminar roles**
 ```sh
 http://18.235.152.56/rol/delete/3
 ```
@@ -222,7 +222,7 @@ Opción BODY - RAW - TypeJSON
    "role": "Admin"
 }
 ```
-**Peticion POST, Eliminar Rol al Usuario**
+**Peticion DELETE, Eliminar Rol al Usuario**
 ```sh
 http://18.235.152.56/student/rol/delete
 Opción BODY - RAW - TypeJSON
@@ -259,7 +259,7 @@ Opción BODY - RAW - TypeJSON
     "name_permission": "create user"
 }
 ```
-**Peticion POST, Desvincular permisos al rol**
+**Peticion DELTE, Desvincular permisos al rol**
 ```sh
 http://18.235.152.56/permission/deleteRolPerm
 Opción BODY - RAW - TypeJSON
@@ -276,7 +276,7 @@ Opción BODY - RAW - TypeJSON
     "id" : "1"
 }
 ```
-**Peticion POST, Editar información del permiso**
+**Peticion PUT, Editar información del permiso**
 ```sh
 http://18.235.152.56/permission/update
 Opción BODY - RAW - TypeJSON
@@ -290,7 +290,7 @@ Opción BODY - RAW - TypeJSON
 ```sh
 http://18.235.152.56/permission/list
 ```
-**Peticion POST , Eliminar permiso**
+**Peticion DELETE , Eliminar permiso**
 ```sh
 http://18.235.152.56/permission/delete/1
 ```

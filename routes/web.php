@@ -72,8 +72,8 @@ $router->group(['middleware' => ['role:Admin', 'auth']], function () use ($route
 
     //-----ACCIONES DE ESTUDIANTE
     $router->post('/student/admin/register', 'StudentController@storeAdmin');//-
-    $router->post('/student/admin/edit/{id}', 'UserController@editAdmin');//-
-    $router->post('/student/admin/delete/{id}', 'UserController@deleteAdmin');//-
+    $router->put('/student/admin/edit/{id}', 'UserController@editAdmin');//-
+    $router->delete('/student/admin/delete/{id}', 'UserController@deleteAdmin');//-
 
 });
 
@@ -88,8 +88,8 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
     $router->get('/rol/list', 'RolController@index');
     $router->post('/rol/register', 'RolController@store');
     $router->post('/rol/show/', 'RolController@show');
-    $router->post('/rol/update', 'RolController@edit');
-    $router->post('/rol/delete/{id}', 'RolController@destroy');
+    $router->put('/rol/update', 'RolController@edit');
+    $router->delete('/rol/delete/{id}', 'RolController@destroy');
 
 
 
@@ -98,25 +98,26 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
     $router->get('/permission/list', 'PermissionController@index');
     $router->post('/permission/register', 'PermissionController@store');
     $router->post('/permission/show/', 'PermissionController@show');
-    $router->post('/permission/update', 'PermissionController@edit');
-    $router->post('/permission/delete/{id}', 'PermissionController@destroy');
+    $router->put('/permission/update', 'PermissionController@edit');
+    $router->delete('/permission/delete/{id}', 'PermissionController@destroy');
 
 
     
-    // OTROS
-    $router->post('/student/rol/add', 'UserController@aggRole');
-    $router->post('/student/rol/delete', 'UserController@deleteRole');
+   
 
 });
 
 
+
+
 $router->group(['middleware' => ['role:Super', 'auth']], function () use ($router) {
-  
-    
 
-
-    $router->post('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
     $router->post('/permission/aggRol', 'RolController@assigRol');
+    $router->delete('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
+
+        // OTROS
+    $router->post('/student/rol/add', 'UserController@aggRole');
+    $router->delete('/student/rol/delete', 'UserController@deleteRole');
 
     
 });
