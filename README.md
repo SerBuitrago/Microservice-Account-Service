@@ -191,7 +191,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET, Obtener detalles del rol**
 ```sh
-http://18.235.152.56/rol/show/
+http://18.235.152.56/rol/show
 Opción BODY - RAW - TypeJSON
 {
     "role_id":3
@@ -207,7 +207,7 @@ Opción BODY - RAW - TypeJSON
 ```
 **Peticion GET, Listar roles**
 ```sh
-http://18.235.152.56/rol/list/
+http://18.235.152.56/rol/list
 ```
 **Peticion DELETE, Eliminar roles**
 ```sh
