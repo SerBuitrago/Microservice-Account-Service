@@ -86,6 +86,7 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
     //-----ACCIONES DE SUPER
 
     $router->get('/rol/list', 'RolController@index');
+    $router->post('/rol/list', 'RolController@indexPost');
     $router->post('/rol/register', 'RolController@store');
     $router->post('/rol/show/', 'RolController@show');
     $router->put('/rol/update', 'RolController@edit');
