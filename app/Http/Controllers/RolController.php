@@ -180,6 +180,23 @@ class RolController extends Controller
             'message' => Role::all()
         ]);
     }
+    
+    public function indexPost(Request $request)
+    {
+         $this->validateindexPost($request);
+        return response()->json([
+            'response' => true, 
+            'message' => Role::all()
+        ]);
+    }
+    
+    protected function validateindexPost(Request $request){
+
+        $this->validate($request, [
+            'api_token' => 'required',
+        ]);
+
+    }
 
 
     // -- HU 17
