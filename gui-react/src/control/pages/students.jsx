@@ -2,6 +2,7 @@ import api_students from "../../api/student.js";
 import { DataGrid } from '@mui/x-data-grid';
 import classes from "../../css/pages.module.css"
 import ListaEstudiantes from "../pages/listaEstudiantes.jsx"
+import SidebarComponent from"../SidebarComponent.jsx"
 
 const student = () => {
 
@@ -50,10 +51,9 @@ const student = () => {
         )
     }
     return (
-        <div className="student">
-
-            <h3>Hola soy estudiante</h3>
-            {/* {listaEstudiantes()} */}
+        <div className={classes.student}>
+            <h3>Lista de estudiantes</h3>
+            <SidebarComponent></SidebarComponent>
             <ListaEstudiantes></ListaEstudiantes>
 
 
