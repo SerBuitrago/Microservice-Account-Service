@@ -1,8 +1,39 @@
 import { Component } from 'react';
-import api_students from "../../api/rol.js";
+import api_rol from "../../api/rol.js";
+import tokenAuth from "../../api/tokenAuth";
 import "../../css/agregarRol.css";
+import algoritmos from "../../tools/algoritmos.js"
 
 class AgregarRol extends Component {
+
+    constructor(props){
+        super(props);
+        console.log(props)
+        this.state ={
+            name:"",
+            api_token:""
+        }
+
+        this.click = this.click.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
+    }
+
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value //el state y la forma de className tienen que ser iguales
+        });
+    }
+
+    click() {
+        console.log(this.props)
+        var token = algoritmos.obtenerToken(tokenAuth.getItem());
+        this.setState({
+            api_token: token
+        });
+        api_rol.post_rol(this.state)
+    }
 
     render() {
         return (
@@ -20,7 +51,7 @@ class AgregarRol extends Component {
                             onChange={this.handleChange}
                     />
                     <div style={{ height: 20, width: '100%'}}></div>
-                    <button className='agregar'>Agregar Rol</button>
+                    <button className='agregar' onClick={()=> this.click()}>Agregar Rol</button>
                 </div>
             </div>
         );

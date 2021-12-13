@@ -21,6 +21,7 @@
     color: whitesmoke;
     background-color: #e04356 ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
 }
 
 .text {
