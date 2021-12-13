@@ -3,7 +3,10 @@ import axios from 'axios';
 export const API_URL = 'http://18.235.152.56/'
 export const API_DIREC = 'login'
 export const USER_NAME_SESSION_ATRIBUTE = 'authenticatedUser'
+export const USER_NAME_SESSION_CODIGO = 'codeUser'
 class tokenAuth {
+
+    token =""
 
     executeJwtAuthenticationService(student_code,password){
         console.log(student_code,  password)
@@ -13,13 +16,19 @@ class tokenAuth {
         } )
     }
     createTokenJwt(token){
+        this.token=token
         return 'Bearer ' + token;
     }
 
     registerAuthenticationSuccesJwt(student_code,token){
+
         console.log(token)
-        console.log(student_code + "HOLAJAJJA")
-        sessionStorage.setItem(USER_NAME_SESSION_ATRIBUTE,student_code);
+        let a = [
+            student_code,
+            token
+    ]
+        /* sessionStorage.setItem(USER_NAME_SESSION_ATRIBUTE,token); */ /* Esto no es para nada seguro pero necesito que funcion  */
+        sessionStorage.setItem(USER_NAME_SESSION_ATRIBUTE,a); /* Esto no es para nada seguro pero necesito que funcion  */
         this.setupAxiosInterceptos(this.createTokenJwt(token));
 
     }
@@ -41,6 +50,7 @@ class tokenAuth {
     }
 
     setupAxiosInterceptos(token){
+        console.log(this.getAuthenticated())
         axios.interceptors.request.use((config) => {
             if(this.getAuthenticated()){
                 config.headers.Authorization  = token;

@@ -37,6 +37,7 @@ class LoginComponent extends Component {
         .then((response) => {
                 
                 tokenAuth.registerAuthenticationSuccesJwt(this.state.name,response.data.api_token);
+                console.log(response.data.api_token)
                                 
                 /* this.props.history.push("/students"); */
                 /* this.context.router.push("/dash") */
