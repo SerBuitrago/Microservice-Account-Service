@@ -52,6 +52,8 @@ su navegador preferido.
 ```sh
   http://18.235.152.56/
 ```
+- `PARA CADA PETICION SE DEBE ENVIAR EL API_TOKEN(GENERADO), EN EL BODY`
+
 ## Rutas
 `Para enviar data en el body a las peticiones POST utilizamos POSTMAN`
 

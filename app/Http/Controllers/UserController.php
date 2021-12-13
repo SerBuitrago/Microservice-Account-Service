@@ -41,6 +41,7 @@ class UserController extends Controller
             return response()->json([
                 'response' => true,
                 'api_token'=> $user->api_token,
+                'role'=> $user->getRoleNames(),
                 'message' => 'Welcome'
             ]);
         }else{
