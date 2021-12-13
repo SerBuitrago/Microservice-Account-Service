@@ -31,12 +31,12 @@ form{
 }
 .UFPS{
     display: grid;
-    height:400px;
+    height:300px;
     max-height: 400px;
-    width: 250%;
+    width: 100%;
     max-width: 250%;
     min-width: 100%;
-    border-radius: 2em;
+    margin: 0 auto;
 
     background-image: url("../ufps_resource/3.png");
     
@@ -60,4 +60,8 @@ form{
 }
 ::placeholder{
     font-weight: bolder;
+}
+
+.olvidar a {
+    margin-left: 0px;
 }

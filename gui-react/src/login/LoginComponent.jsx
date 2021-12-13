@@ -71,15 +71,17 @@ class LoginComponent extends Component {
                         name="password"
                         id="password"
                         className="campos"
-                        type="text"
+                        type="password"
                         placeholder="Contraseña"
                         onChange={this.handleChange}
                     />
 
                     <button className="button_registro" onClick={()=> this.clickLogin()} value="Acceder">Acceder </button>
 
-                    <label > <input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
-                    <a className="href" href="#">Olvidar Costraseña </a>
+                    <label ><input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
+                    <div className="olvidar">
+                        <a className="href" href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
 
                 
             </div>

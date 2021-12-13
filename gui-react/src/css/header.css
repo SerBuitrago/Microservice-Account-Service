@@ -1,4 +1,8 @@
 .headerComponent {
+    margin: 0 auto;
+    width: 400px;
+    min-width: 300px;
+    text-align: center;
     color: whitesmoke;
     background-color: #e04356 ;
     flex: content;
@@ -12,4 +16,10 @@
 .registro:hover {
     background-color: #a32e3c;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 400px){
+    .headerComponent{
+        width: 300px;
+    }
 }
