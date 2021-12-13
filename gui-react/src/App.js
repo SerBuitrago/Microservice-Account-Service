@@ -12,6 +12,7 @@ import Students from "./control/pages/students"
 /* import classes from './css/'; */
 import Permisos from "./control/pages/permisos.jsx";
 import MasterComponent from "./login/MasterComponent";
+import AgregarRol from "./control/pages/agregarRol";
 
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/dash" element={<ControlComponent></ControlComponent>} > </Route>
             <Route path="/Students" element={<Students></Students>} ></Route>
             <Route path="/Permisos" element={<Permisos></Permisos>} ></Route>
+            <Route path="/rol" element={<AgregarRol></AgregarRol>} ></Route>
           </Routes>
         </Router>
           {/*  <MasterComponent></MasterComponent> */}

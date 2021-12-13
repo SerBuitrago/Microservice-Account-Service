@@ -1,0 +1,28 @@
+.rol {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nombreRol {
+    width: 292px;
+    height: 30px;
+    border: 3px solid #e04356;
+    transition: all .3s;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.agregar {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    color: whitesmoke;
+    background-color: #e04356 ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
