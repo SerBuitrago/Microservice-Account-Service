@@ -28,8 +28,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-    }
-
+    }//
     public function sendLoginResponse(Request $request){
 
         $user = User::where('student_code',$request['student_code'])->first();

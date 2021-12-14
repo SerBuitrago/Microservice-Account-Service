@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class AccountsController extends Controller
 {
@@ -35,7 +39,8 @@ class AccountsController extends Controller
         if ($this->sendResetEmail($request->email, $tokenData->token)) {
             return response()->json([
                 'response' => true,
-                'message' => 'A reset link has been sent to your email address.'
+                'email' => $request->email,
+                'token' => $tokenData->token
             ]);
         } else {
             return response()->json([
@@ -48,8 +53,7 @@ class AccountsController extends Controller
 
     private function sendResetEmail($email, $token)
     {
-       //aca se genera el envio de correo , con la correspondiente data de entrada
-       return true;
+        return true;
     }
 
 

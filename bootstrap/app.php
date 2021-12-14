@@ -62,6 +62,11 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('services');
+$app->configure('mail');
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 //Laravel Permission
 
@@ -89,6 +94,9 @@ $app->configure('cors');
 $app->alias('Socialite', Laravel\Socialite\Facades\Socialite::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 
+// SEND EMAIL
+
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 
 
 
@@ -104,7 +112,7 @@ $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 */
 
 $app->middleware([
-    Fruitcake\Cors\HandleCors::class,
+    //Fruitcake\Cors\HandleCors::class,
 ]);
 
 $app->routeMiddleware([
@@ -122,9 +130,12 @@ $app->routeMiddleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+
+
 
 /*
 |--------------------------------------------------------------------------
