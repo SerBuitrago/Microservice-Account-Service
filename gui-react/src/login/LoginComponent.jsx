@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Grid} from '@material-ui/core'
 import AuthenticatedRoute from "../api/AuthenticatedRouter";
 import tokenAuth from "../api/tokenAuth";
 import ControlComponent from "../control/ControlComponente";
@@ -55,7 +56,7 @@ class LoginComponent extends Component {
             
             <div className="loginComponent">
                 <div className="UFPS">
-                    <p className="bienvenido">Bienvenido al Portal.</p>
+                    <p className="bienvenido">BIENVENIDO AL PORTAL</p>
                 </div>
 
             
@@ -78,10 +79,17 @@ class LoginComponent extends Component {
                     />
 
                     <button className="button_registro" onClick={()=> this.clickLogin()} value="Acceder">Acceder </button>
-
-                    <label ><input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
-                    <div className="olvidar">
-                        <a className="href" href="#">¿Olvidaste tu contraseña?</a>
+                    <div className="servicios">
+                        <Grid container>
+                            <Grid item xs={5}>
+                                <label ><input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
+                            </Grid>
+                            <Grid item xs={7}>
+                                <div className="olvidar">
+                                    <a className="href" href="#">Olvide mi contraseña</a>
+                                </div>
+                            </Grid>
+                        </Grid>
                     </div>
 
                 

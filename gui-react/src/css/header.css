@@ -8,6 +8,10 @@
     flex: content;
 }
 
+.acceder, .registro {
+    border: 1px solid #383838;
+}
+
 .acceder:hover {
     background-color: #a32e3c;
     cursor: pointer;

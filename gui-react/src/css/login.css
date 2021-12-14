@@ -1,5 +1,4 @@
 .loginComponent{
-    
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -11,11 +10,11 @@
 }
 .button_registro{    
     margin-top: 15px;
-    border-radius: 50px;
-    height: 50px;
-    width: 200px;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
     color: whitesmoke;
-    background-color: #e04356 ;
+    background-color: #e1061a ;
     font-weight: bolder;
     border: 0px;
 }
@@ -32,31 +31,27 @@ form{
 .UFPS{
     display: grid;
     height:300px;
-    max-height: 400px;
-    width: 100%;
-    max-width: 250%;
-    min-width: 100%;
-    margin: 0 auto;
-
+    width: 400px;
     background-image: url("../ufps_resource/3.png");
     
 }
 .campos{
-    border-radius: 10px;
-    width: auto;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
     padding-top: 15px;
     margin-top: 15px;
-    border: 3px solid #e04356;
+    border: 1px solid #383838;
     transition: all .3s;
     background-color: whitesmoke;
 } 
 .bienvenido{
     width: 100%;
-    top:400%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
     font-size:35px;
     color: cornsilk;
+    padding-top: 190px;
 }
 ::placeholder{
     font-weight: bolder;
@@ -64,4 +59,44 @@ form{
 
 .olvidar a {
     margin-left: 0px;
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 400px){
+    .bienvenido{
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .UFPS{
+        width: 300px;
+        background-image: url("../ufps_resource/4.png");
+    }
+}
+
+.button_registro:hover {
+    cursor: pointer;
+    background-color: #b10110;
+}
+
+.servicios {
+    padding-top: 30px;
+    width: 400px;
+}
+
+@media only screen and (max-width: 400px){
+    .servicios{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 400px){
+    .campos{
+        width: 200px;
+    }
+}
+
+.chec {
+    cursor: pointer;
 }
