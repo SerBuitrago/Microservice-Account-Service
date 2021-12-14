@@ -96,7 +96,7 @@ $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 
 // SEND EMAIL
 
-$app->register(Illuminate\Mail\MailServiceProvider::class);
+//$app->register(Illuminate\Mail\MailServiceProvider::class);
 
 
 
