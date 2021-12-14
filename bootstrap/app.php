@@ -112,7 +112,7 @@ $app->register(Illuminate\Mail\MailServiceProvider::class);
 */
 
 $app->middleware([
-    //Fruitcake\Cors\HandleCors::class,
+    Fruitcake\Cors\HandleCors::class,
 ]);
 
 $app->routeMiddleware([
