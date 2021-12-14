@@ -20,27 +20,43 @@ return [
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
         ],
         'tutoring' => [
-            'base_uri' => env('HOST_MICROSERVICE_TUTORIN'),
+            'base_uri' => env('HOST_MICROSERVICE_TUTORING'),
+            "services" => [
+                "category" => env('HOST_MICROSERVICE_TUTORING')."/category",
+                "subject" => env('HOST_MICROSERVICE_TUTORING')."/subject",
+                "tutoring" => env('HOST_MICROSERVICE_TUTORING')."/tutoring",
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ],
         'chat' => [
             'base_uri' => env('HOST_MICROSERVICE_CHAT'),
+            "services" => [
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ],
         'knowledge' => [
             'base_uri' => env('HOST_MICROSERVICE_KNOWLEDGE'),
+            "services" => [
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ],
         'audit' => [
             'base_uri' => env('HOST_MICROSERVICE_AUDIT'),
+            "services" => [
+                "audit" => env('HOST_MICROSERVICE_AUDIT')."/audit"
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ],
         'notification' => [
             'base_uri' => env('HOST_MICROSERVICE_NOTIFICATIONS'),
+            "services" => [
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ],
         'report' => [
             'base_uri' => env('HOST_MICROSERVICE_REPORTS'),
+            "services" => [
+            ],
             "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         ]
     ]
