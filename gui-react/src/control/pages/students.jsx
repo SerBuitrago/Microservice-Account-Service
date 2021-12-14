@@ -27,31 +27,8 @@ const student = () => {
         },
     ];
 
-   
-    const listaEstudiantes = () => {
-        let a = api_students.get_students()
-        a.then(response => {
-            console.log(response.data.data)
-            data = response.data.data
-        })
-        return (
-            <div className="listaEstudiante">
-                <div>
-                    <div style={{ height: 400, width: '100%' }}>
-                        <DataGrid
-                            rows={data}
-                            columns={columns}
-                            pageSize={5}
-                            rowsPerPageOptions={[5]}
-                            checkboxSelection
-                        />
-                    </div>
-                </div>
-            </div>
-        )
-    }
     return (
-        <div className={classes.student}>
+        <div className={classes.pages}>
             <h3>Lista de estudiantes</h3>
             <SidebarComponent></SidebarComponent>
             <ListaEstudiantes></ListaEstudiantes>

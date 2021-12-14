@@ -13,6 +13,9 @@ import Students from "./control/pages/students"
 import Permisos from "./control/pages/permisos.jsx";
 import MasterComponent from "./login/MasterComponent";
 import AgregarRol from "./control/pages/agregarRol";
+import Roles from "./control/pages/roles";
+import CambiarContrasena from "./control/pages/cambiarContraseña";
+
 
 class App extends Component {
 
@@ -32,9 +35,11 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<MasterComponent></MasterComponent>} > </Route>
             <Route path="/dash" element={<ControlComponent></ControlComponent>} > </Route>
-            <Route path="/Students" element={<Students></Students>} ></Route>
-            <Route path="/Permisos" element={<Permisos></Permisos>} ></Route>
+            <Route path="/students" element={<Students></Students>} ></Route>
+            <Route path="/lista_roles" element={<Roles></Roles>} ></Route>
+            <Route path="/permisos" element={<Permisos></Permisos>} ></Route>
             <Route path="/rol" element={<AgregarRol></AgregarRol>} ></Route>
+            <Route path="/cambiar_contrasena" element={<CambiarContrasena></CambiarContrasena>} ></Route>
           </Routes>
         </Router>
           {/*  <MasterComponent></MasterComponent> */}

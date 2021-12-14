@@ -46,9 +46,9 @@ class ListaEstudiantes extends Component {
   data() {
     let aux = []
     let a
-    let token = algoritmos.obtenerToken(tokenAuth.getItem())
+    let token = algoritmos.obtenerToken()
     console.log(token)
-    api_students.get_students(token[1]).then(response => {
+    api_students.get_students(token).then(response => {
 
       /* this.setState({
         rows: response.data.data
@@ -79,8 +79,6 @@ class ListaEstudiantes extends Component {
       this.setState({
         rows: aux
       })
-      console.log(a)
-      console.log(aux)
     });
 
     /* this.setState({

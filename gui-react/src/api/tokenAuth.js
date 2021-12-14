@@ -27,6 +27,7 @@ class tokenAuth {
             student_code,
             token
     ]
+    console.log(a)
         /* sessionStorage.setItem(USER_NAME_SESSION_ATRIBUTE,token); */ /* Esto no es para nada seguro pero necesito que funcion  */
         sessionStorage.setItem(USER_NAME_SESSION_ATRIBUTE,a); /* Esto no es para nada seguro pero necesito que funcion  */
         this.setupAxiosInterceptos(this.createTokenJwt(token));

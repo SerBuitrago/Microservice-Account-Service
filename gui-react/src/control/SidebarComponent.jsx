@@ -110,31 +110,63 @@ export default function MiniDrawer() {
 
     const acciones = [
         {
-        "text":"Permisos",
-        "icon": <HowToRegIcon></HowToRegIcon>,
-        "to":"/permisos"
-    },
+            "text": "Permisos",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/permisos"
+        },
         {
-        "text":"Cuentas",
-        "icon": <HowToRegIcon></HowToRegIcon>,
-        "to":"/cuentas"
-    },
+            "text": "Cuentas",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/cuentas"
+        },
         {
-        "text":"Usuarios",
-        "icon": <HowToRegIcon></HowToRegIcon>,
-        "to":"/students"
-    },
+            "text": "Usuarios",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/students"
+        },
         {
-        "text":"PDF",
-        "icon": <HowToRegIcon></HowToRegIcon>,
-        "to":"/pdf"
-    }
-]
+            "text": "Listar Roles",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/lista_roles"
+        },
+
+        {
+            "text": "PDF",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/pdf"
+        },
+
+        {
+            "text": "PDF",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/pdf"
+        }
+    ]
+
+
+    const acciones_secunadarias = [
+        {
+            "text": "Recuperar Contra.",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/recuperar_contrasena"
+        },
+        {
+            "text": "Cuentas",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/cuentas"
+        },
+        {
+            "text": "Usuarios",
+            "icon": <HowToRegIcon></HowToRegIcon>,
+            "to": "/students"
+        }
+
+    ]
 
     return (
         <div className={classes.sidebar}>
 
-            
+
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar position="fixed" style={{ background: "#e04356" }} open={open}>
@@ -180,19 +212,21 @@ export default function MiniDrawer() {
                     </List>
                     <Divider />
                     <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
+                        {acciones_secunadarias.map((text) => (
+                            <Link to={text.to} className={<ListItem button></ListItem>}>
+                                <ListItem button key={text.text}>
+                                    <ListItemIcon>
+                                        {text.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text.text} />
+                                </ListItem>
+                            </Link>
                         ))}
                     </List>
                 </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <DrawerHeader />
-                </Box>
+                </Box> */}
             </Box>
 
 
