@@ -151,9 +151,9 @@ export default function MiniDrawer() {
             "to": "/recuperar_contrasena"
         },
         {
-            "text": "Cuentas",
+            "text": "Cambiar Contra.",
             "icon": <HowToRegIcon></HowToRegIcon>,
-            "to": "/cuentas"
+            "to": "/cambiar_contrasena"
         },
         {
             "text": "Usuarios",

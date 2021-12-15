@@ -19,13 +19,12 @@ import CambiarContrasena from "./control/pages/cambiarContraseña";
 
 class App extends Component {
 
-  /* constructor(props){
+  constructor(props){
       super(props);
       this.state = {
-       formularioLogin: true
       }
 
-  } */
+  }
 
   render() {
     return (
