@@ -6,7 +6,7 @@ import algoritmos from '../../tools/algoritmos.js';
 
 
 
-class ListarRoles extends Component {
+class ListarPermisos extends Component {
     constructor(props){
         super(props);
 
@@ -53,4 +53,4 @@ class ListarRoles extends Component {
     }
 }
 
-export default ListarRoles;
+export default ListarPermisos;

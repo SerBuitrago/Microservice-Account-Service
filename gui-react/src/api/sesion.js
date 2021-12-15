@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const API_URL = 'http://18.235.152.56/'
 export const URL_PETICION_ROL = 'student/show'
+export const PETICION_ENVIO_CONTRA ='send/password'
 export const PETICION_CAMBIO_CONTRA ='reset/password'
 class sesion {
 
@@ -15,8 +16,15 @@ class sesion {
         });
     }
 
-    cambio_contrasena(json){
-        return axios.post(API_URL + PETICION_CAMBIO_CONTRA, json )
+    peticion_cambio_contrasena(email){
+        return axios.post(API_URL + PETICION_ENVIO_CONTRA, {
+            email
+        } )
+    }
+
+    cambio_contraseña (json){
+        console.log(json)
+        return axios.post(API_URL + PETICION_CAMBIO_CONTRA, json)
     }
 
 }

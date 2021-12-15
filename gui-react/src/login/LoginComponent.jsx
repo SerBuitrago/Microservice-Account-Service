@@ -4,8 +4,8 @@ import AuthenticatedRoute from "../api/AuthenticatedRouter";
 import tokenAuth from "../api/tokenAuth";
 import ControlComponent from "../control/ControlComponente";
 import "../css/login.css";
-import logo from "./../ufps_resource/3.png";
-import { withRouter } from 'react-router'
+
+import Swal from 'sweetalert2'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -34,10 +34,20 @@ export default function LoginComponent() {
             .then((response) => {
                 console.log(response)
                 if (response.data.message==="¡data incorrect!") {
-                    alert("Datos incorrectos")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salió mal...',
+                        text: 'Los datos son incorrectos, vuelva a intentar.',
+                      })
                 }
                 else{
-
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Inició sesión correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     tokenAuth.registerAuthenticationSuccesJwt(name, response.data.api_token);
                     navigate("/students")
                 }

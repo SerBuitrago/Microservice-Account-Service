@@ -22,8 +22,9 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import KeyIcon from '@mui/icons-material/Key';
+import PasswordIcon from '@mui/icons-material/Password';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import NavbarComponent from "./NavbarComponent";
 
@@ -97,7 +98,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MiniDrawer() {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -111,13 +112,8 @@ export default function MiniDrawer() {
     const acciones = [
         {
             "text": "Permisos",
-            "icon": <HowToRegIcon></HowToRegIcon>,
+            "icon":<KeyIcon></KeyIcon>,
             "to": "/permisos"
-        },
-        {
-            "text": "Cuentas",
-            "icon": <HowToRegIcon></HowToRegIcon>,
-            "to": "/cuentas"
         },
         {
             "text": "Usuarios",
@@ -126,21 +122,9 @@ export default function MiniDrawer() {
         },
         {
             "text": "Listar Roles",
-            "icon": <HowToRegIcon></HowToRegIcon>,
+            "icon": <FormatListBulletedIcon></FormatListBulletedIcon>,
             "to": "/lista_roles"
         },
-
-        {
-            "text": "PDF",
-            "icon": <HowToRegIcon></HowToRegIcon>,
-            "to": "/pdf"
-        },
-
-        {
-            "text": "PDF",
-            "icon": <HowToRegIcon></HowToRegIcon>,
-            "to": "/pdf"
-        }
     ]
 
 
@@ -152,13 +136,8 @@ export default function MiniDrawer() {
         },
         {
             "text": "Cambiar Contra.",
-            "icon": <HowToRegIcon></HowToRegIcon>,
+            "icon": <PasswordIcon></PasswordIcon>,
             "to": "/cambiar_contrasena"
-        },
-        {
-            "text": "Usuarios",
-            "icon": <HowToRegIcon></HowToRegIcon>,
-            "to": "/students"
         }
 
     ]
@@ -178,12 +157,13 @@ export default function MiniDrawer() {
                             edge="start"
                             sx={{
                                 marginRight: '36px',
+                                
                                 ...(open && { display: 'none' }),
                             }}
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography noWrap component="div">
+                        <Typography noWrap component="div"  style={{ width:"100%"}}>
                             <NavbarComponent></NavbarComponent>
                         </Typography>
                     </Toolbar>
@@ -194,7 +174,7 @@ export default function MiniDrawer() {
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
                     </DrawerHeader>
-                    <Divider />
+                    <Divider style={{marginTop:"15px" }}/>
                     <List>
                         {acciones.map((text) => (
                             <Link to={text.to} className={<ListItem button></ListItem>}>

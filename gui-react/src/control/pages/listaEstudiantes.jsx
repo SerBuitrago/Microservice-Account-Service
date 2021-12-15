@@ -93,12 +93,12 @@ class ListaEstudiantes extends Component {
 
     return (
 
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid
+      <div style={{height: 550, width: '100%'}}>
+        <DataGrid 
           rows={this.state.rows}
           columns={this.state.columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={8}
+          rowsPerPageOptions={[8]}
           checkboxSelection
         />
       </div>
