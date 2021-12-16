@@ -29,8 +29,8 @@ const student = () => {
 
     return (
         <div className={classes.pages}>
-            <h3>Lista de estudiantes</h3>
             <SidebarComponent></SidebarComponent>
+            <h3>Lista de estudiantes</h3>
             <ListaEstudiantes></ListaEstudiantes>
 
 

@@ -1,12 +1,14 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Grid } from '@material-ui/core'
 import AuthenticatedRoute from "../api/AuthenticatedRouter";
 import tokenAuth from "../api/tokenAuth";
 import ControlComponent from "../control/ControlComponente";
 import "../css/login.css";
-import logo from "./../ufps_resource/3.png";
 import { withRouter } from 'react-router'
 import GoogleIcon from '@mui/icons-material/Google';
+
+
+import Swal from 'sweetalert2'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -15,10 +17,10 @@ import { useNavigate } from 'react-router-dom'
 
 export default function LoginComponent() {
 
-    const [name,setName] = useState("")
-    const [password,setPassword] = useState("")
+    const [name, setName] = useState("")
+    const [password, setPassword] = useState("")
     const navigate = useNavigate()
-   
+
 
     const handleChangeName = (event) => {
         console.log(event.target.value)
@@ -34,11 +36,21 @@ export default function LoginComponent() {
         tokenAuth.executeJwtAuthenticationService(name, password)
             .then((response) => {
                 console.log(response)
-                if (response.data.message==="¡data incorrect!") {
-                    alert("Datos incorrectos")
+                if (response.data.message === "¡data incorrect!") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salió mal...',
+                        text: 'Los datos son incorrectos, vuelva a intentar.',
+                    })
                 }
-                else{
-
+                else {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Inició sesión correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     tokenAuth.registerAuthenticationSuccesJwt(name, response.data.api_token);
                     navigate("/students")
                 }
@@ -85,8 +97,8 @@ export default function LoginComponent() {
                 <br />
                 <button className="button_registro" onClick={() => clickLogin()} value="Acceder">Acceder</button>
                 <br />
-                <button className="button_google" value="Acceder"><GoogleIcon/>   Acceder con Google</button>
-                
+                <button className="button_google" value="Acceder"><GoogleIcon />   Acceder con Google</button>
+
 
                 <div className="servicios">
                     <Grid container>

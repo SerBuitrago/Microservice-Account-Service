@@ -11,8 +11,7 @@ class ControlComponent extends Component {
 
     render() {
         return (
-            <SidebarComponent></SidebarComponent>
-            
+            <SidebarComponent></SidebarComponent>            
         );
     }
 }

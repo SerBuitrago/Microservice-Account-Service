@@ -70,3 +70,4 @@ class RegistroComponent extends Component {
 
 
 export default RegistroComponent;
+

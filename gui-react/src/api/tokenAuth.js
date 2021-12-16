@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const API_URL = 'http://18.235.152.56/'
 export const API_DIREC = 'login'
+export const API_LOGOUT = 'logout'
 export const USER_NAME_SESSION_ATRIBUTE = 'authenticatedUser'
 export const USER_NAME_SESSION_CODIGO = 'codeUser'
 class tokenAuth {
@@ -34,9 +35,12 @@ class tokenAuth {
 
     }
 
-    logout(){
+    logout(api_token){
         console.log(sessionStorage.getItem(USER_NAME_SESSION_ATRIBUTE))
         sessionStorage.removeItem(USER_NAME_SESSION_ATRIBUTE);
+        return axios.get(API_URL + API_LOGOUT,{
+            api_token:api_token
+        })
     }
 
     getAuthenticated(){

@@ -1,10 +1,12 @@
 import { Component } from "react";
+import SidebarComponent from '../SidebarComponent.jsx'
 
 class permisos extends Component{
     render(){
         return(
             <div className="permisos">
-                <h3>Hola soy permisos</h3>
+                <SidebarComponent></SidebarComponent>
+                
             </div>
         );
     }

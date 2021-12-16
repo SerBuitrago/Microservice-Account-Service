@@ -4,6 +4,7 @@ import classes from "../../css/pages.module.css"
 import { Button, TextField } from "@mui/material";
 import sesion from "../../api/sesion.js";
 import algoritmos from "../../tools/algoritmos.js";
+import Swal from 'sweetalert2'
 
 class CambiarContraseña extends Component {
 
@@ -32,16 +33,39 @@ class CambiarContraseña extends Component {
             this.setState({
                 name:response.data.message[0].name,
                 email:response.data.message[0].email,
-                api_token:token,
                 code:code
             })
-        }        )
+        })
     }
 
     cambiarContrasena(){
-        if (this.state.password === this.state.password_confirmation) {
-            console.log("entra", )
-           sesion.cambio_contrasena(this.state)
+        if (this.state.password === this.state.password_confirmation && this.state.password!="") {
+            
+           sesion.peticion_cambio_contrasena(this.state.email).then(
+               response => {
+                   this.setState({
+                      token:response.data.token
+                   })
+                   sesion.cambio_contraseña(this.state).then(response => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Cambio exitoso.',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })
+
+                   }
+                   ).catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Datos incorrectos...',
+                        text: 'Las contraseñas tienen que ser iguales y no vacías.'
+                      })
+                   }
+                   )
+               }
+           )
         }
         else{
             alert("Contraseñas diferentes")
