@@ -80,8 +80,8 @@ $router->group(['middleware' => ['role:Admin', 'auth']], function () use ($route
 
 
 
-//'role:Super',
-$router->group(['middleware' => ['auth']], function () use ($router) {
+//,
+$router->group(['middleware' => ['role:Super','auth']], function () use ($router) {
     
     //-----ACCIONES DE SUPER
 
@@ -111,7 +111,7 @@ $router->group(['middleware' => ['auth']], function () use ($router) {
 
 
 //'role:Super',
-$router->group(['middleware' => ['auth']], function () use ($router) {
+$router->group(['middleware' => ['role:Super','auth']], function () use ($router) {
 
     $router->post('/permission/aggRol', 'RolController@assigRol');
     $router->delete('/permission/deleteRolPerm', 'RolController@deleteRolPerm');
