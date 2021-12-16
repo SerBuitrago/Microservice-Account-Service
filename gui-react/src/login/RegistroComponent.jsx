@@ -1,5 +1,6 @@
 import { Component } from "react";
 import css from '../css/registro.module.css'
+import GoogleIcon from '@mui/icons-material/Google';
 
 class RegistroComponent extends Component {
 
@@ -50,13 +51,18 @@ class RegistroComponent extends Component {
     render() {
         return (
             <div className={css.contenedor}>
-                <div className={css.cabeza}>
-                    <h3 className={css.titulo_registro}> Formulario de registro </h3>
+                <div className="UFPS">
+                    <p className="bienvenido">BIENVENIDO AL PORTAL</p>
                 </div>
-                <form action="">                    
-                {this.getInput}
-                <button className="button_registro">Registrar</button>
-                </form>
+                <div className="contenido_login">
+                    <form action="">                    
+                    {this.getInput}
+                    <button className="button_registro">Registrar</button>
+                    </form>
+                    <br />
+                    <button className="button_google" value="Acceder"><GoogleIcon/>   Registrarse con Google</button>
+                </div>
+                <div style={{ height: 25, width: '100%'}}></div>
             </div>
         );
     }

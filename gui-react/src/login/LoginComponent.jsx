@@ -6,6 +6,7 @@ import ControlComponent from "../control/ControlComponente";
 import "../css/login.css";
 import logo from "./../ufps_resource/3.png";
 import { withRouter } from 'react-router'
+import GoogleIcon from '@mui/icons-material/Google';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -63,38 +64,42 @@ export default function LoginComponent() {
                 <p className="bienvenido">BIENVENIDO AL PORTAL</p>
             </div>
 
+            <div className="contenido_login">
+                <input
+                    name="name"
+                    id="name"
+                    className="campos"
+                    type="text"
+                    placeholder="Código"
+                    onChange={handleChangeName}
+                />
+                <br />
+                <input
+                    name="password"
+                    id="password"
+                    className="campos"
+                    type="password"
+                    placeholder="Contraseña"
+                    onChange={handleChangePassword}
+                />
+                <br />
+                <button className="button_registro" onClick={() => clickLogin()} value="Acceder">Acceder</button>
+                <br />
+                <button className="button_google" value="Acceder"><GoogleIcon/>   Acceder con Google</button>
+                
 
-            <input
-                name="name"
-                id="name"
-                className="campos"
-                type="text"
-                placeholder="Código"
-                onChange={handleChangeName}
-            />
-            <br />
-            <input
-                name="password"
-                id="password"
-                className="campos"
-                type="password"
-                placeholder="Contraseña"
-                onChange={handleChangePassword}
-            />
-
-            <button className="button_registro" onClick={() => clickLogin()} value="Acceder">Acceder </button>
-
-            <div className="servicios">
-                <Grid container>
-                    <Grid item xs={5}>
-                        <label ><input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
+                <div className="servicios">
+                    <Grid container>
+                        <Grid item xs={5}>
+                            <label ><input className="chec" type="checkbox" value="Recuerdame" />Recuerdame</label>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <div className="olvidar">
+                                <a className="href" href="#">Olvide mi contraseña</a>
+                            </div>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={7}>
-                        <div className="olvidar">
-                            <a className="href" href="#">Olvide mi contraseña</a>
-                        </div>
-                    </Grid>
-                </Grid>
+                </div>
             </div>
 
 

@@ -8,13 +8,22 @@
 
 }
 
-.cabeza{
-    background-image: url("../ufps_resource/1\ \(2\).png");
-    width: 100%;
+.UFPS{
+    border: 1px solid #383838;
+    display: grid;
+    height:300px;
+    width: 400px;
+    background-image: url("../ufps_resource/3.png");
+    
 }
 
-.titulo_registro{
-    color: whitesmoke;
+.bienvenido{
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size:35px;
+    color: cornsilk;
+    padding-top: 190px;
 }
 
 ::placeholder{
@@ -29,15 +38,22 @@ form{
     
 }
  
-/* input{
-    border-radius: 10px;
-    height: auto;
+form input{
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
     padding-top: 15px;
     margin-top: 15px;
-    border: 3px solid #e04356;
+    border: 1px solid #383838;
     transition: all .3s;
     background-color: whitesmoke;
-}  */
+} 
+
+@media only screen and (max-width: 400px){
+    form input{
+        width: 200px;
+    }
+}
 
 .button_registro{
     margin-top: 15px;

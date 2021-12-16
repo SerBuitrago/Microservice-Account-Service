@@ -8,7 +8,11 @@
     flex: content;
 }
 
-.acceder, .registro {
+.acceder {
+    border: 1px solid #383838;
+}
+
+.registro {
     border: 1px solid #383838;
 }
 

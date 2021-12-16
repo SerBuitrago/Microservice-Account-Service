@@ -19,6 +19,15 @@
     border: 0px;
 }
 
+.button_google {
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 35px;
+    width: 200px;
+    background-color: #ffff;
+    border: 1px solid #383838;
+}
+
 .logo{
     width: 100%;
 }
@@ -28,13 +37,16 @@ form{
     flex-direction: column;
     align-items: center;
 }
+
 .UFPS{
+    border: 1px solid #383838;
     display: grid;
     height:300px;
     width: 400px;
     background-image: url("../ufps_resource/3.png");
     
 }
+
 .campos{
     border-radius: 5px;
     height: 30px;
@@ -45,6 +57,7 @@ form{
     transition: all .3s;
     background-color: whitesmoke;
 } 
+
 .bienvenido{
     width: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -81,6 +94,11 @@ form{
     background-color: #b10110;
 }
 
+.button_google:hover {
+    cursor: pointer;
+    background-color: #cecece;
+}
+
 .servicios {
     padding-top: 30px;
     width: 400px;
@@ -99,4 +117,17 @@ form{
 
 .chec {
     cursor: pointer;
+}
+
+.contenido_login {
+    border: 1px solid #383838;
+    background-color: #ffff;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 400px){
+    .contenido_login{
+        width: 300px;
+    }
 }
