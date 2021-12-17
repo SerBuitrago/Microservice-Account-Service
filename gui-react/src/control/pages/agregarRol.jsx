@@ -3,6 +3,8 @@ import api_rol from "../../api/rol.js";
 import tokenAuth from "../../api/tokenAuth";
 import "../../css/agregarRol.css";
 import algoritmos from "../../tools/algoritmos.js"
+import SidebarComponent from "../SidebarComponent.jsx";
+import sesion from "../../api/sesion.js";
 
 class AgregarRol extends Component {
 
@@ -19,7 +21,6 @@ class AgregarRol extends Component {
 
     }
 
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value //el state y la forma de className tienen que ser iguales
@@ -28,6 +29,7 @@ class AgregarRol extends Component {
 
     click() {
         console.log(this.props)
+        api_rol.peticion_agregar_rol(this.state.rol)
         var token = algoritmos.obtenerToken(tokenAuth.getItem());
         this.setState({
             api_token: token
@@ -37,7 +39,8 @@ class AgregarRol extends Component {
 
     render() {
         return (
-            <div style={{ height: 400, width: '100%'}}>
+            <div>
+                <SidebarComponent></SidebarComponent>
                 <div className='rol'>
                     <div style={{ height: 50, width: '100%'}}></div>
                     <h1 className='text'>Agregar Rol</h1>

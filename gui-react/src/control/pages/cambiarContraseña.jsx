@@ -4,70 +4,71 @@ import classes from "../../css/pages.module.css"
 import { Button, TextField } from "@mui/material";
 import sesion from "../../api/sesion.js";
 import algoritmos from "../../tools/algoritmos.js";
+import {Grid} from '@material-ui/core'
 import Swal from 'sweetalert2'
 
 class CambiarContraseña extends Component {
 
-    constructor(props){
-        super(props); 
-        this.state ={
-            name:"",
-            code:"",
-            email:"",
-            password:"",
-            password_confirmation:"",
-            token:""
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            code: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+            token: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.cambiarContrasena = this.cambiarContrasena.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.data()
     }
 
-    data(){
+    data() {
         let code = algoritmos.obtenerCode()
         let token = algoritmos.obtenerToken()
-        sesion.get_sesion(code,token).then( response => {
+        sesion.get_sesion(code, token).then(response => {
             this.setState({
-                name:response.data.message[0].name,
-                email:response.data.message[0].email,
-                code:code
+                name: response.data.message[0].name,
+                email: response.data.message[0].email,
+                code: code
             })
         })
     }
 
-    cambiarContrasena(){
-        if (this.state.password === this.state.password_confirmation && this.state.password!="") {
-            
-           sesion.peticion_cambio_contrasena(this.state.email).then(
-               response => {
-                   this.setState({
-                      token:response.data.token
-                   })
-                   sesion.cambio_contraseña(this.state).then(response => {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Cambio exitoso.',
-                        showConfirmButton: false,
-                        timer: 2000
-                      })
+    cambiarContrasena() {
+        if (this.state.password === this.state.password_confirmation && this.state.password != "") {
 
-                   }
-                   ).catch(error => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Datos incorrectos...',
-                        text: 'Las contraseñas tienen que ser iguales y no vacías.'
-                      })
-                   }
-                   )
-               }
-           )
+            sesion.peticion_cambio_contrasena(this.state.email).then(
+                response => {
+                    this.setState({
+                        token: response.data.token
+                    })
+                    sesion.cambio_contraseña(this.state).then(response => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Cambio exitoso.',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+
+                    }
+                    ).catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Datos incorrectos...',
+                            text: 'Las contraseñas tienen que ser iguales y no vacías.'
+                        })
+                    }
+                    )
+                }
+            )
         }
-        else{
+        else {
             alert("Contraseñas diferentes")
         }
     }
@@ -76,7 +77,7 @@ class CambiarContraseña extends Component {
         this.setState({
             [event.target.name]: event.target.value //el state y la forma de className tienen que ser ifuales
         });
-        console.log(this.state) 
+        console.log(this.state)
     }
 
     render() {
@@ -85,13 +86,23 @@ class CambiarContraseña extends Component {
                 <SidebarComponent></SidebarComponent>
 
                 <h3>Cambio de contraseña</h3>
-                <div>
-                    <h4>Nombre:</h4>
-                    <h4>{ this.state.name}</h4>
-                    <br />
-                    <h4>Codigo: </h4>
-                    <h4>{this.state.code }</h4>
-
+                <div className="contenido">
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <h4>Nombre:</h4>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <h4>{this.state.name}</h4>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <h4>Codigo: </h4>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <h4>{this.state.code}</h4>
+                        </Grid>
+                    </Grid>
                     <h4>Digite la contraseña actual</h4>
 
                     <TextField
@@ -121,10 +132,12 @@ class CambiarContraseña extends Component {
                         onChange={this.handleChange}
                     />
                     <br />
-
+                    <br />
                     <Button variant="contained" size="large" color="success" onClick={this.cambiarContrasena}>
                         Realizar cambio
                     </Button>
+                    <br />
+                    <br />
                 </div>
             </div>
         );

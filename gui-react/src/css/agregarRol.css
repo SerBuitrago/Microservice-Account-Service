@@ -1,4 +1,5 @@
 .rol {
+    padding-top: 5%;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -7,21 +8,28 @@
 
 .nombreRol {
     width: 292px;
-    height: 30px;
-    border: 3px solid #e04356;
+    height: 40px;
+    border: 1px solid #383838;
     transition: all .3s;
     background-color: whitesmoke;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .agregar {
     width: 300px;
-    height: 30px;
-    border-radius: 10px;
+    height: 40px;
+    border-radius: 5px;
     color: whitesmoke;
-    background-color: #e04356 ;
+    background-color: #e1061a ;
+    font-weight: bolder;
+    border: 0px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
+}
+
+.agregar:hover {
+    cursor: pointer;
+    background-color: #b10110;
 }
 
 .text {

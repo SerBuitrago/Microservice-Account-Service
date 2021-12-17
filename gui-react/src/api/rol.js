@@ -7,10 +7,14 @@ export const PETICION_LISTAR = 'list'
 
 class rol {
 
+    peticion_agregar_rol(name){
+        return axios.post(API_URL + ACCION + PETICION_ROL, {
+            name
+        } )
+    }
+
     post_rol(json) {
-        return axios.post(API_URL + ACCION + PETICION_ROL,         
-            json
-        );
+        return axios.post(API_URL + ACCION + PETICION_ROL, json)
     }
 
     get_lista_roles(token){
