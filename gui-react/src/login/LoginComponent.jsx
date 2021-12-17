@@ -57,8 +57,11 @@ export default function LoginComponent() {
                 /* this.context.router.push("/dash") */
 
             }).catch((error) => {
-                alert("Datos incorrectos")
-                console.log(error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo salió mal...',
+                    text: 'Falta datos por ingresar.',
+                })
             }
             )
         /* .catch((error) => {

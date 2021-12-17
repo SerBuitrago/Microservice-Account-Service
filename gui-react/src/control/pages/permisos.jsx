@@ -1,6 +1,9 @@
 import { Component } from "react";
 import SidebarComponent from '../SidebarComponent.jsx'
 import { DataGrid } from '@mui/x-data-grid';
+import ListarPermisos from "./listarPermisos.jsx";
+import classes from "../../css/pages.module.css"
+
 
 class permisos extends Component {
 
@@ -21,17 +24,9 @@ class permisos extends Component {
     }
     render() {
         return (
-            <div className="permisos">
+            <div className={classes.pages}>
                 <SidebarComponent></SidebarComponent>
-                <div style={{ height: 550, width: '70%', paddingTop: '7%'}}>
-                    <DataGrid
-                        rows={this.state.rows}
-                        columns={this.state.columns}
-                        pageSize={8}
-                        rowsPerPageOptions={[8]}
-                        checkboxSelection
-                    />
-                </div>
+                <ListarPermisos></ListarPermisos>
             </div>
         );
     }

@@ -99,7 +99,7 @@ class ListaEstudiantes extends Component {
           columns={this.state.columns}
           pageSize={8}
           rowsPerPageOptions={[8]}
-          checkboxSelection
+          
         />
       </div>
     );

@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Component } from 'react';
-import api_rol from "../../api/rol.js";
+import api_permisos from "../../api/permisos.js";
 import tokenAuth from "../../api/tokenAuth.js"
 import algoritmos from '../../tools/algoritmos.js';
 
@@ -28,13 +28,12 @@ class ListarPermisos extends Component {
     }
 
     data(){
-      console.log(algoritmos.obtenerToken())
-      api_rol.get_lista_roles(algoritmos.obtenerToken()).then(
-      response => {
-        this.setState({
-          rows:response.data.message
-        })
-      }
+      api_permisos.get_list_permisos(algoritmos.obtenerToken(tokenAuth.getItem())).then(
+        response => {
+          this.setState({
+            rows:response.data.message
+          })
+        }
       )
     }
 
@@ -46,7 +45,6 @@ class ListarPermisos extends Component {
           columns={this.state.columns}
           pageSize={8}
           rowsPerPageOptions={[8]}
-          checkboxSelection
         />
       </div>
       );

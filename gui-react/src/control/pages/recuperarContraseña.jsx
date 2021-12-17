@@ -1,4 +1,6 @@
 import { Component } from "react";
+import SidebarComponent from "../SidebarComponent.jsx";
+
 
 class RecuperarContraseña extends Component{
 
@@ -12,7 +14,7 @@ class RecuperarContraseña extends Component{
     render(){
         return(
             <div className="">
-                
+                <SidebarComponent></SidebarComponent>
             </div>
         );
     }

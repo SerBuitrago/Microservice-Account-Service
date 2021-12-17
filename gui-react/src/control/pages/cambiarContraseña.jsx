@@ -48,6 +48,7 @@ class CambiarContraseña extends Component {
                         token: response.data.token
                     })
                     sesion.cambio_contraseña(this.state).then(response => {
+                        
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -57,19 +58,17 @@ class CambiarContraseña extends Component {
                         })
 
                     }
-                    ).catch(error => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Datos incorrectos...',
-                            text: 'Las contraseñas tienen que ser iguales y no vacías.'
-                        })
-                    }
                     )
                 }
             )
         }
         else {
-            alert("Contraseñas diferentes")
+            Swal.fire({
+                icon: 'error',
+                title: 'Datos incorrectos...',
+                text: 'Las contraseñas tienen que ser iguales y no vacías.',
+                timer:2000
+            })
         }
     }
 
@@ -77,7 +76,6 @@ class CambiarContraseña extends Component {
         this.setState({
             [event.target.name]: event.target.value //el state y la forma de className tienen que ser ifuales
         });
-        console.log(this.state)
     }
 
     render() {
