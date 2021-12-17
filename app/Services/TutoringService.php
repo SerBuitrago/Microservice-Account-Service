@@ -89,4 +89,12 @@ class TutoringService
     {
         return $this->request('DELETE', "/tutoria/{$id}/{$nombre}");
     }
+
+    /**
+     * Usuario
+     */
+    public function createRol($id, $rol)
+    {
+        return $this->request('POST', "/usuario/{$id}/rol/{$rol}");
+    }
 }
