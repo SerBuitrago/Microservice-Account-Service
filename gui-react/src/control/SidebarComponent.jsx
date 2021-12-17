@@ -28,6 +28,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import NavbarComponent from "./NavbarComponent";
 import AddIcon from '@mui/icons-material/Add';
+import LinkIcon from '@mui/icons-material/Link';
 
 
 const drawerWidth = 200;
@@ -130,6 +131,11 @@ export default function MiniDrawer() {
             "text": "Agregar Rol",
             "icon": <AddIcon></AddIcon>,
             "to": "/rol"
+        },
+        {
+            "text": "Vincular Rol",
+            "icon": <LinkIcon></LinkIcon>,
+            "to": "/vincular_rol"
         },
     ]
 

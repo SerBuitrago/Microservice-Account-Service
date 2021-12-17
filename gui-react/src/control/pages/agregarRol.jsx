@@ -58,7 +58,7 @@ export default function AgregarRol() {
         <div className='rol'>
             <div style={{ height: 50, width: '100%' }}></div>
             <h1 className='text'>Agregar Rol</h1>
-            <div style={{ height: 50, width: '100%' }}></div>
+            <div style={{ height: 30, width: '100%' }}></div>
             <input
                 name="rol"
                 id="rol"
