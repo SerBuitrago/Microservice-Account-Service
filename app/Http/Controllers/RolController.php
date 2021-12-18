@@ -183,7 +183,7 @@ class RolController extends Controller
     
     public function indexPost(Request $request)
     {
-         $this->validateindexPost($request);
+        $this->validateindexPost($request);
         return response()->json([
             'response' => true, 
             'message' => Role::all()

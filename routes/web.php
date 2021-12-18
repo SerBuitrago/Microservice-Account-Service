@@ -97,6 +97,7 @@ $router->group(['middleware' => ['role:Super','auth']], function () use ($router
     //-----ACCIONES DE SUPER
 
     $router->get('/permission/list', 'PermissionController@index');
+    $router->post('/permission/list', 'PermissionController@indexPost');
     $router->post('/permission/register', 'PermissionController@store');
     $router->post('/permission/show/', 'PermissionController@show');
     $router->put('/permission/update', 'PermissionController@edit');

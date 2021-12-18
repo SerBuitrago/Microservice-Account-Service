@@ -128,6 +128,23 @@ class PermissionController extends Controller
         ]);
     }
 
+    public function indexPost(Request $request)
+    {
+        $this->validateindexPost($request);
+        return response()->json([
+            'response' => true, 
+            'message' => Permission::all()
+        ]);
+    }
+    
+    protected function validateindexPost(Request $request){
+
+        $this->validate($request, [
+            'api_token' => 'required',
+        ]);
+
+    }
+
     
     // -- HU 22
     public function destroy(Request $request)
