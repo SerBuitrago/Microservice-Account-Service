@@ -28,7 +28,7 @@ class ListarRoles extends Component {
            
             <ButtonGroup variant="contained" aria-label="outlined button group">
               <Button color="error"  onClick={ () => this.eliminarRol(params.value)}>Eliminar</Button>
-              <Button color="primary" onClick={ () => this.editar(params.value)}>Editar</Button>
+              <Button color="primary" disabled={true} onClick={ () => this.editar(params.value)}>Editar</Button>
             </ButtonGroup>
               
           )

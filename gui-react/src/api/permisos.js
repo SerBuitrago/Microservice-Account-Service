@@ -21,9 +21,11 @@ class Permisos {
 
 
     post_aggRol (json) {
-        return axios.post(API_URL + ACCION + AGG_ROL, json)
+        return axios.post(API_URL + ACCION + AGG_ROL, json)       
+    }
 
-        
+    delete_permisos (id,api_token) {
+        return axios.delete(API_URL + ACCION + ELIMINAR_PERMISO + id, {data:{api_token}})
     }
 }
 

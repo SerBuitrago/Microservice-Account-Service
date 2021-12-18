@@ -41,6 +41,7 @@ class App extends Component {
             <Route path="/lista_roles" element={<Roles></Roles>} ></Route>
             <Route path="/permisos" element={<Permisos></Permisos>} ></Route>
             <Route path="/rol" element={<AgregarRol></AgregarRol>} ></Route>
+            <Route path="/agregar_permiso" element={<AgregarRol></AgregarRol>} ></Route>
             <Route path="/cambiar_contrasena" element={<CambiarContrasena></CambiarContrasena>} ></Route>
             <Route path="/recuperar_contrasena" element={<RecuperarContraseña></RecuperarContraseña>} ></Route>
             <Route path="/vincular_rol" element={<VincularRol></VincularRol>} ></Route>

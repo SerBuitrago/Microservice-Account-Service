@@ -1,5 +1,7 @@
+import { Button, ButtonGroup } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { Component } from 'react';
+import Swal from 'sweetalert2';
 import api_permisos from "../../api/permisos.js";
 import tokenAuth from "../../api/tokenAuth.js"
 import algoritmos from '../../tools/algoritmos.js';
@@ -7,40 +9,72 @@ import algoritmos from '../../tools/algoritmos.js';
 
 
 class ListarPermisos extends Component {
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            rows: [],
-            columns: [
-              { field: 'id', headerName: 'ID', width: 70 },
-              { field: 'name', headerName: 'Nombre', width: 130 },
-              { field: 'guard_name', headerName: 'Guardia', width: 130 },
-              { field: 'created_at', headerName: 'Creado', width: 250 },
-              { field: 'updated_at', headerName: 'Ult. Modificacion', width: 250 },
-              
-            ]
-          }
-    }
+    this.state = {
+      rows: [],
+      columns: [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'name', headerName: 'Nombre', width: 130 },
+        { field: 'guard_name', headerName: 'Guardia', width: 130 },
+        { field: 'created_at', headerName: 'Creado', width: 250 },
+        { field: 'updated_at', headerName: 'Ult. Modificacion', width: 250 },
+        {
+          field: 'accion', headerName: 'Acciones', width: 250,
+          renderCell: (params) => (
 
-    componentDidMount(){
-      this.data()
-    }
+            <ButtonGroup variant="contained" aria-label="outlined button group">
+              <Button color="error" onClick={() => this.eliminarPermiso(params.value)}>Eliminar</Button>
+              <Button disabled={true} color="primary" onClick={() => this.editar(params.value)}>Editar</Button>
+            </ButtonGroup>
 
-    data(){
-      let token = algoritmos.obtenerToken(tokenAuth.getItem());
-      api_permisos.get_list_permisos(token).then(
-        response => {
-          this.setState({
-            rows:response.data.message
-          })
+          )
         }
-      )
-    }
 
-    render(){
-      return (
-        <div style={{height: 550, width: '100%'}}>
+      ]
+    }
+  }
+
+  componentDidMount() {
+    this.data()
+  }
+
+  data() {
+    let token = algoritmos.obtenerToken(tokenAuth.getItem());
+    api_permisos.get_list_permisos(token).then(
+      response => {
+        this.setState({
+          rows: response.data.message
+        })
+      }
+    )
+  }
+
+  eliminarPermiso(id) {
+    let api_token = algoritmos.obtenerToken(tokenAuth.getItem())
+    api_permisos.delete_permisos(id, api_token).then(
+      response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Permiso elimado correctamente',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+    ).catch(error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal...',
+        text: 'vuelva a intentar.',
+      })
+    })
+  }
+
+  render() {
+    return (
+      <div style={{ height: 550, width: '100%' }}>
         <DataGrid
           rows={this.state.rows}
           columns={this.state.columns}
@@ -48,8 +82,8 @@ class ListarPermisos extends Component {
           rowsPerPageOptions={[8]}
         />
       </div>
-      );
-    }
+    );
+  }
 }
 
 export default ListarPermisos;
