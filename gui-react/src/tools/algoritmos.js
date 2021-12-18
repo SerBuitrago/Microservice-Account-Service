@@ -12,6 +12,11 @@ class Algoritmos {
         return a[0]
     }
 
+    obetenertCodeDePrimero(string){ /* Este metodo es para vincular rol en el seleccionador */
+        let a = string.split(" - ")
+        return a[0]
+    }
+
 }
 
 export default new Algoritmos;

@@ -5,6 +5,7 @@ export const ACCION = 'rol/'
 export const PETICION_ROL = 'register'
 export const PETICION_LISTAR = 'list'
 export const ELIMINAR_ROL = 'delete/'
+export const ASIGNAR_ROL_A_USUARIO = 'add/'
 
 class rol {
 
@@ -17,6 +18,10 @@ class rol {
     post_rol(json) {
         console.log(json)
         return axios.post(API_URL + ACCION + PETICION_ROL, json)
+    }
+
+    post_asignar_rol_a_usuario(json){
+        return axios.post(API_URL + ACCION + ASIGNAR_ROL_A_USUARIO, json)
     }
 
     get_lista_roles(token) {

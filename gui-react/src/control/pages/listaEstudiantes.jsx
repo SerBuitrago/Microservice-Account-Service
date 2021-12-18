@@ -14,17 +14,17 @@ class ListaEstudiantes extends Component {
       rows: [],
       columns: [
         { field: 'code', headerName: 'CODIGO', width: 100 },
-        { field: 'name', headerName: 'Nombres', width: 130 },
-        { field: 'last_name', headerName: 'Apellidos', width: 130 },
+        { field: 'name', headerName: 'Nombres', width: 140 },
+        { field: 'last_name', headerName: 'Apellidos', width: 140 },
         { field: 'created_at', headerName: 'Creado', width: 130 },
         { field: 'phone', headerName: 'Telefono', width: 130 },
-        { field: 'semester', headerName: 'Semestre', width: 130 },
+        { field: 'semester', headerName: 'Semestre', width: 100 },
         { field: 'university_career', headerName: 'Programa', width: 130 },
         {
           field: 'age',
           headerName: 'Age',
           type: 'number',
-          width: 90,
+          width: 70,
         },
         {
           field: 'email',
@@ -47,7 +47,7 @@ class ListaEstudiantes extends Component {
     let aux = []
     let a
     let token = algoritmos.obtenerToken()
-    console.log(token)
+
     api_students.get_students(token).then(response => {
 
       /* this.setState({
@@ -72,8 +72,8 @@ class ListaEstudiantes extends Component {
           updated_at: response.data.data[index].updated_at
         }
         aux.push(a)
-        console.log(response.data.data)
-        console.log(borde)
+    
+    
       }
 
       this.setState({

@@ -58,7 +58,7 @@ class ListarRoles extends Component {
             accion: response.data.message[index].id
           };
           aux.push(a)
-          /* console.log(a) */
+          
         }
         this.setState({
           rows: aux
@@ -72,7 +72,7 @@ class ListarRoles extends Component {
     let json = {
       api_token
     }
-    console.log(json)
+    
     
     api_rol.delete_rol(index, api_token).then(response => {
       Swal.fire({

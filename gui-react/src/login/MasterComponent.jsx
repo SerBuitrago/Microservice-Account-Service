@@ -17,19 +17,15 @@ class MasterComponent extends Component {
     }
 
     cambioDeFormularioLogin = () => {
-        console.log()
         this.setState(() => {
             return { 'formularioLogin': true }
         });
-        console.log(this.state)
     }
 
     cambioDeFormularioRegistro = () => {
-        console.log()
         this.setState(() => {
             return { 'formularioLogin': false }
         });
-        console.log(this.state)
     }
 
 

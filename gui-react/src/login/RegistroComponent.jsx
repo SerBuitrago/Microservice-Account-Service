@@ -35,7 +35,7 @@ export default function RegistroComponent() {
 
     const registrar = () => {
         /* setRegistro(auxiliar)
-        console.log(auxiliar.code.length) */
+        */
         if(registro.code.length === 7 && registro.code.length>0 ){
             if(registro.age <=99){
                 if(registro.password === registro.password_2){
@@ -83,7 +83,6 @@ export default function RegistroComponent() {
 
     const handleChange = (event) => {
         registro[event.target.name]=event.target.value
-        console.log(registro)
     }
 
     return (

@@ -23,11 +23,11 @@ export default function LoginComponent() {
 
 
     const handleChangeName = (event) => {
-        console.log(event.target.value)
+        
         setName(event.target.value)
     }
     const handleChangePassword = (event) => {
-        console.log(event.target.value)
+        
         setPassword(event.target.value)
     }
 
@@ -35,7 +35,7 @@ export default function LoginComponent() {
 
         tokenAuth.executeJwtAuthenticationService(name, password)
             .then((response) => {
-                console.log(response)
+                
                 if (response.data.message === "¡data incorrect!") {
                     Swal.fire({
                         icon: 'error',
@@ -68,7 +68,7 @@ export default function LoginComponent() {
             this.setState({
                 falloSesion: true
             });
-            console.log("NO INICIA")
+            
         }); */
     }
 

@@ -16,7 +16,7 @@ export default function AgregarRol() {
     const navigate = useNavigate()
 
     const handleChange = (event) => {
-        console.log(event.target.value)
+
         setName(event.target.value)
     }
 
