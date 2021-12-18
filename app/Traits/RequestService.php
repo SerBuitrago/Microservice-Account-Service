@@ -12,8 +12,8 @@ trait RequestService
         $client = new Client([
             'base_uri' => $this->baseUri
         ]);
-        if (isset($this->secret)) {
-            $headers['Authorization'] = $this->secret;
+        if (isset($this->token)) {
+            $headers['Authorization'] = $this->token;
         }
         $response = $client->request($method, $requestUrl,
             [
