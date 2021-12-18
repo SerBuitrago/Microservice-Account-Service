@@ -1,0 +1,33 @@
+.headerComponent {
+    margin: 0 auto;
+    width: 400px;
+    min-width: 300px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #e04356 ;
+    flex: content;
+}
+
+.acceder {
+    border: 1px solid #383838;
+}
+
+.registro {
+    border: 1px solid #383838;
+}
+
+.acceder:hover {
+    background-color: #a32e3c;
+    cursor: pointer;
+}
+
+.registro:hover {
+    background-color: #a32e3c;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 400px){
+    .headerComponent{
+        width: 300px;
+    }
+}
