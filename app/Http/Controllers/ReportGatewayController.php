@@ -12,4 +12,8 @@ class ReportGatewayController extends Controller
     public function __construct(ReportService $reportService){
         $this->reportService = $reportService;
     }
+
+    public function index(){
+        
+    }
 }

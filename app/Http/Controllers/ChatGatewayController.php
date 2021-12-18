@@ -12,4 +12,8 @@ class ChatGatewayController extends Controller
     public function __construct(ChatService $chatService){
         $this->chatService = $chatService;
     }
+
+    public function index(){
+        
+    }
 }

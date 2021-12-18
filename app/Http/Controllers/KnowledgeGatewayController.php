@@ -12,4 +12,8 @@ class KnowledgeGatewayController extends Controller
     public function __construct(KnowledgeService $knowledgeService){
         $this->knowledgeService = $knowledgeService;
     }
+
+    public function index(){
+        
+    }
 }
