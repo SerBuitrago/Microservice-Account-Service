@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\RolController;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 //---------------------------------------------------------------------------//
 
@@ -91,6 +93,8 @@ $router->group(['middleware' => ['role:Super','auth']], function () use ($router
     $router->post('/rol/show/', 'RolController@show');
     $router->put('/rol/update', 'RolController@edit');
     $router->delete('/rol/delete/{id}', 'RolController@destroy');
+
+    $router->post('/rol/dataPerm/', 'RolController@PermisosRol');
 
 
 
