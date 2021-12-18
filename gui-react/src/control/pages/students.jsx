@@ -1,12 +1,9 @@
-import api_students from "../../api/student.js";
-import { DataGrid } from '@mui/x-data-grid';
+
 import classes from "../../css/pages.module.css"
 import ListaEstudiantes from "../pages/listaEstudiantes.jsx"
 import SidebarComponent from"../SidebarComponent.jsx"
 
 const student = () => {
-
-    let data = null
 
     const columns = [
         { field: 'code', headerName: 'Codigo', width: 130 },

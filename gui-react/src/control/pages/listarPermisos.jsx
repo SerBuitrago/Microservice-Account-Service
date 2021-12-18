@@ -28,7 +28,8 @@ class ListarPermisos extends Component {
     }
 
     data(){
-      api_permisos.get_list_permisos(algoritmos.obtenerToken(tokenAuth.getItem())).then(
+      let token = algoritmos.obtenerToken(tokenAuth.getItem());
+      api_permisos.get_list_permisos(token).then(
         response => {
           this.setState({
             rows:response.data.message
