@@ -15,6 +15,7 @@ import MasterComponent from "./login/MasterComponent";
 import AgregarRol from "./control/pages/agregarRol";
 import Roles from "./control/pages/roles";
 import VincularRol from "./control/pages/vincularRol";
+import AsignarPermisos from "./control/pages/asignarPermisos"
 import CambiarContrasena from "./control/pages/cambiarContraseña";
 import RecuperarContraseña from "./control/pages/recuperarContraseña";
 
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/cambiar_contrasena" element={<CambiarContrasena></CambiarContrasena>} ></Route>
             <Route path="/recuperar_contrasena" element={<RecuperarContraseña></RecuperarContraseña>} ></Route>
             <Route path="/vincular_rol" element={<VincularRol></VincularRol>} ></Route>
+            <Route path="/asignar_permiso" element={<AsignarPermisos></AsignarPermisos>} ></Route>
           </Routes>
         </Router>
           {/*  <MasterComponent></MasterComponent> */}

@@ -1,0 +1,36 @@
+.asigna {
+    padding-top: 5%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.asigna select {
+    width: 292px;
+    height: 40px;
+    border: 1px solid #383838;
+    transition: all .3s;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+.asignar {
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    color: whitesmoke;
+    background-color: #e1061a ;
+    font-weight: bolder;
+    border: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.asignar:hover {
+    cursor: pointer;
+    background-color: #b10110;
+}
+
+.text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

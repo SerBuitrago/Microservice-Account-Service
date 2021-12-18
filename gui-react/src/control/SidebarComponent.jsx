@@ -137,6 +137,11 @@ export default function MiniDrawer() {
             "icon": <LinkIcon></LinkIcon>,
             "to": "/vincular_rol"
         },
+        {
+            "text": "Asignar Permiso",
+            "icon": <LinkIcon></LinkIcon>,
+            "to": "/asignar_permiso"
+        },
     ]
 
 
