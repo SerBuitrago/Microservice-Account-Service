@@ -41,17 +41,31 @@ class ListarPermisos extends Component {
   }
 
   data() {
+    let a
+    let aux = []
     let token = algoritmos.obtenerToken(tokenAuth.getItem());
     api_permisos.get_list_permisos(token).then(
       response => {
+        for (let index = 0; index < response.data.message.length; index++) {
+          a = {
+            id: response.data.message[index].id,
+            name: response.data.message[index].name,
+            guard_name: response.data.message[index].guard_name,
+            created_at: response.data.message[index].created_at,
+            updated_at: response.data.message[index].updated_at,
+            accion: response.data.message[index].id
+          };
+          aux.push(a)
+        }
         this.setState({
-          rows: response.data.message
+          rows: aux
         })
       }
     )
   }
 
   eliminarPermiso(id) {
+    console.log(id)
     let api_token = algoritmos.obtenerToken(tokenAuth.getItem())
     api_permisos.delete_permisos(id, api_token).then(
       response => {
@@ -62,6 +76,7 @@ class ListarPermisos extends Component {
           showConfirmButton: false,
           timer: 2000
         })
+        this.componentDidMount()
       }
     ).catch(error => {
       Swal.fire({

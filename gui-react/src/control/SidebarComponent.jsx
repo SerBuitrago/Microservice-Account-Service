@@ -133,6 +133,11 @@ export default function MiniDrawer() {
             "to": "/rol"
         },
         {
+            "text": "Agregar Permiso",
+            "icon": <AddIcon></AddIcon>,
+            "to": "/agregar_permiso"
+        },
+        {
             "text": "Vincular Rol",
             "icon": <LinkIcon></LinkIcon>,
             "to": "/vincular_rol"

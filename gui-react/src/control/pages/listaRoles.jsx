@@ -57,7 +57,6 @@ class ListarRoles extends Component {
             updated_at: response.data.message[index].updated_at,
             accion: response.data.message[index].id
           };
-          console.log("BUENS")
           aux.push(a)
           /* console.log(a) */
         }

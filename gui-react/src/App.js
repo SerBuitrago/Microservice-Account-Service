@@ -18,6 +18,7 @@ import VincularRol from "./control/pages/vincularRol";
 import AsignarPermisos from "./control/pages/asignarPermisos"
 import CambiarContrasena from "./control/pages/cambiarContraseña";
 import RecuperarContraseña from "./control/pages/recuperarContraseña";
+import AgregarPermiso from "./control/pages/agregarPermiso";
 
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
             <Route path="/lista_roles" element={<Roles></Roles>} ></Route>
             <Route path="/permisos" element={<Permisos></Permisos>} ></Route>
             <Route path="/rol" element={<AgregarRol></AgregarRol>} ></Route>
-            <Route path="/agregar_permiso" element={<AgregarRol></AgregarRol>} ></Route>
+            <Route path="/agregar_permiso" element={<AgregarPermiso></AgregarPermiso>} ></Route>
             <Route path="/cambiar_contrasena" element={<CambiarContrasena></CambiarContrasena>} ></Route>
             <Route path="/recuperar_contrasena" element={<RecuperarContraseña></RecuperarContraseña>} ></Route>
             <Route path="/vincular_rol" element={<VincularRol></VincularRol>} ></Route>

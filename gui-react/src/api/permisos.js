@@ -2,10 +2,10 @@ import axios from 'axios';
 
 export const API_URL = 'http://18.235.152.56/'
 export const ACCION = 'permission/'
-export const PETICION_PERMISO = 'register'
 export const PETICION_LISTAR = 'list'
 export const ELIMINAR_PERMISO = 'delete/'
 export const AGG_ROL = 'aggRol'
+export const AGREGAR_PERMISO = 'register'
 
 
 
@@ -17,6 +17,10 @@ class Permisos {
         return axios.post(API_URL + ACCION + PETICION_LISTAR,  {
             api_token:token
         })
+    }
+
+    post_agregar_permiso(json){
+        return axios.post(API_URL + ACCION + AGREGAR_PERMISO, json)       
     }
 
 
