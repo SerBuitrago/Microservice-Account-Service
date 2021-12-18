@@ -83,14 +83,14 @@ class UserService
         return $this->request('GET', '/rol/list');
     }
 
-    public function createRole($data)
-    {
-        return $this->request('POST', '/rol/register', $data);
-    }
-
     public function fetchReadRole($data)
     {
         return $this->request('GET', "/rol/show", $data);
+    }
+
+    public function createRole($data)
+    {
+        return $this->request('POST', '/rol/register', $data);
     }
 
     public function updateRole($data)
