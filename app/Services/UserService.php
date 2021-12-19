@@ -115,5 +115,4 @@ class UserService
     {
         return $this->request('DELETE', "/student/rol/delete", $data);
     }
-
 }

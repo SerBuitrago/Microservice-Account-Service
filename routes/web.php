@@ -32,15 +32,11 @@ $router->post('send/password', 'AccountsController@sendPassword');//-
 $router->post('reset/password', 'AccountsController@resetPassword');//-
 
 
-
-
 /**
  * METODOS DE USER
  */
 
-$router->post('/student/register', 'StudentController@store');//-
-
-
+$router->post('/student/register', 'StudentController@store');//
 
 
 /**
@@ -62,8 +58,6 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 });
 
 
-
-
 $router->group(['middleware' => ['role:Admin', 'auth']], function () use ($router) {
 
     /**
@@ -74,41 +68,23 @@ $router->group(['middleware' => ['role:Admin', 'auth']], function () use ($route
     $router->post('/student/admin/register', 'StudentController@storeAdmin');//-
     $router->put('/student/admin/edit/{id}', 'UserController@editAdmin');//-
     $router->delete('/student/admin/delete/{id}', 'UserController@deleteAdmin');//-
-
 });
 
-
-
-
-//,
 $router->group(['middleware' => ['role:Super','auth']], function () use ($router) {
-    
     //-----ACCIONES DE SUPER
-
     $router->get('/rol/list', 'RolController@index');
     $router->post('/rol/list', 'RolController@indexPost');
     $router->post('/rol/register', 'RolController@store');
     $router->post('/rol/show/', 'RolController@show');
     $router->put('/rol/update', 'RolController@edit');
     $router->delete('/rol/delete/{id}', 'RolController@destroy');
-
-
-
     //-----ACCIONES DE SUPER
-
     $router->get('/permission/list', 'PermissionController@index');
     $router->post('/permission/register', 'PermissionController@store');
     $router->post('/permission/show/', 'PermissionController@show');
     $router->put('/permission/update', 'PermissionController@edit');
     $router->delete('/permission/delete/{id}', 'PermissionController@destroy');
-
-
-    
-   
-
 });
-
-
 
 //'role:Super',
 $router->group(['middleware' => ['role:Super','auth']], function () use ($router) {
@@ -119,27 +95,57 @@ $router->group(['middleware' => ['role:Super','auth']], function () use ($router
         // OTROS
     $router->post('/student/rol/add', 'UserController@aggRole');
     $router->delete('/student/rol/delete', 'UserController@deleteRole');
-
-    
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
+/*
+|--------------------------------------------------------------------------
+| Api Gateway
+|--------------------------------------------------------------------------
+*/
+/**
+ * Notification
+ */
+$router->group(['prefix' => 'verNotificaciones'], function () use ($router) {
+    $router->post('/verNotificaciones', ['uses' => 'NotificationGatewayController@fetchReadAll']);
+    $router->post('/crearNotificacion', ['uses' => 'NotificationGatewayController@create']);
+    $router->post('/sendMailRegistro', ['uses' => 'NotificationGatewayController@sendMailRegistro']);
+});
 
 /**
- * APIGATEWAY MICROSERVICES 
+ * Audit
  */
+$router->group(['prefix' => 'audit'], function () use ($router) {
+    $router->get('/', ['uses' => 'AuditGatewayController@fetchReadAll']);
+    $router->get('/{id}', ['uses' => 'AuditGatewayController@fetchRead']);
+    $router->post('/', ['uses' => 'NotificationGatewayController@create']);
+    $router->put('/', ['uses' => 'NotificationGatewayController@update']);
+    $router->delete('/{id}', ['uses' => 'NotificationGatewayController@delete']);
+});
 
-$router->get('/test', function () {
-    //return response()->json(data: ['message' => 'Todo ok']);
+/**
+ * Tutoring
+ */
+$router->group(['prefix' => 'tutoring'], function () use ($router) {
+    $router->group(['prefix' => 'tema'], function () use ($router) {
+        $router->get('/list', ['uses' => 'TutoringGatewayController@fetchReadTemaAll']);
+        $router->get('/{nombre}', ['uses' => 'TutoringGatewayController@fetchReadTemaNombre']);
+        $router->post('/save', ['uses' => 'NotificationGatewayController@createTema']);
+        $router->put('/', ['uses' => 'NotificationGatewayController@updateTema']);
+        $router->delete('/{id}/{tema}', ['uses' => 'NotificationGatewayController@deleteTema']);
+    });
+    $router->group(['prefix' => 'tutoria'], function () use ($router) {
+        $router->get('/{nombre}', ['uses' => 'TutoringGatewayController@fetchReadTutoriaNombre']);
+        $router->get('/notificacionesall', ['uses' => 'TutoringGatewayController@fetchReadTutoriaNotificacionesAll']);
+        $router->get('/list', ['uses' => 'TutoringGatewayController@fetchReadTutoriaAll']);
+        $router->get('/activas', ['uses' => 'TutoringGatewayController@fetchReadTutoriaActivasAll']);
+        $router->get('/terminadas', ['uses' => 'TutoringGatewayController@fetchReadTutoriaTerminadasAll']);
+        $router->get('/{id}/{idusuario}', ['uses' => 'TutoringGatewayController@fetchTutoriaInscribirse']);
+        $router->post('/save', ['uses' => 'NotificationGatewayController@createTutoria']);
+        $router->put('/', ['uses' => 'NotificationGatewayController@updateTutoria']);
+        $router->delete('/{id}/{nombre}', ['uses' => 'NotificationGatewayController@deleteTutoria']);
+    });
+    $router->group(['prefix' => 'usuario'], function () use ($router) {
+        $router->post('/{id}/rol/{rol}', ['uses' => 'NotificationGatewayController@createRol']);
+    });
 });

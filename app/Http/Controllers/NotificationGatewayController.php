@@ -14,6 +14,17 @@ class NotificationController extends Controller
     }
 
     public function index(){
-        
+    }
+
+    public function fetchReadAll(Request $request){
+        return $this->successResponse($this->notificationService->fetchReadAll($request->all()));
+    }
+
+    public function create(Request $request){
+        return $this->successResponse($this->notificationService->create($request->all()));
+    }
+
+    public function sendMailRegistro(Request $request){
+        return $this->successResponse($this->notificationService->sendMailRegistro($request->all()));
     }
 }
