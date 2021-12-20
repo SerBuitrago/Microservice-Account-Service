@@ -26,6 +26,6 @@ class RegisterInTutoringServiceListener
      */
     public function handle(UserRegisterEvent $event)
     {
-        return "TutoringService done";
+        return  "TutoringService done";
     }
 }

@@ -23,7 +23,6 @@ class StudentController extends Controller
         return response()->json([
             'data' => Student::all()
         ]);
-        
     }
 
     public function indexPost(Request $request)
@@ -32,17 +31,16 @@ class StudentController extends Controller
         return response()->json([
             'data' => Student::all()
         ]);
-        
     }
 
-    public function validateIndexPost(Request $request){
+    public function validateIndexPost(Request $request)
+    {
 
         $this->validate($request, [
 
             'api_token' => 'required',
-           
-        ]);
 
+        ]);
     }
 
     // -- HU 3
@@ -50,57 +48,15 @@ class StudentController extends Controller
     {
 
         $this->validateCreate($request);
+        $credentials = $request->only(['age', 'name', 'code', 'email', 'phone', 'address', 'semester', 'last_name', 'password', 'role', 'university_career']);
+        $event = event(new \App\Events\UserRegisterEvent($credentials));
 
-        //CREAMOS EL ESTUDIANTE
-
-        $student = new Student();
-
-        $student->age = $request->input('age');
-        $student->code = $request->input('code');
-        $student->name = $request->input('name');
-        $student->phone = $request->input('phone');
-        $student->email = $request->input('email');
-        $student->address = $request->input('address');
-        $student->semester = $request->input('semester');
-        $student->last_name = $request->input('last_name');
-        $student->university_career = $request->input('university_career');
-
-
-        
-
-        //CREAMOS EL USUARIO
-
-        $user = new User();
-
-        $user->student_code = $request->input('code');
-        $user->student_email = $request->input('email');
-        $user->password = app('hash')->make($request->input('password'));
-
-        
-        try {
-            $user->assignRole('Student');
-            $student->save();
-        } catch (\PDOException  $e) {
-            return response()->json($e);
-        }
-
-        try {
-            $user->save();
-            return response()->json([
-                'response' =>true,
-                'message' => 'user create'
-            ]);
-           
-         
-
-        } catch (\PDOException  $e) {
-            return response()->json($e);
-        }
-
+        return $event;
     }
 
 
-    protected function validateCreate(Request $request){
+    private function validateCreate(Request $request)
+    {
 
         $this->validate($request, [
 
@@ -114,14 +70,12 @@ class StudentController extends Controller
             'last_name' => 'required',
             'university_career' => 'required',
             'password' => 'required'
-
         ]);
+    }
 
-   }
-
-   // -- HU 4
-   public function storeAdmin(Request $request)
-   {
+    // -- HU 4
+    public function storeAdmin(Request $request)
+    {
 
         $this->validateCreateAdmin($request);
 
@@ -153,19 +107,18 @@ class StudentController extends Controller
 
         $role = $request->input('role');
 
-        $raw = Role::where('name',$role)->get();
+        $raw = Role::where('name', $role)->get();
 
-        if(empty($raw)){
+        if (empty($raw)) {
 
             return response()->json([
                 'response' => false,
                 'message' => 'role not found'
             ]);
-
         }
 
         $user->assignRole($role);
-        
+
         try {
             $student->save();
         } catch (\PDOException  $e) {
@@ -175,54 +128,48 @@ class StudentController extends Controller
         try {
             $user->save();
             return response()->json([
-                'response' =>true,
+                'response' => true,
                 'message' => 'user create'
             ]);
-        
-            
-
         } catch (\PDOException  $e) {
             return response()->json($e);
         }
-
-   }
-
-
-   protected function validateCreateAdmin(Request $request){
-
-    $this->validate($request, [
-
-        'age' => 'required|integer',
-        'code' => 'required|integer|unique:students',
-        'name' => 'required',
-        'phone' => 'required',
-        'email' => 'required|email|unique:students',
-        'address' => 'required',
-        'semester' => 'required',
-        'last_name' => 'required',
-        'university_career' => 'required',
-        'password' => 'required',
-        'role' => 'required'
-
-    ]);
-
     }
 
-    public function show(Request $request){
+
+    private function validateCreateAdmin(Request $request)
+    {
+
+        $this->validate($request, [
+
+            'age' => 'required|integer',
+            'code' => 'required|integer|unique:students',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email|unique:students',
+            'address' => 'required',
+            'semester' => 'required',
+            'last_name' => 'required',
+            'university_career' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+
+        ]);
+    }
+
+    public function show(Request $request)
+    {
         $user = Student::where('code', $request->code)->get();
-        if(!empty($user)){
+        if (!empty($user)) {
             return response()->json([
                 'response' => true,
                 'message' =>  $user
             ]);
-        }else{
+        } else {
             return response()->json([
                 'response' => false,
                 'message' =>  $user
             ]);
         }
-        
     }
-
-
 }

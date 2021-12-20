@@ -18,8 +18,6 @@ class NotificationGatewayController extends Controller
 
     public function userNotifications(Request $request, $token)
     {
-        event(new UserRegisterEvent);
-        return "hola";
         // return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $token));
     }
 
