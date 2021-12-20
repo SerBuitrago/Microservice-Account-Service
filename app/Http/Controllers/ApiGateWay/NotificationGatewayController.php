@@ -15,14 +15,21 @@ class NotificationGatewayController extends Controller
         $this->notificationService = $notificationService;
     }
 
-    public function userNotifications(Request $request)
+    public function userNotifications(Request $request, $token)
     {
-        return 'Notificaciones';
+        try {
+            $user = \App\Models\User::where('api_token', $token)->get()->first();
+        } catch (\Throwable $th) {
+            return "No se pudo encontrar";
+        }
+
+        return $user;
         // return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $token));
     }
 
     public function store(Request $request, $token)
     {
+        return "Intentando guardar la notificación..";
         return $this->successResponse($this->notificationService->store($request->all(), $token));
     }
 
