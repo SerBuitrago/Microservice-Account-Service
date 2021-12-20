@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiGateWey;
 
+use App\Http\Controllers\Controller;
 use App\Services\AuditService;
 use Illuminate\Http\Request;
 

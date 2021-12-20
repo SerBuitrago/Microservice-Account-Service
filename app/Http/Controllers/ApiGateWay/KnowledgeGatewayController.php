@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiGateWey;
 
+use App\Http\Controllers\Controller;
 use App\Services\KnowledgeService;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,6 @@ class KnowledgeGatewayController extends Controller
     }
 
     public function index(){
-        
+        // TODO
     }
 }

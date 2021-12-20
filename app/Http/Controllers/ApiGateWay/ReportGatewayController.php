@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiGateWey;
 
+use App\Http\Controllers\Controller;
 use App\Services\ReportService;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class ReportGatewayController extends Controller
     }
 
     public function index(){
+        // TODO
         
     }
 }

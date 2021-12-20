@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiGateWey;
 
+use App\Http\Controllers\Controller;
 use App\Services\TutoringService;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,13 @@ class TutoringGatewayController extends Controller
     }
 
     public function index(){
+        // TODO
     }
 
     /**
      * Tema
      */
+
     public function fetchReadTemaAll()
     {
         return $this->successResponse($this->tutoringService->fetchReadTemaAll());
@@ -46,6 +49,7 @@ class TutoringGatewayController extends Controller
     /**
      * Tutoria
      */
+
     public function fetchReadTutoriaNombre($name)
     {
         return $this->successResponse($this->tutoringService->fetchReadTutoriaNombre($name));
@@ -93,6 +97,7 @@ class TutoringGatewayController extends Controller
     /**
      * Usuario
      */
+    
     public function createRol($id, $rol)
     {
         return $this->successResponse($this->tutoringService->createRol($id, $rol));

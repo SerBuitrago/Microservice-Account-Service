@@ -14,6 +14,7 @@ class UserGatewayController extends Controller
     }
 
     public function index(){
+        // TODO
     }
 
     /**
@@ -70,6 +71,7 @@ class UserGatewayController extends Controller
     /**
      * Role
      */
+
     public function fetchReadRoleAll()
     {
         return $this->successResponse($this->userService->fetchReadRoleAll());
@@ -96,6 +98,7 @@ class UserGatewayController extends Controller
     /**
      * Student and Role
      */
+
     public function createRoleUser(Request $request){
         return $this->successResponse($this->userService->createRoleUser($request->all()));
     }
