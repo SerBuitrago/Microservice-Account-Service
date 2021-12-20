@@ -66,6 +66,8 @@ class StudentController extends Controller
         $student->university_career = $request->input('university_career');
 
 
+        
+
         //CREAMOS EL USUARIO
 
         $user = new User();

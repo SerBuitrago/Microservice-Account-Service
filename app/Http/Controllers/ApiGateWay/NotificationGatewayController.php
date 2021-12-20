@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ApiGateWay;
 
+use App\Events\UserRegisterEvent;
 use App\Http\Controllers\Controller;
 use App\Services\NotificationService;
 use Illuminate\Http\Request;
@@ -17,13 +18,8 @@ class NotificationGatewayController extends Controller
 
     public function userNotifications(Request $request, $token)
     {
-        try {
-            $user = \App\Models\User::where('api_token', $token)->get()->first();
-        } catch (\Throwable $th) {
-            return "No se pudo encontrar";
-        }
-
-        return $user;
+        event(new UserRegisterEvent);
+        return "hola";
         // return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $token));
     }
 
