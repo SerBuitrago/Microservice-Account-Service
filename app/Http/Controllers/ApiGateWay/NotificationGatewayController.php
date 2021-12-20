@@ -1,32 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\ApiGateWey;
+namespace App\Http\Controllers\ApiGateWay;
 
 use App\Http\Controllers\Controller;
 use App\Services\NotificationService;
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+class NotificationGatewayController extends Controller
 {
     private $notificationService;
 
-    public function __construct(NotificationService $notificationService){
+    public function __construct(NotificationService $notificationService)
+    {
         $this->notificationService = $notificationService;
     }
 
-    public function index(){
-        // TODO
+    public function userNotifications(Request $request)
+    {
+        return 'Notificaciones';
+        // return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $token));
     }
 
-    public function fetchReadAll(Request $request){
-        return $this->successResponse($this->notificationService->fetchReadAll($request->all()));
+    public function store(Request $request, $token)
+    {
+        return $this->successResponse($this->notificationService->store($request->all(), $token));
     }
 
-    public function create(Request $request){
-        return $this->successResponse($this->notificationService->create($request->all()));
-    }
-
-    public function sendMailRegistro(Request $request){
+    public function sendMailRegistro(Request $request)
+    {
         return $this->successResponse($this->notificationService->sendMailRegistro($request->all()));
     }
 }

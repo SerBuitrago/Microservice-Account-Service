@@ -17,18 +17,28 @@ class NotificationService
         $this->token = config('services.microservices.notification.base_uri.token');
     }
 
-    public function fetchReadAll($data)
+    public function allNotificationsByUser($data, $user)
     {
-        return $this->request('POST', '/verNotificaciones', $data);
+        return $this->request('GET', $this->baseUri . '/usuarios/' . $user . '/notifications', $data);
     }
 
-    public function create($data)
+    public function store($data, $user)
     {
-        return $this->request('POST', '/crearNotificacion', $data);
+        return $this->request('POST', $this->baseUri . '/usuarios/' . $user . '/notifications', $data);
+    }
+
+    public function checkNotification($data, $user, $notification)
+    {
+        return $this->request('PATCH', $this->baseUri . '/usuarios/' . $user . '/notifications/' . $notification, $data);
     }
 
     public function sendMailRegistro($data)
     {
         return $this->request('POST', '/sendMailRegistro', $data);
+    }
+
+    public function sendNotiToNumber($data)
+    {
+        # code...
     }
 }

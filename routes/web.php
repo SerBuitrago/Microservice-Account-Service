@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Hash;
 // si, por ahora mapear todo, luego middleware.Hay que verificarque todo sirva primero //
 
 $router->get('/', function () {
-}); //-
+    return 'hola';
+});
 
 /**
  * METODOS DE LOGEO
@@ -115,10 +116,10 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
 /**
  * Notification
  */
-$router->group(['prefix' => 'verNotificaciones'], function () use ($router) {
-    $router->post('/verNotificaciones', ['uses' => 'ApiGateWay/NotificationGatewayController@fetchReadAll']);
-    $router->post('/crearNotificacion', ['uses' => 'ApiGateWay/NotificationGatewayController@create']);
-    $router->post('/sendMailRegistro', ['uses' => 'ApiGateWay/NotificationGatewayController@sendMailRegistro']);
+$router->group(['prefix' => 'notificationService'], function () use ($router) {
+    $router->get('users/notifications', 'ApiGateWay\NotificationGatewayController@userNotifications');
+    // $router->post('users/{token}/notifications', 'ApiGateWay\NotificationGatewayController@store');
+    $router->post('sendMailRegistro', 'ApiGateWay\NotificationGatewayController@sendMailRegistro');
 });
 
 /**
@@ -135,11 +136,11 @@ $router->group(['prefix' => 'audit'], function () use ($router) {
 /**
  * Tutoring
  */
-$router->group(['prefix' => 'tutoring'], function () use ($router) {
+$router->group(['prefix' => 'tutoringService'], function () use ($router) {
     $router->group(['prefix' => 'tema'], function () use ($router) {
-        $router->get('/list', ['uses' => 'ApiGateWay/TutoringGatewayController@fetchReadTemaAll']);
-        $router->get('/{nombre}', ['uses' => 'ApiGateWay/TutoringGatewayController@fetchReadTemaNombre']);
-        $router->post('/save', ['uses' => 'ApiGateWay/NotificationGatewayController@createTema']);
+        $router->get('list', ['uses' => 'ApiGateWay/TutoringGatewayController@fetchReadTemaAll']);
+        $router->get('{nombre}', ['uses' => 'ApiGateWay/TutoringGatewayController@fetchReadTemaNombre']);
+        $router->post('save', ['uses' => 'ApiGateWay/NotificationGatewayController@createTema']);
         $router->put('/', ['uses' => 'ApiGateWay/NotificationGatewayController@updateTema']);
         $router->delete('/{id}/{tema}', ['uses' => 'ApiGateWay/NotificationGatewayController@deleteTema']);
     });

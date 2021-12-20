@@ -10,12 +10,9 @@ class TutoringGatewayController extends Controller
 {
     private $tutoringService;
 
-    public function __construct(TutoringService $tutoringService){
+    public function __construct(TutoringService $tutoringService)
+    {
         $this->tutoringService = $tutoringService;
-    }
-
-    public function index(){
-        // TODO
     }
 
     /**
@@ -32,7 +29,8 @@ class TutoringGatewayController extends Controller
         return $this->successResponse($this->tutoringService->fetchReadTemaNombre($name));
     }
 
-    public function createTema(Request $request){
+    public function createTema(Request $request)
+    {
         return $this->successResponse($this->tutoringService->createTema($request->all()));
     }
 
@@ -80,7 +78,8 @@ class TutoringGatewayController extends Controller
         return $this->successResponse($this->tutoringService->fetchTutoriaInscribirse($id, $idusuario));
     }
 
-    public function createTutoria(Request $request){
+    public function createTutoria(Request $request)
+    {
         return $this->successResponse($this->tutoringService->createTutoria($request->all()));
     }
 
@@ -97,7 +96,7 @@ class TutoringGatewayController extends Controller
     /**
      * Usuario
      */
-    
+
     public function createRol($id, $rol)
     {
         return $this->successResponse($this->tutoringService->createRol($id, $rol));

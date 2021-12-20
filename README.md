@@ -57,6 +57,8 @@ su navegador preferido.
 ## Rutas
 `Para enviar data en el body a las peticiones POST utilizamos POSTMAN`
 
+`Host:` http://18.235.152.56
+
 ### Navegacion en Usuarios
 
 
@@ -318,6 +320,11 @@ Opción BODY - RAW - TypeJSON
 
 
 ## 🔗 Rutas para consumir la ApiGateWay
+
+### Notifications-Web Endpoints
+
+`http://18.235.152.56/users/{token}/notifications  GET` Obtener todas las notificaciones del usuario por su api_token.
+`http://18.235.152.56/users/{token}/notifications  POST` Crear una notificación para el usuario por su api_token.
 
 ## License
 

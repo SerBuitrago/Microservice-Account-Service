@@ -15,29 +15,29 @@ return [
             "token" => env('TOKEN_MICROSERVICE_TUTORING'),
             'endpoints' => [
                 'tema' => [
+                    'list' => $hostTutoring . '/tutoriaServicio/tema/list',
                     'show' => $hostTutoring . '/tutoriaServicio/tema/busquedaNombre',
                     'save' => $hostTutoring . '/tutoriaServicio/tema/save',
                     'update' => $hostTutoring . '/tutoriaServicio/tema',
                     'delete' => $hostTutoring . '/tutoriaServicio/tema/delete',
-                    'list' => $hostTutoring . '/tutoriaServicio/tema/list',
                 ],
                 'tutoria' => [
+                    'list' => $hostTutoring . '/tutoriaServicio/tutoria/list',
                     'show' => $hostTutoring . '/tutoriaServicio/tutoria/busquedaNombre',
                     'save' => $hostTutoring . '/tutoriaServicio/tutoria/save',
                     'update' => $hostTutoring . '/tutoriaServicio/tutoria',
                     'delete' => $hostTutoring . '/tutoriaServicio/tutoria/delete',
-                    'list' => $hostTutoring . '/tutoriaServicio/tutoria/list',
                     'finished_list' => $hostTutoring . '/tutoriaServicio/tutoria/list/terminadas',
                     'active_list' => $hostTutoring . '/tutoriaServicio/tutoria/list/activas',
                     'end_tutoria' => $hostTutoring . '/tutoriaServicio/tutoria/delete',
                     'subscribe' => $hostTutoring . '/tutoriaServicio/tutoria/inscribirse',
                 ],
                 'categoria' => [
+                    'list' => $hostTutoring . '/tutoriaServicio/categoria/list',
                     'show' => $hostTutoring . '/tutoriaServicio/categoria/busquedaNombre',
                     'save' => $hostTutoring . '/tutoriaServicio/categoria/save',
                     'update' => $hostTutoring . '/tutoriaServicio/categoria',
                     'delete' => $hostTutoring . '/tutoriaServicio/categoria/delete',
-                    'list' => $hostTutoring . '/tutoriaServicio/categoria/list',
                 ],
                 'rol_tutoria' => [
                     'save' => $hostTutoring . '/usuario/rol',
