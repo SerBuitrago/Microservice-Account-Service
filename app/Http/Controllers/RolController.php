@@ -12,7 +12,7 @@ class RolController extends Controller
     // -- HU 11
     public function store(Request $request)
     {
-        
+
         //return response()->json($user);$user = User::where('student_code', $request['code'] )->first();$user->assignRole('Admin');
         $this->validateStore($request);
 
@@ -23,22 +23,20 @@ class RolController extends Controller
                 'response' => true,
                 'message' => 'create role'
             ]);
-
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'response' => false,
                 'message' => $e->getMessage()
             ]);
         }
-        
     }
 
-    protected function validateStore(Request $request){
+    protected function validateStore(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required|unique:roles',
         ]);
-
     }
 
 
@@ -48,28 +46,26 @@ class RolController extends Controller
         $this->validateShow($request);
         $role = Role::find($request->role_id);
 
-        if(empty($role)){
+        if (empty($role)) {
 
             return response()->json([
                 'response' => false,
                 'message' => 'role not found'
             ]);
-
         }
 
         return response()->json([
             'response' => true,
             'message' => $role
         ]);
-
     }
 
-    protected function validateShow(Request $request){
+    protected function validateShow(Request $request)
+    {
 
         $this->validate($request, [
             'role_id' => 'required',
         ]);
-
     }
 
 
@@ -79,13 +75,12 @@ class RolController extends Controller
         $this->validateEdit($request);
         $role = Role::find($request->role_id);
 
-        if(empty($role)){
+        if (empty($role)) {
 
             return response()->json([
                 'response' => false,
                 'message' => 'role not found'
             ]);
-
         }
 
         try {
@@ -99,7 +94,6 @@ class RolController extends Controller
                 'response' => true,
                 'message' => 'role update'
             ]);
-
         } catch (\Illuminate\Database\QueryException $e) {
 
             return response()->json([
@@ -107,12 +101,10 @@ class RolController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
-
-
-
     }
 
-    protected function validateEdit(Request $request){
+    protected function validateEdit(Request $request)
+    {
         $this->validate($request, [
             'role_id' => 'required',
             'name' => 'required',
@@ -123,20 +115,20 @@ class RolController extends Controller
     // -- HU 14
     public function assigRol(Request $request)
     {
-        
+
         $this->validateassigRol($request);
 
-        $role = Role::where('name', $request['name'] )->first();
-        $perm = Permission::where('name', $request['name_permission'] )->first();
+        $role = Role::where('name', $request['name'])->first();
+        $perm = Permission::where('name', $request['name_permission'])->first();
 
-        if(empty($role)){
+        if (empty($role)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Role not found'
             ]);
         }
 
-        if(empty($perm)){
+        if (empty($perm)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Permission not found'
@@ -145,30 +137,28 @@ class RolController extends Controller
 
         try {
 
-        $role->givePermissionTo($request['name_permission']);
+            $role->givePermissionTo($request['name_permission']);
 
             return response()->json([
                 'response' => true,
                 'message' => 'permission asigne a rol'
             ]);
-
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'response' => false,
                 'message' => $e->getMessage()
             ]);
         }
-        
     }
 
 
-    protected function validateassigRol(Request $request){
+    protected function validateassigRol(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required',
             'name_permission' => 'required',
         ]);
-
     }
 
 
@@ -176,26 +166,26 @@ class RolController extends Controller
     public function index()
     {
         return response()->json([
-            'response' => true, 
+            'response' => true,
             'message' => Role::all()
         ]);
     }
-    
+
     public function indexPost(Request $request)
     {
-         $this->validateindexPost($request);
+        $this->validateindexPost($request);
         return response()->json([
-            'response' => true, 
+            'response' => true,
             'message' => Role::all()
         ]);
     }
-    
-    protected function validateindexPost(Request $request){
+
+    protected function validateindexPost(Request $request)
+    {
 
         $this->validate($request, [
             'api_token' => 'required',
         ]);
-
     }
 
 
@@ -204,21 +194,20 @@ class RolController extends Controller
     {
         $role = Role::find($request->id);
 
-        if(empty($role)){
+        if (empty($role)) {
             return response()->json([
                 'response' => false,
                 'message' =>  "Role no register!"
             ]);
         }
 
-    try {
+        try {
 
-        $role->delete();
-        return response()->json([
-            'response' => true,
-            'message' =>  'Rol delete'
-        ]);
-                
+            $role->delete();
+            return response()->json([
+                'response' => true,
+                'message' =>  'Rol delete'
+            ]);
         } catch (\Illuminate\Database\QueryException $e) {
 
             return response()->json([
@@ -226,22 +215,21 @@ class RolController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
-
     }
 
     public function deleteRolPerm(Request $request)
     {
-        $role = Role::where('name', $request['name'] )->first();
-        $perm = Permission::where('name', $request['name_permission'] )->first();
+        $role = Role::where('name', $request['name'])->first();
+        $perm = Permission::where('name', $request['name_permission'])->first();
 
-        if(empty($role)){
+        if (empty($role)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Role not found'
             ]);
         }
 
-        if(empty($perm)){
+        if (empty($perm)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Permission not found'
@@ -250,18 +238,45 @@ class RolController extends Controller
 
         try {
 
-        $role->revokePermissionTo($request['name_permission']);
+            $role->revokePermissionTo($request['name_permission']);
 
             return response()->json([
                 'response' => true,
                 'message' => 'permission quit a rol'
             ]);
-
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'response' => false,
                 'message' => $e->getMessage()
             ]);
         }
+    }
+
+    public function PermisosRol(Request $request)
+    {
+        $this->validateiPermisosRol($request);
+        $role = Role::where('name', $request->name)->first();
+        
+        if (empty($role)) {
+            return response()->json([
+                'response' => false,
+                'message ' =>  'role no found'
+            ]);
+        }
+        return response()->json([
+            'response' => true,
+            'message ' =>  $role->permissions
+        ]);
+        
+    }
+
+
+    protected function validateiPermisosRol(Request $request)
+    {
+
+        $this->validate($request, [
+            'api_token' => 'required',
+            'name' => 'required'
+        ]);
     }
 }

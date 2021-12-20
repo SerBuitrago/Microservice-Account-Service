@@ -1,0 +1,133 @@
+.loginComponent{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.href{
+    margin-left: 252%;
+}
+.button_registro{    
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    color: whitesmoke;
+    background-color: #e1061a ;
+    font-weight: bolder;
+    border: 0px;
+}
+
+.button_google {
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 35px;
+    width: 200px;
+    background-color: #ffff;
+    border: 1px solid #383838;
+}
+
+.logo{
+    width: 100%;
+}
+form{
+    display: inline-flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.UFPS{
+    border: 1px solid #383838;
+    display: grid;
+    height:300px;
+    width: 400px;
+    background-image: url("../ufps_resource/3.png");
+    
+}
+
+.campos{
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    padding-top: 15px;
+    margin-top: 15px;
+    border: 1px solid #383838;
+    transition: all .3s;
+    background-color: whitesmoke;
+} 
+
+.bienvenido{
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size:35px;
+    color: cornsilk;
+    padding-top: 190px;
+}
+::placeholder{
+    font-weight: bolder;
+}
+
+.olvidar a {
+    margin-left: 0px;
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 400px){
+    .bienvenido{
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .UFPS{
+        width: 300px;
+        background-image: url("../ufps_resource/4.png");
+    }
+}
+
+.button_registro:hover {
+    cursor: pointer;
+    background-color: #b10110;
+}
+
+.button_google:hover {
+    cursor: pointer;
+    background-color: #cecece;
+}
+
+.servicios {
+    padding-top: 30px;
+    width: 400px;
+}
+
+@media only screen and (max-width: 400px){
+    .servicios{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 400px){
+    .campos{
+        width: 200px;
+    }
+}
+
+.chec {
+    cursor: pointer;
+}
+
+.contenido_login {
+    border: 1px solid #383838;
+    background-color: #ffff;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 400px){
+    .contenido_login{
+        width: 300px;
+    }
+}

@@ -243,6 +243,7 @@ Opción BODY - RAW - TypeJSON
 - Editar información del permiso
 - Listar permisos
 - Eliminar permiso
+- Obtener permisos vinculados al rol
 
 **Peticion POST, Registrar un permiso (funcionalidad)**
 ```sh
@@ -296,12 +297,24 @@ http://18.235.152.56/permission/list
 ```sh
 http://18.235.152.56/permission/delete/1
 ```
-
+**Peticion POST, Obtener permisos vinculados al rol**
+```sh
+http://18.235.152.56/rol/dataPerm
+Opción BODY - RAW - TypeJSON
+{
+     "api_token": "LIToHuYqcXv2fURzvTBycMXHfR4oZJj34jvb8M8xoKNKAo8GmNfDitBAUHid1cO9d3gTdhNRjeOGzuO7vPZXEFcMXbNkjTO9GrAmFOjHWP6WZsjM3hPLbLIOqmINhU7woYOib2xOGw92o5gFmoLgpL",
+     "name": "Admin"
+}
+```
 
 ## 🔗 Links
 **Despliegue del MicroServicio**
 
  [![debug](https://img.icons8.com/color/48/000000/amazon-web-services.png)](http://18.235.152.56/students)
+
+** Uso del Microservicio ** 
+
+[![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)
 
 
 ## License

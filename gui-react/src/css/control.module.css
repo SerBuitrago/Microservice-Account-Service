@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap');
+.navbar{
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+}
+
+.navbar > img {
+    width: 250px;
+}
+
+h1, h2, h3, h4{
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+    background-image: url('../ufps_resource/2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.controlComponent{
+    padding: 10%;
+}
+
+
