@@ -317,6 +317,8 @@ Opción BODY - RAW - TypeJSON
 [![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)
 
 
+## 🔗 Rutas para consumir la ApiGateWay
+
 ## License
 
 MIT
