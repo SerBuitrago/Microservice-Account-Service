@@ -383,7 +383,11 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   **JSON**
   ```sh
   {
-    "id": "integer"
+    "title": "required-string",
+    "description": "required-string",
+    "id_user" : "required-integer",
+    "id_sender" : "not_required-integer",
+    "id_type" : "required-integer"
   }
   ``` 
 
@@ -404,7 +408,8 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
     "description": "required-string",
     "id_user" : "required-string",
     "id_sender" : "not_required-string",
-    "id_type" : "required-string"
+    "id_type" : "required-integer"
+    "id_state" : "required-integer"
   }
   ``` 
 
