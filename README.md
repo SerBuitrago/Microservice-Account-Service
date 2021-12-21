@@ -375,15 +375,103 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   |--------|---------------------------|
   | GET    | /users/{id}/notifications |
 
-- Crear una notificación para el usuario con el id.
+- Registrar una notificación para el usuario con el id.
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | POST   | /users/notifications |
+
+  **JSON**
+  ```sh
+  {
+    "id": "integer"
+  }
+  ``` 
+
+- Eliminar las notificaciones del usuario con el id.
   | Metodo | Ruta                      |
   |--------|---------------------------|
-  | POST   | /users/{id}/notifications |
+  | DELETE | /users/{id}/notifications |
 
-- Enviar email de una notificación por el id del usuario.
+- Actualizar la notificación.
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | PUT    | /users/{id}/notifications |
+
+    **JSON**
+  ```sh
+  {
+    "title": "required-string",
+    "description": "required-string",
+    "id_user" : "required-string",
+    "id_sender" : "not_required-string",
+    "id_type" : "required-string"
+  }
+  ``` 
+
+- Registrar un usuario dentro del microservicio.
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /users |
+
+    **JSON**
+  ```sh
+  {
+    "fullname": "required-string",
+    "email": "required-string",
+    "id_role" : "required-string",
+  }
+  ``` 
+
+- Marcar como vistas, las notificaciones de un usuario.
+  | Metodo | Ruta   |
+  |--------|--------|
+  | PATCH  | /users |
+
+    **JSON**
+  ```sh
+  {
+    "id": "required-integer",
+  }
+  ``` 
+
+- Enviar una notificación por SMS.
   | Metodo | Ruta              |
   |--------|-------------------|
-  | POST   | /sendMailRegistro |
+  | POST   | /sendNotiToNumber |
+
+      **JSON**
+  ```sh
+  {
+    "numero": "required-string",
+    "mensaje": "required-string"
+  }
+  ``` 
+
+- Enviar correo de notificación de una asesoría.
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | POST   | /sendMailAsesoria |
+
+      **JSON**
+  ```sh
+  {
+    "numero": "required-string",
+    "mensaje": "required-string"
+  }
+  ``` 
+
+- Enviar correo de notificación de una auditoría.
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | POST   | /sendMailAsesoria |
+
+      **JSON**
+  ```sh
+  {
+    "numero": "required-string",
+    "mensaje": "required-string"
+  }
+  ``` 
 
 ### Microservicio Tutoria
 

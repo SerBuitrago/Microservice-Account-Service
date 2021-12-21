@@ -60,7 +60,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/students', 'StudentController@index'); //-
     $router->post('/students', 'StudentController@indexPost'); //-
     $router->post('/student/show', 'StudentController@show'); //-
-    
+
 });
 
 
@@ -117,11 +117,18 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
 */
 /**
  * Notification
- */
+ */ 
 $router->group(['prefix' => 'notificationService'], function () use ($router) {
-    $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@userNotifications');
-    $router->post('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@store');
-    $router->post('sendMailRegistro', 'ApiGateWay\NotificationGatewayController@sendMailRegistro');
+    $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@showNotification');
+    $router->post('users/notifications', 'ApiGateWay\NotificationGatewayController@storeNotification');
+    $router->put('users/notifications', 'ApiGateWay\NotificationGatewayController@updateNotification');
+    $router->delete('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@destroyNotification');
+    $router->post('users', 'ApiGateWay\NotificationGatewayController@storeUser');
+    $router->patch('users/checkNotification', 'ApiGateWay\NotificationGatewayController@readingNotificationsByUserId');
+
+    $router->post('sendNotiToNumber', 'ApiGateWay\NotificationGatewayController@sendNotiToNumber');
+    $router->post('sendMailAuditoria', 'ApiGateWay\NotificationGatewayController@sendMailAuditoria');
+    $router->post('sendMailAsesoria', 'ApiGateWay\NotificationGatewayController@sendMailAsesoria');
 });
 
 /**
