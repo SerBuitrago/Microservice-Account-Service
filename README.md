@@ -8,8 +8,6 @@
 Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en **MySQL**
 
 
-
-
 ## Caracteristicas
 
 A continuación se muestran las caracteristicas del microservicio:
@@ -364,46 +362,6 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
      "name": "Admin"
   }
   ```
-
-- Editar información del permiso
-  |  Metodo |          Ruta           |
-  | ------- | ----------------------- |
-  |   PUT   |    /permission/update   |
-
-  **JSON**
-  ```sh
-  {
-    "id" : "2",
-    "name" : "create admin",
-    "guard_name" : "api"
-  }
-  ```
-
-- Desvincular permisos al rol
-  |    Metodo  |              Ruta               |
-  | ---------- | ------------------------------- |
-  |   DELETE   |    /permission/deleteRolPerm    |
-
-  **JSON**
-  ```sh
-  {
-    "name": "Teacher",
-    "name_permission": "create user"
-  }
-  ```
-
-- Eliminar permiso
-  |    Metodo  |           Ruta             |
-  | ---------- | -------------------------- |
-  |   DELETE   |    /permission/delete/1    |
-
-
-
-# Api Gateway
-
-## Rutas
-
-`Host:` http://18.235.152.56
 
 ### Microservicio Notificaciones
 
