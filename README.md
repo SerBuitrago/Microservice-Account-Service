@@ -1,8 +1,8 @@
 
-# Microservicio: Gesti��n de Usuarios, Roles y Permisos
+# Microservicio: Gestión de Usuarios, Roles y Permisos
 
 <div>
-    <img src="(https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png">
+    <img src="https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png">
 </div>
 
 Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en **MySQL**
@@ -11,18 +11,18 @@ Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en 
 ## Caracteristicas
 
 ### Usuario
-- Iniciar sesi��n de usuario en el **portal**.
+- Iniciar sesi¨®n de usuario en el **portal**.
 - Inicar sesion a traves de correo **personal/institucional**.
 - Registro de usuario en el portal (*normal*).
 - Registrar un usuario al portal educativo (*Admin*).
 - Obtener detalles de usuario.
 - Obtener detalles de estudiante.
-- Editar informaci��n del usuario.
+- Editar informaci¨®n del usuario.
 - Listar usuarios.
 - Eliminar usuarios.
 - Recuperar clave.
 - Cambiar clave.
-## Instalaci��n (Uso local)
+## Instalación (Uso local)
 - Primero se debe instalar [Laragon](https://laragon.org/download/index.html) en la maquina.
 
 - Clonar proyecto
@@ -44,11 +44,11 @@ Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en 
     ```sh
     php -S 18.235.152.56 -t public
     ```
-- Se debe verificar la implementaci��n navegando a la direcci��n de su servidor en su navegador preferido.
+- Se debe verificar la implementaci¨®n navegando a la direcci¨®n de su servidor en su navegador preferido.
     ```sh
     http://18.235.152.56/
     ```
-**Nota:** Para cada petici��n se debe enviar el api_token (Generado y unico para cada Microservicio), este debe ser enviado en el body.
+**Nota:** Para cada petici¨®n se debe enviar el api_token (Generado y unico para cada Microservicio), este debe ser enviado en el body.
 ## Rutas
 Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
@@ -62,12 +62,12 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   | ------ | --------------- |
   |  GET   |    /student     |
 
-- Cerra sesi��n
+- Cerra sesi¨®n
   | Metodo |       Ruta        |
   | ------ | ----------------- |
   |  GET   |      /logout      |
 
-- Iniciar sesi��n
+- Iniciar sesi¨®n
 
   | Metodo |     Ruta      |
   | ------ | ------------- |
@@ -81,7 +81,7 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   }
   ```  
     
-- Inicar sesi��n a traves del correo **personal/institucional**
+- Inicar sesi¨®n a traves del correo **personal/institucional**
   | Metodo |       Ruta        |
   | ------ | ----------------- |
   | POST   |    /login/google  |
@@ -179,7 +179,7 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   }
   ```
 
-- Editar informaci��n del usuario
+- Editar informaci¨®n del usuario
   |  Metodo |              Ruta               |
   | ------- | ------------------------------- |
   |   PUT   |      /student/admin/edit/{id}   |
@@ -221,7 +221,7 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 ### ROLES
 - Registrar rol
 - Obtener detalles del rol
-- Editar información del rol
+- Editar informaciÃ³n del rol
 - Listar roles 
 - Eliminar roles
 - Agregar Rol al Usuario
@@ -230,7 +230,7 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 **Peticion POST, Registrar rol**
 ```sh
 http://18.235.152.56/rol/register
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
  {
     "name": "Admin"
  }
@@ -238,15 +238,15 @@ Opción BODY - RAW - TypeJSON
 **Peticion GET, Obtener detalles del rol**
 ```sh
 http://18.235.152.56/rol/show
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "role_id":3
 }
 ```
-**Peticion PUT, Editar información del rol**
+**Peticion PUT, Editar informaciÃ³n del rol**
 ```sh
 http://18.235.152.56/rol/update
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "role_id":3
 }
@@ -262,7 +262,7 @@ http://18.235.152.56/rol/delete/3
 **Peticion POST, Agregar Rol al Usuario**
 ```sh
 http://18.235.152.56/student/rol/add
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
    "student_code":"115165",
    "role": "Admin"
@@ -271,7 +271,7 @@ Opción BODY - RAW - TypeJSON
 **Peticion DELETE, Eliminar Rol al Usuario**
 ```sh
 http://18.235.152.56/student/rol/delete
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
    "student_code":"115165",
    "role": "Admin"
@@ -281,10 +281,10 @@ Opción BODY - RAW - TypeJSON
 ---------------------------------
 ### PERMISOS
 - Registrar un permiso (funcionalidad)
-- Asignación de permisos al rol
+- AsignaciÃ³n de permisos al rol
 - Desvincular permisos al rol
 - Obtener detalles de un permiso
-- Editar información del permiso
+- Editar informaciÃ³n del permiso
 - Listar permisos
 - Eliminar permiso
 - Obtener permisos vinculados al rol
@@ -292,15 +292,15 @@ Opción BODY - RAW - TypeJSON
 **Peticion POST, Registrar un permiso (funcionalidad)**
 ```sh
 http://18.235.152.56/permission/register
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "name" : "create user"
 }
 ```
-**Peticion POST, Asignación de permisos al rol**
+**Peticion POST, AsignaciÃ³n de permisos al rol**
 ```sh
 http://18.235.152.56/permission/aggRol
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "name": "Teacher",
     "name_permission": "create user"
@@ -309,7 +309,7 @@ Opción BODY - RAW - TypeJSON
 **Peticion DELTE, Desvincular permisos al rol**
 ```sh
 http://18.235.152.56/permission/deleteRolPerm
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "name": "Teacher",
     "name_permission": "create user"
@@ -318,15 +318,15 @@ Opción BODY - RAW - TypeJSON
 **Peticion POST, Obtener detalles de un permiso**
 ```sh
 http://18.235.152.56/permission/show
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "id" : "1"
 }
 ```
-**Peticion PUT, Editar información del permiso**
+**Peticion PUT, Editar informaciÃ³n del permiso**
 ```sh
 http://18.235.152.56/permission/update
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
     "id" : "2",
     "name" : "create admin",
@@ -344,14 +344,14 @@ http://18.235.152.56/permission/delete/1
 **Peticion POST, Obtener permisos vinculados al rol**
 ```sh
 http://18.235.152.56/rol/dataPerm
-Opción BODY - RAW - TypeJSON
+OpciÃ³n BODY - RAW - TypeJSON
 {
      "api_token": "LIToHuYqcXv2fURzvTBycMXHfR4oZJj34jvb8M8xoKNKAo8GmNfDitBAUHid1cO9d3gTdhNRjeOGzuO7vPZXEFcMXbNkjTO9GrAmFOjHWP6WZsjM3hPLbLIOqmINhU7woYOib2xOGw92o5gFmoLgpL",
      "name": "Admin"
 }
 ```
 
-## 🔗 Links
+## ðŸ”— Links
 **Despliegue del MicroServicio**
 
  [![debug](https://img.icons8.com/color/48/000000/amazon-web-services.png)](http://18.235.152.56/students)
@@ -361,12 +361,12 @@ Opción BODY - RAW - TypeJSON
 [![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)
 
 
-## 🔗 Rutas para consumir la ApiGateWay
+## ðŸ”— Rutas para consumir la ApiGateWay
 
 ### Notifications-Web Endpoints
 
 `http://18.235.152.56/users/{token}/notifications  GET` Obtener todas las notificaciones del usuario por su api_token.
-`http://18.235.152.56/users/{token}/notifications  POST` Crear una notificación para el usuario por su api_token.
+`http://18.235.152.56/users/{token}/notifications  POST` Crear una notificaciÃ³n para el usuario por su api_token.
 
 
 ### Tutoring-Web Endpoints
