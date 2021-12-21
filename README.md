@@ -37,11 +37,11 @@ A continuación se muestran las caracteristicas del microservicio:
 - Eliminar rol al Usuario.
 
 ### Permisos
-- Registrar un permiso (funcionalidad).
+- Registrar un permiso **(*funcionalidad*)**.
 - Asignación de permisos al rol.
 - Desvincular permisos al rol.
 - Obtener detalles de un permiso.
-- Editar informaci贸n del permiso.
+- Editar información del permiso.
 - Listar permisos.
 - Eliminar permiso.
 - Obtener permisos vinculados al rol.
@@ -282,99 +282,131 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   | --------- | ------------------- |
   |  DELETE   |    /rol/delete/3    |
 
-## Rutas Rol Usuario
+### Servicio Rol al Usuario
+- Agregar un rol al usuario
+  |   Metodo |          Ruta          |
+  | -------- | ---------------------- |
+  |   POST   |    /student/rol/add    |
 
-
-
-
-
-
-
-
-
-**Peticion POST, Agregar Rol al Usuario**
-```sh
-http://18.235.152.56/student/rol/add
-Opci贸n BODY - RAW - TypeJSON
-{
+  **JSON**
+  ```sh
+  {
    "student_code":"115165",
    "role": "Admin"
-}
-```
-**Peticion DELETE, Eliminar Rol al Usuario**
-```sh
-http://18.235.152.56/student/rol/delete
-Opci贸n BODY - RAW - TypeJSON
-{
+  }
+  ```
+
+- Eliminar un rol al usuario
+  |    Metodo  |           Ruta            |
+  | ---------- | ------------------------- |
+  |   DELETE   |    /student/rol/delete    |
+
+  **JSON**
+  ```sh
+  {
    "student_code":"115165",
    "role": "Admin"
-}
-```
+  }
+  ```
+### Servicio Permisos
 
----------------------------------
+- Listar permisos
+  |  Metodo |          Ruta          |
+  | ------- | ---------------------- |
+  |   GET   |    /permission/list    |
 
+- Registrar un permiso **(*funcionalidad*)**
+  |   Metodo |            Ruta            |
+  | -------- | -------------------------- |
+  |   POST   |    /permission/register    |
 
-**Peticion POST, Registrar un permiso (funcionalidad)**
-```sh
-http://18.235.152.56/permission/register
-Opci贸n BODY - RAW - TypeJSON
-{
+  **JSON**
+  ```sh
+  {
     "name" : "create user"
-}
-```
-**Peticion POST, Asignaci贸n de permisos al rol**
-```sh
-http://18.235.152.56/permission/aggRol
-Opci贸n BODY - RAW - TypeJSON
-{
+  }
+  ```
+
+- Asignación de permisos al rol
+  |   Metodo |          Ruta            |
+  | -------- | ------------------------ |
+  |   POST   |    /permission/aggRol    |
+
+  **JSON**
+  ```sh
+  {
     "name": "Teacher",
     "name_permission": "create user"
-}
-```
-**Peticion DELTE, Desvincular permisos al rol**
-```sh
-http://18.235.152.56/permission/deleteRolPerm
-Opci贸n BODY - RAW - TypeJSON
-{
-    "name": "Teacher",
-    "name_permission": "create user"
-}
-```
-**Peticion POST, Obtener detalles de un permiso**
-```sh
-http://18.235.152.56/permission/show
-Opci贸n BODY - RAW - TypeJSON
-{
+  }
+  ```
+
+- Obtener detalles de un permiso
+  |   Metodo |         Ruta          |
+  | -------- | --------------------- |
+  |   POST   |    /permission/show   |
+
+  **JSON**
+  ```sh
+  {
     "id" : "1"
-}
-```
-**Peticion PUT, Editar informaci贸n del permiso**
-```sh
-http://18.235.152.56/permission/update
-Opci贸n BODY - RAW - TypeJSON
-{
+  }
+  ```
+
+- Obtener permisos vinculados al rol
+  |   Metodo |        Ruta        |
+  | -------- | ------------------ |
+  |   POST   |    /rol/dataPerm   |
+
+  **JSON**
+  ```sh
+  {
+     "api_token": "LIToHuYqcXv2fURzvTBycMXHfR4oZJj34jvb8M8xoKNKAo8GmNfDitBAUHid1cO9d3gTdhNRjeOGzuO7vPZXEFcMXbNkjTO9GrAmFOjHWP6WZsjM3hPLbLIOqmINhU7woYOib2xOGw92o5gFmoLgpL",
+     "name": "Admin"
+  }
+  ```
+
+- Editar información del permiso
+  |  Metodo |          Ruta           |
+  | ------- | ----------------------- |
+  |   PUT   |    /permission/update   |
+
+  **JSON**
+  ```sh
+  {
     "id" : "2",
     "name" : "create admin",
     "guard_name" : "api"
-}
-```
-**Peticion GET , Listar permisos**
-```sh
-http://18.235.152.56/permission/list
-```
-**Peticion DELETE , Eliminar permiso**
-```sh
-http://18.235.152.56/permission/delete/1
-```
-**Peticion POST, Obtener permisos vinculados al rol**
-```sh
-http://18.235.152.56/rol/dataPerm
-Opci贸n BODY - RAW - TypeJSON
-{
-     "api_token": "LIToHuYqcXv2fURzvTBycMXHfR4oZJj34jvb8M8xoKNKAo8GmNfDitBAUHid1cO9d3gTdhNRjeOGzuO7vPZXEFcMXbNkjTO9GrAmFOjHWP6WZsjM3hPLbLIOqmINhU7woYOib2xOGw92o5gFmoLgpL",
-     "name": "Admin"
-}
-```
+  }
+  ```
+
+- Desvincular permisos al rol
+  |    Metodo  |              Ruta               |
+  | ---------- | ------------------------------- |
+  |   DELETE   |    /permission/deleteRolPerm    |
+
+  **JSON**
+  ```sh
+  {
+    "name": "Teacher",
+    "name_permission": "create user"
+  }
+  ```
+
+- Eliminar permiso
+  |    Metodo  |           Ruta             |
+  | ---------- | -------------------------- |
+  |   DELETE   |    /permission/delete/1    |
+
+
+
+
+
+
+
+
+
+
+
 
 ## 馃敆 Links
 **Despliegue del MicroServicio**
