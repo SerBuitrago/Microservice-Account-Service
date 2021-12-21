@@ -16,15 +16,15 @@ class NotificationGatewayController extends Controller
         $this->notificationService = $notificationService;
     }
 
-    public function userNotifications(Request $request, $token)
+    public function userNotifications(Request $request, $id)
     {
-        // return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $token));
+        return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
     }
 
-    public function store(Request $request, $token)
+    public function store(Request $request, $id)
     {
         return "Intentando guardar la notificación..";
-        return $this->successResponse($this->notificationService->store($request->all(), $token));
+        return $this->successResponse($this->notificationService->store($request->all(), $id));
     }
 
     public function sendMailRegistro(Request $request)

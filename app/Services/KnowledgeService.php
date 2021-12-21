@@ -16,4 +16,9 @@ class KnowledgeService
         $this->baseUri = config('services.microservices.knowledge.base_uri');
         $this->token = config('services.microservices.knowledge.base_uri.token');
     }
+
+    public function storeUser($data)
+    {
+        return $this->request('POST', $this->baseUri . '/registerUser', $data);
+    }
 }

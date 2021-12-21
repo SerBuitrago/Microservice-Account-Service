@@ -27,8 +27,6 @@ class RegisterInAccountServiceListener
     public function handle(UserRegisterEvent $event)
     {
         $data = $event->getData();
-
-
         $this->storeUser($data);
     }
 
@@ -55,20 +53,12 @@ class RegisterInAccountServiceListener
         $user->password = app('hash')->make($data['password']);
 
         try {
-            $user->assignRole('Student');
+            $user->assignRole('Estudiante');
             $student->save();
-        } catch (\PDOException  $e) {
-            return response()->json($e);
-        }
-
-        try {
             $user->save();
-            return response()->json([
-                'response' => true,
-                'message' => 'Usuario creado'
-            ]);
-        } catch (\PDOException  $e) {
-            return response()->json($e);
+        } catch (\Illuminate\Database\QueryException $th) {
+            return 'Erorr en el registro de usuario en AccountService';
         }
+        return "Registrado exitosamente en AccountService";
     }
 }

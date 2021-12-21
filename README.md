@@ -326,6 +326,12 @@ Opción BODY - RAW - TypeJSON
 `http://18.235.152.56/users/{token}/notifications  GET` Obtener todas las notificaciones del usuario por su api_token.
 `http://18.235.152.56/users/{token}/notifications  POST` Crear una notificación para el usuario por su api_token.
 
+
+### Tutoring-Web Endpoints
+
+
+### Chat-Web Endpoints
+
 ## License
 
 MIT

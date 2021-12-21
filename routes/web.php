@@ -117,21 +117,22 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
  * Notification
  */
 $router->group(['prefix' => 'notificationService'], function () use ($router) {
-    $router->get('users/{token}/notifications', 'ApiGateWay\NotificationGatewayController@userNotifications');
-    $router->post('users/{token}/notifications', 'ApiGateWay\NotificationGatewayController@store');
+    $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@userNotifications');
+    $router->post('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@store');
     $router->post('sendMailRegistro', 'ApiGateWay\NotificationGatewayController@sendMailRegistro');
 });
 
 /**
  * Audit
  */
-$router->group(['prefix' => 'audit'], function () use ($router) {
-    $router->get('/', ['uses' => 'AuditGatewayController@fetchReadAll']);
-    $router->get('/{id}', ['uses' => 'AuditGatewayController@fetchRead']);
-    $router->post('/', ['uses' => 'ApiGateWay/NotificationGatewayController@create']);
-    $router->put('/', ['uses' => 'ApiGateWay/NotificationGatewayController@update']);
-    $router->delete('/{id}', ['uses' => 'ApiGateWay/NotificationGatewayController@delete']);
-});
+
+// $router->group(['prefix' => 'audit'], function () use ($router) {
+//     $router->get('/', ['uses' => 'AuditGatewayController@fetchReadAll']);
+//     $router->get('/{id}', ['uses' => 'AuditGatewayController@fetchRead']);
+//     $router->post('/', ['uses' => 'ApiGateWay/NotificationGatewayController@create']);
+//     $router->put('/', ['uses' => 'ApiGateWay/NotificationGatewayController@update']);
+//     $router->delete('/{id}', ['uses' => 'ApiGateWay/NotificationGatewayController@delete']);
+// });
 
 /**
  * Tutoring
