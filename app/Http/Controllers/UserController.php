@@ -14,63 +14,64 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    
+
     // -- HU 1
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $this->validateLogin($request);
         return $this->sendLoginResponse($request);
     }
 
-    protected function validateLogin(Request $request){
+    protected function validateLogin(Request $request)
+    {
 
-        $this->validate($request,[
+        $this->validate($request, [
             'student_code' => 'required|integer',
             'password' => 'required',
         ]);
+    } //
+    public function sendLoginResponse(Request $request)
+    {
 
-    }//
-    public function sendLoginResponse(Request $request){
+        $user = User::where('student_code', $request['student_code'])->first();
 
-        $user = User::where('student_code',$request['student_code'])->first();
+        if (!is_null($user) && Hash::check($request['password'], $user->password)) {
 
-        if(!is_null($user) && Hash::check( $request['password'] , $user->password )){
-            
             $user->api_token = Str::random(150);
             $user->save();
             return response()->json([
                 'response' => true,
-                'api_token'=> $user->api_token,
-                'role'=> $user->getRoleNames(),
+                'api_token' => $user->api_token,
+                'role' => $user->getRoleNames(),
                 'message' => 'Welcome'
             ]);
-        }else{
+        } else {
             return response()->json([
                 'response' => false,
                 'message' => '¡data incorrect!'
             ]);
-        }     
-
+        }
     }
 
     // -- HU 2
     public function redirectToProvider()
     {
-       return Socialite::driver('google')->stateless()->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
 
     public function handleProviderCallback(Request $request)
     {
-        try{
+        try {
             $data = Socialite::driver('google')->stateless()->user();
-            $user = User::where('student_email', $data['email'] )->first();
+            $user = User::where('student_email', $data['email'])->first();
 
             $user->api_token = Str::random(150);
             $user->save();
 
             return response()->json([
                 'response' => true,
-                'token'=> $user->api_token,
+                'token' => $user->api_token,
                 'message' => 'welcome'
             ]);
         } catch (PDOException $e) {
@@ -79,11 +80,11 @@ class UserController extends Controller
                 'message' => '¡data incorrect!'
             ]);
         }
-
     }
 
 
-    public function logout(){
+    public function logout()
+    {
 
         $user = auth()->user();
         return response()->json([
@@ -94,36 +95,47 @@ class UserController extends Controller
 
 
     // -- HU 5
-    public function show(Request $request){
+    public function show(Request $request)
+    {
         $user = User::where('student_code', $request->code)->get();
-        if(!empty($user)){
+        if (!empty($user)) {
             return response()->json([
                 'response' => true,
                 'message' =>  $user
             ]);
-        }else{
+        } else {
             return response()->json([
                 'response' => false,
                 'message' =>  $user
             ]);
         }
-        
+    }
+
+    public function showByToken(Request $request, $token)
+    {
+        $user = User::Where('api_token', $token)->with('student')->first();
+
+        if ($user) {
+            return response()->json(['response' => $user], 200);
+        }
+        return response()->json(['response' => null], 404);
     }
 
     // -- HU 6
-    public function editAdmin(Request $request){
+    public function editAdmin(Request $request)
+    {
 
         $this->validateditAdmin($request);
 
         $user = User::find($request->id);
 
 
-        if(empty($user)){
+        if (empty($user)) {
             return response()->json([
                 'response' => false,
                 'message' =>  "User no register!"
             ]);
-        }else{
+        } else {
 
             try {
 
@@ -145,22 +157,18 @@ class UserController extends Controller
                     'response' => true,
                     'message' =>  'User edited'
                 ]);
-                
             } catch (\Throwable $th) {
 
                 return response()->json([
                     'response' => false,
                     'message' =>  'Data incomplet'
                 ]);
-
             }
-            
         }
-
-
     }
 
-    protected function validateditAdmin(Request $request){
+    protected function validateditAdmin(Request $request)
+    {
 
         $this->validate($request, [
 
@@ -174,84 +182,78 @@ class UserController extends Controller
             'university_career' => 'required'
 
         ]);
-
-   }
-
-
-   // -- HU 7
-   public function deleteAdmin(Request $request){
-
-
-    $user = User::find($request->id);
-
-    if(empty($user)){
-        return response()->json([
-            'response' => false,
-            'message' =>  "User no register!"
-        ]);
     }
 
-    try {
-        $user->delete();
-        $user->student->delete();
-        return response()->json([
-            'response' => true,
-            'message' =>  'User delete'
-        ]);
-            
-    } catch (\Throwable $th) {
 
-        return response()->json([
-            'response' => false,
-            'message' =>  'Error'
-        ]);
+    // -- HU 7
+    public function deleteAdmin(Request $request)
+    {
 
+
+        $user = User::find($request->id);
+
+        if (empty($user)) {
+            return response()->json([
+                'response' => false,
+                'message' =>  "User no register!"
+            ]);
+        }
+
+        try {
+            $user->delete();
+            $user->student->delete();
+            return response()->json([
+                'response' => true,
+                'message' =>  'User delete'
+            ]);
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                'response' => false,
+                'message' =>  'Error'
+            ]);
+        }
     }
-        
-    
 
-
-    }
-
-    public function token(){
+    public function token()
+    {
 
         $user = auth()->user();
 
 
-        if(!empty($user)){
+        if (!empty($user)) {
             return response()->json([
                 'response' => true,
                 'token' => $user->api_token
             ]);
-        }else{
+        } else {
             return response()->json([
                 'response' => false,
                 'token' => "No user api_token"
             ]);
         }
-
-        
     }
     //--------------------------------------------------
 
-    public function aggRole(Request $request){
+    public function aggRole(Request $request)
+    {
 
         $this->validateaggRole($request);
 
         $user = User::where('student_code', $request->student_code)->first();
-        $role = Role::where('name', $request->role )->first();
+        $role = Role::where('name', $request->role)->first();
 
 
 
-        if(empty($role)){
+        if (empty($role)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Role not found'
             ]);
         }
-        
 
-        if(!empty($user)){
+
+        if (!empty($user)) {
 
             $user->assignRole($role);
 
@@ -259,39 +261,36 @@ class UserController extends Controller
                 'response' => true,
                 'token' => 'Rol agg'
             ]);
+        } else {
 
-
-        }else{
-            
             return response()->json([
                 'response' => false,
                 'token' => "User no found"
             ]);
         }
-
-       
     }
 
     //--------------------------------------------------
 
-    public function deleteRole(Request $request){
+    public function deleteRole(Request $request)
+    {
 
         $this->validateaggRole($request);
 
         $user = User::where('student_code', $request->student_code)->first();
-        $role = Role::where('name', $request->role )->first();
+        $role = Role::where('name', $request->role)->first();
 
 
 
-        if(empty($role)){
+        if (empty($role)) {
             return response()->json([
                 'response' => false,
                 'message' => 'Role not found'
             ]);
         }
-        
 
-        if(!empty($user)){
+
+        if (!empty($user)) {
 
             $user->removeRole($role);
 
@@ -299,20 +298,17 @@ class UserController extends Controller
                 'response' => true,
                 'token' => 'Rol delete'
             ]);
+        } else {
 
-
-        }else{
-            
             return response()->json([
                 'response' => false,
                 'token' => "User no found"
             ]);
         }
-
-       
     }
 
-    protected function validateaggRole(Request $request){
+    protected function validateaggRole(Request $request)
+    {
 
         $this->validate($request, [
 
@@ -320,11 +316,5 @@ class UserController extends Controller
             'role' => 'required'
 
         ]);
-
     }
-
-
-
-
-    
 }

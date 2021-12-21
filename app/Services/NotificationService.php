@@ -19,7 +19,7 @@ class NotificationService
 
     public function allNotificationsByUser($data, $user)
     {
-        return $this->request('GET', $this->baseUri . '/usuarios/notifications' . $user, $data);
+        return $this->request('GET', $this->baseUri . '/usuarios/notifications/' . $user, $data);
     }
 
     public function store($data, $user)
