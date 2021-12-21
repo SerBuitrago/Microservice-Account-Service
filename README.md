@@ -1,9 +1,9 @@
 
 # Microservicio: Gestión de Usuarios, Roles y Permisos
 
-<div>
-    <img src="https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png">
-</div>
+<p align="center">
+    <img src="https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png" width="400" height="200">
+</p>
 
 Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en **MySQL**
 
