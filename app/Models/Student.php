@@ -19,6 +19,6 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'code');
+        return $this->hasOne(User::class, 'student_code', 'code');
     }
 }

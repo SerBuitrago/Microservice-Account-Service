@@ -28,11 +28,12 @@ class StudentFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Student $student) {
-            $user = new \App\Models\User([
+            $user = \App\Models\User::create([
                 'student_code' => $student->code,
                 'student_email' => $student->email,
                 'password' => app('hash')->make('1234'),
             ]);
+            $user->save();
 
             $user->assignRole('Estudiante');
         });

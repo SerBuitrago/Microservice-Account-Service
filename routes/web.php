@@ -43,6 +43,10 @@ $router->post('reset/password', 'AccountsController@resetPassword'); //-
 $router->post('/student/register', 'StudentController@store'); //
 
 
+
+$router->get('/studentsForMicroservices', 'StudentController@index'); //-
+
+
 /**
  * AUTENTICACION POR API_TOKEN
  */
