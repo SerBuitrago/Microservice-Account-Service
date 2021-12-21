@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\UserRegisterEvent::class => [
             \App\Listeners\UserRegister\RegisterInAccountServiceListener::class,
             \App\Listeners\UserRegister\RegisterInTutoringServiceListener::class,
-            // \App\Listeners\UserRegister\RegisterInKnowledgeServiceListener::class,
+            \App\Listeners\UserRegister\RegisterInKnowledgeServiceListener::class,
         ]
     ];
 }
