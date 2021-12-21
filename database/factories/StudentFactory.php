@@ -13,14 +13,14 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => '115' . $this->faker->randomNumber(nbDigits: 4, strict: true),
+            'code' => '115' . $this->faker->randomNumber(4,  true),
             'name' => $this->faker->name,
             'last_name' => $this->faker->lastName,
             'address' => $this->faker->address,
-            'age' => $this->faker->numberBetween(int1: 18, int2: 40),
+            'age' => $this->faker->numberBetween(18,  40),
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->email,
-            'semester' => $this->faker->numberBetween(int1: 1, int2: 10),
+            'semester' => $this->faker->numberBetween(1,  10),
             'university_career' => 'Ingeniería de Sistemas'
         ];
     }
