@@ -12,6 +12,8 @@ Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en 
 
 ## Caracteristicas
 
+A continuación se muestran las caracteristicas del microservicio:
+
 ### Usuario
 - Iniciar sesión de usuario en el **portal**.
 - Inicar sesion a traves de correo **personal/institucional**.
@@ -24,6 +26,25 @@ Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en 
 - Eliminar usuarios.
 - Recuperar clave.
 - Cambiar clave.
+
+### Rol
+- Registrar rol.
+- Obtener detalles del rol.
+- Editar información del rol.
+- Listar roles .
+- Eliminar roles.
+- Agregar rol al Usuario.
+- Eliminar rol al Usuario.
+
+### Permisos
+- Registrar un permiso (funcionalidad).
+- Asignación de permisos al rol.
+- Desvincular permisos al rol.
+- Obtener detalles de un permiso.
+- Editar informaci贸n del permiso.
+- Listar permisos.
+- Eliminar permiso.
+- Obtener permisos vinculados al rol.
 ## Instalación (Uso local)
 - Primero se debe instalar [Laragon](https://laragon.org/download/index.html) en la maquina.
 
@@ -213,54 +234,64 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
 
 
-## Rutas Rol
+### Servicio Rol
 
+- Listar roles
+  |  Metodo |       Ruta      |
+  | ------- | --------------- |
+  |   GET   |    /rol/list    |
 
+- Obtener detalle de un rol en especifico
+  |  Metodo |       Ruta      |
+  | ------- | --------------- |
+  |   GET   |    /rol/show    |
 
+  **JSON**
+  ```sh
+  {
+    "role_id": 3
+  }
+  ```
 
-
----------------------------------
-### ROLES
 - Registrar rol
-- Obtener detalles del rol
-- Editar informaci贸n del rol
-- Listar roles 
-- Eliminar roles
-- Agregar Rol al Usuario
-- Eliminar Rol al Usuario
-
-**Peticion POST, Registrar rol**
-```sh
-http://18.235.152.56/rol/register
-Opci贸n BODY - RAW - TypeJSON
- {
+  |  Metodo |          Ruta       |
+  | ------- | ------------------- |
+  |  POST   |    /rol/register    |
+  
+  **JSON**
+  ```sh
+  {
     "name": "Admin"
- }
-```
-**Peticion GET, Obtener detalles del rol**
-```sh
-http://18.235.152.56/rol/show
-Opci贸n BODY - RAW - TypeJSON
-{
+  }
+  ```
+
+- Editar rol
+  | Metodo |        Ruta       |
+  | ------ | ----------------- |
+  |  PUT   |    /rol/update    |
+
+  **JSON**
+  ```sh
+  {
     "role_id":3
-}
-```
-**Peticion PUT, Editar informaci贸n del rol**
-```sh
-http://18.235.152.56/rol/update
-Opci贸n BODY - RAW - TypeJSON
-{
-    "role_id":3
-}
-```
-**Peticion GET, Listar roles**
-```sh
-http://18.235.152.56/rol/list
-```
-**Peticion DELETE, Eliminar roles**
-```sh
-http://18.235.152.56/rol/delete/3
-```
+  }
+  ```
+
+- Eliminar un rol en especifico
+  |   Metodo  |         Ruta        |
+  | --------- | ------------------- |
+  |  DELETE   |    /rol/delete/3    |
+
+## Rutas Rol Usuario
+
+
+
+
+
+
+
+
+
 **Peticion POST, Agregar Rol al Usuario**
 ```sh
 http://18.235.152.56/student/rol/add
@@ -281,15 +312,7 @@ Opci贸n BODY - RAW - TypeJSON
 ```
 
 ---------------------------------
-### PERMISOS
-- Registrar un permiso (funcionalidad)
-- Asignaci贸n de permisos al rol
-- Desvincular permisos al rol
-- Obtener detalles de un permiso
-- Editar informaci贸n del permiso
-- Listar permisos
-- Eliminar permiso
-- Obtener permisos vinculados al rol
+
 
 **Peticion POST, Registrar un permiso (funcionalidad)**
 ```sh
