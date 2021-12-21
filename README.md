@@ -1,13 +1,11 @@
 
 # Microservicio: Gestión de Usuarios, Roles y Permisos
 
-<div>
-    <img src="https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png">
-</div>
+<p align="center">
+    <img src="https://1.bp.blogspot.com/-Vr9ieaHwBPs/WTvLrQcDFUI/AAAAAAAABsQ/Uvhc69QqmeYmDPeNZuaEVLDk3oM4GKklACLcB/s1600/LzLinwg%255B1%255D.png" width="400" height="200">
+</p>
 
 Esta aplicacion fue realizada en **Lumen Laravel** con persistencia de datos en **MySQL**
-
-
 
 
 ## Caracteristicas
@@ -365,62 +363,299 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   }
   ```
 
-- Editar información del permiso
-  |  Metodo |          Ruta           |
-  | ------- | ----------------------- |
-  |   PUT   |    /permission/update   |
-
-  **JSON**
-  ```sh
-  {
-    "id" : "2",
-    "name" : "create admin",
-    "guard_name" : "api"
-  }
-  ```
-
-- Desvincular permisos al rol
-  |    Metodo  |              Ruta               |
-  | ---------- | ------------------------------- |
-  |   DELETE   |    /permission/deleteRolPerm    |
-
-  **JSON**
-  ```sh
-  {
-    "name": "Teacher",
-    "name_permission": "create user"
-  }
-  ```
-
-- Eliminar permiso
-  |    Metodo  |           Ruta             |
-  | ---------- | -------------------------- |
-  |   DELETE   |    /permission/delete/1    |
-
-
-
-# Api Gateway
-
-## Rutas
-
 ### Microservicio Notificaciones
 
-`Host:` http://18.235.152.56
+- Obtener todas las notificaciones por el id del usuario.
+  |  Metodo |                Ruta             |
+  | ------- | ------------------------------- |
+  |   GET   |    /users/{id}/notifications    |
 
-- Obtener todas las notificaciones del usuario por su api_token
-  |  Metodo |                 Ruta               |
-  | ------- | ---------------------------------- |
-  |   GET   |    /users/{token}/notifications    |
+- Crear una notificación para el usuario con el id.
+  |  Metodo  |              Ruta               |
+  | -------- | ------------------------------- |
+  |   POST   |    /users/{id}/notifications    |
 
-- Crear una notificaci贸n para el usuario por su api_token.
-  |  Metodo  |                 Ruta               |
-  | -------- | ---------------------------------- |
-  |   POST   |    /users/{token}/notifications    |
+- Enviar email de una notificación por el id del usuario.
+  |  Metodo  |         Ruta            |
+  | -------- | ----------------------- |
+  |   POST   |    /sendMailRegistro    |
 
 ### Microservicio Tutoria
 
+#### Servicio Tutoria
+
+- Permite obtener todas las tutorias.
+  | Metodo  |               Ruta                  |
+  | ------- | ----------------------------------- |
+  |   GET   |    /tutoriaServicio/tutoria/list    |
+
+- Permite obtener todas las tutorias terminadas.
+  | Metodo  |               Ruta                            |
+  | ------- | --------------------------------------------- |
+  |   GET   |    /tutoriaServicio/tutoria/list/terminadas   |
+
+- Permite obtener todas las tutorias activas.
+  | Metodo  |               Ruta                         |
+  | ------- | ------------------------------------------ |
+  |   GET   |    /tutoriaServicio/tutoria/list/activas   |
+
+- Inscribirse a una tutoria
+  | Metodo  |             Ruta                          |
+  | ------- | ----------------------------------------- |
+  |   GET  |    /tutoria/inscribirse/{id}/{idusuario}   |
+
+  **Header**
+  ```sh
+  {
+    Authorization: "string"
+  }
+  ``` 
+
+- Registrar una tutoria
+  | Metodo  |             Ruta                    |
+  | ------- | ----------------------------------- |
+  |   POST  |    /tutoriaServicio/tutoria/save    |
+
+  **Header**
+  ```sh
+  {
+    Authorization: "string"
+  }
+  ``` 
+
+  **JSON**
+  ```sh
+  {
+    "dateEnd": "2021-12-15T03:35:52.761Z",
+    "dateStrat": "2021-12-15T03:35:52.761Z",
+    "description": "string",
+    "id": 0,
+    "idcategory": 0,
+    "lissubjets": [ 0 ],
+    "reason": "string",
+    "state": true,
+    "userCreator": 0,
+    "userTutor": 0
+  }
+  ``` 
+
+- Editar una tutoria
+  | Metodo  |             Ruta               |
+  | ------- | ------------------------------ |
+  |   PUT   |    /tutoriaServicio/tutoria    |
+
+  **JSON**
+  ```sh
+  {
+    "category": {
+       "id": 0,
+       "name": "string"
+    },
+    "dateEnd": "2021-12-15T03:34:55.427Z",
+    "dateStart": "2021-12-15T03:34:55.427Z",
+    "description": "string",
+    "id": 0,
+    "reason": "string",
+    "state": true,
+    "subjectList": [
+      {
+        "id": 0,
+        "name": "string"
+      }
+    ],
+    "userCreator": {
+      "address": "string",
+      "age": "string",
+      "apiToken": "string",
+      "code": 0,
+      "email": "string",
+      "lastName": "string",
+      "name": "string",
+      "phone": "string",
+      "role": "string",
+      "semester": "string",
+      "studentEmail": "string",
+      "universityCareer": "string"
+    },
+    "userList": [
+      {
+        "address": "string",
+        "age": "string",
+        "apiToken": "string",
+        "code": 0,
+        "email": "string",
+        "lastName": "string",
+        "name": "string",
+        "phone": "string",
+        "role": "string",
+        "semester": "string",
+        "studentEmail": "string",
+        "universityCareer": "string"
+      }
+    ],
+    "userTutor": {
+      "address": "string",
+      "age": "string",
+      "apiToken": "string",
+      "code": 0,
+      "email": "string",
+      "lastName": "string",
+      "name": "string",
+      "phone": "string",
+      "role": "string",
+      "semester": "string",
+      "studentEmail": "string",
+      "universityCareer": "string"
+    }
+  }
+  ```
+
+- Eliminar una tutoria por su **id** y **nombre**
+  | Metodo  |                    Ruta                             |
+  | ------- | --------------------------------------------------- |
+  |   PUT   |    /tutoriaServicio/tutoria/delete/{id}/{nombre}    |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+
+#### Servicio Tema
+
+- Permite obtener todos los temas.
+  | Metodo  |               Ruta               |
+  | ------- | -------------------------------- |
+  |   GET   |    /tutoriaServicio/tema/list    |
+
+- Permite buscar un tema por su **nombre**.
+  | Metodo  |                       Ruta                          |
+  | ------- | --------------------------------------------------- |
+  |   POST  |    /tutoriaServicio/tema/busquedaNombre/{nombre}    |
+
+  **JSON**
+  ```sh
+  {
+    "nombre": "string"
+  }
+  ``` 
+
+- Registrar un tema
+  | Metodo  |             Ruta                  |
+  | ------- | --------------------------------- |
+  |   POST  |    /tutoriaServicio/tema/save     |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ``` 
+
+- Editar un tema
+  | Metodo  |         Ruta                |
+  | ------- | --------------------------- |
+  |   PUT   |    /tutoriaServicio/tema    |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ``` 
+
+- Eliminar un tema por su **id** y **nombre**
+  | Metodo  |                    Ruta                          |
+  | ------- | ------------------------------------------------ |
+  |   PUT   |    /tutoriaServicio/tema/delete/{id}/{nombre}    |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ```
+
+#### Servicio Categoria
+
+- Permite obtener todas las categorias.
+  | Metodo  |               Ruta                   |
+  | ------- | ------------------------------------ |
+  |   GET   |    /tutoriaServicio/categoria/list   |
+
+- Registrar una Categoria
+  | Metodo  |             Ruta                       |
+  | ------- | -------------------------------------- |
+  |   POST  |    /tutoriaServicio/categoria/save     |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ``` 
+
+- Editar una categoria
+  | Metodo  |         Ruta                     |
+  | ------- | -------------------------------- |
+  |   PUT   |    /tutoriaServicio/categoria    |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ``` 
+- Eliminar una categoria por su **id** y **nombre**
+  | Metodo  |                    Ruta                               |
+  | ------- | ----------------------------------------------------- |
+  |   PUT   |    /tutoriaServicio/categoria/delete/{id}/{nombre}    |
+
+  **JSON**
+  ```sh
+  {
+    "id": 0,
+    "name": "string"
+  }
+  ```
 
 ### Microservicio Chat
+
+- Permite obtener una conversación de un usuario por su id
+  | Metodo  |            Ruta               |
+  | ------- | ----------------------------- |
+  |   GET   |    /conversations/{userId}    |
+
+- Permite obtener una conversación entre dos usuarios
+  | Metodo  |                          Ruta                          |
+  | ------- | ------------------------------------------------------ |
+  |   GET   |    /conversations/find/{firstUserId}/{secondUserId}    |
+
+- Permite obtener los mensajes por el id de una conversación
+  | Metodo  |           Ruta                   |
+  | ------- | -------------------------------- |
+  |   GET   |    /messages/{conversationId}    |
+
+- Permite obtener los mensajes
+  |  Metodo  |     Ruta        |
+  | -------- | --------------- |
+  |   POST   |    /messages    |
+
+- Registrar ......
+  |  Metodo  |        Ruta          |
+  | -------- | -------------------- |
+  |   POST   |    /auth/register    |
+
+- Permite obtener una conversación
+  |  Metodo  |        Ruta          |
+  | -------- | -------------------- |
+  |   POST   |    /conversations    |
 ## Lenguajes Programación, Tecnologias Y Frameworks
 [![debug](https://img.icons8.com/color/48/000000/amazon-web-services.png)](http://18.235.152.56/students)
 [![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)
@@ -439,9 +674,3 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 ## Licencia
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-
-
-
-
-
-
