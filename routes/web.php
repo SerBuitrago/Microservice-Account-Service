@@ -121,8 +121,8 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
 */
 /**
  * Notification
- */ 
-$router->group(['prefix' => 'notificationService'], function () use ($router) {
+ */
+$router->group(['prefix' => 'notification-service'], function () use ($router) {
     $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@showNotification');
     $router->post('users/notifications', 'ApiGateWay\NotificationGatewayController@storeNotification');
     $router->put('users/notifications', 'ApiGateWay\NotificationGatewayController@updateNotification');
@@ -139,7 +139,7 @@ $router->group(['prefix' => 'notificationService'], function () use ($router) {
  * Audit
  */
 
-// $router->group(['prefix' => 'auditService'], function () use ($router) {
+// $router->group(['prefix' => 'audit-service'], function () use ($router) {
 //     $router->get('/', ['uses' => 'AuditGatewayController@fetchReadAll']);
 //     $router->get('/{id}', ['uses' => 'AuditGatewayController@fetchRead']);
 //     $router->post('/', ['uses' => 'ApiGateWay/NotificationGatewayController@create']);
@@ -150,7 +150,7 @@ $router->group(['prefix' => 'notificationService'], function () use ($router) {
 /**
  * Tutoring
  */
-$router->group(['prefix' => 'tutoringService'], function () use ($router) {
+$router->group(['prefix' => 'tutoring-service'], function () use ($router) {
     $router->group(['prefix' => 'tema'], function () use ($router) {
         $router->get('list',  'ApiGateWay/TutoringGatewayController@fetchReadTemaAll');
         $router->get('{nombre}',  'ApiGateWay/TutoringGatewayController@fetchReadTemaNombre');
@@ -172,4 +172,7 @@ $router->group(['prefix' => 'tutoringService'], function () use ($router) {
     $router->group(['prefix' => 'usuario'], function () use ($router) {
         $router->post('/{id}/rol/{rol}',  'ApiGateWay/NotificationGatewayController@createRol');
     });
+});
+
+$router->group(['prefix' => 'knowledge-service'], function () use ($router) {
 });

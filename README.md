@@ -370,6 +370,8 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
 ### Microservicio Notificaciones
 
+Todas las rutas para acceder a este microservicio tienen el prefix de /notification-service
+
 - Obtener todas las notificaciones por el id del usuario.
   | Metodo | Ruta                      |
   |--------|---------------------------|
@@ -478,7 +480,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   }
   ``` 
 
-### Microservicio Tutoria
+### Microservicio Tutoria AÚN NO FUNCIONAN - TRABAJO EN CURSO !!
+
+Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-service
 
 #### Servicio Tutoria
 
@@ -725,6 +729,8 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
 ### Microservicio Chat
 
+Todas las rutas para acceder a este microservicio tienen el prefix de /chat-service
+
 - Permite obtener una conversación de un usuario por su id
   | Metodo | Ruta                    |
   |--------|-------------------------|
@@ -754,6 +760,12 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   | Metodo | Ruta           |
   |--------|----------------|
   | POST   | /conversations |
+
+### Microservicio Auditoría
+
+Todas las rutas para acceder a este microservicio tienen el prefix de /audit-service
+
+
 ## Lenguajes Programación, Tecnologias Y Frameworks
 [![debug](https://img.icons8.com/color/48/000000/amazon-web-services.png)](http://18.235.152.56/students)
 [![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)
