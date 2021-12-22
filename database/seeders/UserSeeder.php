@@ -38,5 +38,7 @@ class UserSeeder extends Seeder
 
         $student->save();
         $user->save();
+
+        Student::factory()->count(5)->create();
     }
 }

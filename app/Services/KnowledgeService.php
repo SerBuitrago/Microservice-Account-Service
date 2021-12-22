@@ -19,6 +19,11 @@ class KnowledgeService
 
     public function storeUser($data)
     {
-        return $this->request('POST', $this->baseUri . '/registerUser', $data);
+        return $this->request('POST', $this->baseUri . '/users', $data);
+    }
+
+    public function login($data)
+    {
+        return $this->request('POST', $this->baseUri . '/login', $data);
     }
 }

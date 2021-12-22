@@ -13,7 +13,6 @@ class RolController extends Controller
     public function store(Request $request)
     {
 
-        //return response()->json($user);$user = User::where('student_code', $request['code'] )->first();$user->assignRole('Admin');
         $this->validateStore($request);
 
         try {
@@ -256,7 +255,7 @@ class RolController extends Controller
     {
         $this->validateiPermisosRol($request);
         $role = Role::where('name', $request->name)->first();
-        
+
         if (empty($role)) {
             return response()->json([
                 'response' => false,
@@ -267,7 +266,6 @@ class RolController extends Controller
             'response' => true,
             'message ' =>  $role->permissions
         ]);
-        
     }
 
 

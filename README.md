@@ -79,20 +79,20 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 ### Servicio Usuarios
 
 - Listar usuarios
-  | Metodo |      Ruta       |
-  | ------ | --------------- |
-  |  GET   |    /student     |
+  | Metodo | Ruta     |
+  |--------|----------|
+  | GET    | /student |
 
 - Cerra sesión
-  | Metodo |       Ruta        |
-  | ------ | ----------------- |
-  |  GET   |      /logout      |
+  | Metodo | Ruta    |
+  |--------|---------|
+  | GET    | /logout |
 
 - Iniciar sesión
 
-  | Metodo |     Ruta      |
-  | ------ | ------------- |
-  | POST   |    /login     |
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /login |
 
   **JSON**
   ```sh
@@ -103,14 +103,14 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```  
     
 - Inicar sesión a traves del correo **personal/institucional**
-  | Metodo |       Ruta        |
-  | ------ | ----------------- |
-  | POST   |    /login/google  |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | POST   | /login/google |
 
 - Registro de usuario en el portal **(*normal*)**
-  |  Metodo |            Ruta           |
-  | ------- | ------------------------- |
-  |  POST   |      /student/register    |
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | POST   | /student/register |
 
   **JSON**
    ```sh
@@ -129,9 +129,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Registro de usuario en el portal **(*admin*)**
-  |  Metodo |                Ruta             |
-  | ------- | ------------------------------- |
-  |  POST   |      /student/admin/register    |
+  | Metodo | Ruta                    |
+  |--------|-------------------------|
+  | POST   | /student/admin/register |
   
   **JSON**
   ```sh
@@ -151,9 +151,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Obtener detalles de un usuario especifico
-  |  Metodo |        Ruta        |
-  | ------- | ------------------ |
-  |  POST   |      /user/show    |
+  | Metodo | Ruta       |
+  |--------|------------|
+  | POST   | /user/show |
 
   **JSON**
   ```sh
@@ -161,10 +161,15 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
     "code" : "1151651"
   }
   ```
+- Obtener detalles de un usuario vía Token
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | GET    | /user/showByToken/{token} |
+
 - Obtener detalles de estudiante
-  |  Metodo |         Ruta         |
-  | ------- | -------------------- |
-  |  POST   |      /student/show   |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | POST   | /student/show |
 
   **JSON**
   ```sh
@@ -174,9 +179,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Recuperar clave
-  |  Metodo |         Ruta         |
-  | ------- | -------------------- |
-  |  POST   |     /send/password   |
+  | Metodo | Ruta           |
+  |--------|----------------|
+  | POST   | /send/password |
 
   **JSON**
   ```sh
@@ -186,9 +191,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Cambiar clave
-  |  Metodo |          Ruta         |
-  | ------- | --------------------- |
-  |  POST   |     /reset/password   |
+  | Metodo | Ruta            |
+  |--------|-----------------|
+  | POST   | /reset/password |
   
   **JSON**
   ```sh
@@ -201,9 +206,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Editar información del usuario
-  |  Metodo |              Ruta               |
-  | ------- | ------------------------------- |
-  |   PUT   |      /student/admin/edit/{id}   |
+  | Metodo | Ruta                     |
+  |--------|--------------------------|
+  | PUT    | /student/admin/edit/{id} |
    
   **JSON**
   ```sh
@@ -223,9 +228,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Eliminar usuario
-  |   Metodo   |               Ruta               |
-  | ---------- | -------------------------------- |
-  |   DELETE   |      student/admin/delete/{id}   |
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | DELETE | student/admin/delete/{id} |
 
 
 
@@ -235,14 +240,14 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 ### Servicio Rol
 
 - Listar roles
-  |  Metodo |       Ruta      |
-  | ------- | --------------- |
-  |   GET   |    /rol/list    |
+  | Metodo | Ruta      |
+  |--------|-----------|
+  | GET    | /rol/list |
 
 - Obtener detalle de un rol en especifico
-  |  Metodo |       Ruta      |
-  | ------- | --------------- |
-  |   GET   |    /rol/show    |
+  | Metodo | Ruta      |
+  |--------|-----------|
+  | GET    | /rol/show |
 
   **JSON**
   ```sh
@@ -252,9 +257,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Registrar rol
-  |  Metodo |          Ruta       |
-  | ------- | ------------------- |
-  |  POST   |    /rol/register    |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | POST   | /rol/register |
   
   **JSON**
   ```sh
@@ -264,9 +269,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Editar rol
-  | Metodo |        Ruta       |
-  | ------ | ----------------- |
-  |  PUT   |    /rol/update    |
+  | Metodo | Ruta        |
+  |--------|-------------|
+  | PUT    | /rol/update |
 
   **JSON**
   ```sh
@@ -276,15 +281,15 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Eliminar un rol en especifico
-  |   Metodo  |         Ruta        |
-  | --------- | ------------------- |
-  |  DELETE   |    /rol/delete/3    |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | DELETE | /rol/delete/3 |
 
 ### Servicio Rol al Usuario
 - Agregar un rol al usuario
-  |   Metodo |          Ruta          |
-  | -------- | ---------------------- |
-  |   POST   |    /student/rol/add    |
+  | Metodo | Ruta             |
+  |--------|------------------|
+  | POST   | /student/rol/add |
 
   **JSON**
   ```sh
@@ -295,9 +300,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Eliminar un rol al usuario
-  |    Metodo  |           Ruta            |
-  | ---------- | ------------------------- |
-  |   DELETE   |    /student/rol/delete    |
+  | Metodo | Ruta                |
+  |--------|---------------------|
+  | DELETE | /student/rol/delete |
 
   **JSON**
   ```sh
@@ -309,14 +314,14 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 ### Servicio Permisos
 
 - Listar permisos
-  |  Metodo |          Ruta          |
-  | ------- | ---------------------- |
-  |   GET   |    /permission/list    |
+  | Metodo | Ruta             |
+  |--------|------------------|
+  | GET    | /permission/list |
 
 - Registrar un permiso **(*funcionalidad*)**
-  |   Metodo |            Ruta            |
-  | -------- | -------------------------- |
-  |   POST   |    /permission/register    |
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | POST   | /permission/register |
 
   **JSON**
   ```sh
@@ -326,9 +331,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Asignación de permisos al rol
-  |   Metodo |          Ruta            |
-  | -------- | ------------------------ |
-  |   POST   |    /permission/aggRol    |
+  | Metodo | Ruta               |
+  |--------|--------------------|
+  | POST   | /permission/aggRol |
 
   **JSON**
   ```sh
@@ -339,9 +344,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Obtener detalles de un permiso
-  |   Metodo |         Ruta          |
-  | -------- | --------------------- |
-  |   POST   |    /permission/show   |
+  | Metodo | Ruta             |
+  |--------|------------------|
+  | POST   | /permission/show |
 
   **JSON**
   ```sh
@@ -351,9 +356,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Obtener permisos vinculados al rol
-  |   Metodo |        Ruta        |
-  | -------- | ------------------ |
-  |   POST   |    /rol/dataPerm   |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | POST   | /rol/dataPerm |
 
   **JSON**
   ```sh
@@ -365,44 +370,174 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
 ### Microservicio Notificaciones
 
+Todas las rutas para acceder a este microservicio tienen el prefix de /notification-service
+
 - Obtener todas las notificaciones por el id del usuario.
-  |  Metodo |                Ruta             |
-  | ------- | ------------------------------- |
-  |   GET   |    /users/{id}/notifications    |
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | GET    | /users/{id}/notifications |
 
-- Crear una notificación para el usuario con el id.
-  |  Metodo  |              Ruta               |
-  | -------- | ------------------------------- |
-  |   POST   |    /users/{id}/notifications    |
+- Registrar una notificación para el usuario con el id.
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | POST   | /users/notifications |
 
-- Enviar email de una notificación por el id del usuario.
-  |  Metodo  |         Ruta            |
-  | -------- | ----------------------- |
-  |   POST   |    /sendMailRegistro    |
+  **JSON**
+  ```sh
+  {
+    "title": "required-string",
+    "description": "required-string",
+    "id_user" : "required-integer",
+    "id_sender" : "not_required-integer",
+    "id_type" : "required-integer"
+  }
+  ``` 
 
-### Microservicio Tutoria
+- Eliminar las notificaciones del usuario con el id.
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | DELETE | /users/{id}/notifications |
+
+- Actualizar la notificación.
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | PUT    | /users/{id}/notifications |
+
+    **JSON**
+  ```sh
+  {
+    "title": "required-string",
+    "description": "required-string",
+    "id_user" : "required-string",
+    "id_sender" : "not_required-string",
+    "id_type" : "required-integer"
+    "id_state" : "required-integer"
+  }
+  ``` 
+
+- Registrar un usuario dentro del microservicio.
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /users |
+
+    **JSON**
+  ```sh
+  {
+    "fullname": "required-string",
+    "email": "required-string",
+    "id_role" : "required-string",
+  }
+  ``` 
+
+- Marcar como vistas, las notificaciones de un usuario.
+  | Metodo | Ruta                     |
+  |--------|--------------------------|
+  | PATCH  | /users/checkNotification |
+
+    **JSON**
+  ```sh
+  {
+    "id": "required-integer",
+  }
+  ``` 
+
+- Enviar una notificación por SMS.
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | POST   | /sendNotiToNumber |
+
+      **JSON**
+  ```sh
+  {
+    "numero": "required-string",
+    "mensaje": "required-string"
+  }
+  ``` 
+
+- Enviar correo de notificación de una asesoría.
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | POST   | /sendMailAsesoria |
+
+      **JSON**
+  ```sh
+  {
+    "email":"email@gmail.com", 
+    "username":"Dcris", 
+    "teacher_name":"Milton Vera", 
+    "hora":"4:30 PM"
+  }
+  ``` 
+
+- Enviar correo de notificación de una auditoría.
+  | Metodo | Ruta               |
+  |--------|--------------------|
+  | POST   | /sendMailAuditoria |
+
+      **JSON**
+  ```sh
+  {
+    "email":"email@gmail.com", 
+    "username":"Dcris", 
+    "teacher_name":"Milton Vera", 
+    "hora":"4:30 PM"
+  }
+  ``` 
+### Microservicio Knowledge
+Todas las rutas para acceder a este microservicio tienen el prefix de /knowledge-service
+
+- Registrar un nuevo usuario dentro del microservicio (redundar el usuario).
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /users |
+
+  **JSON**
+  ```sh
+  {
+     "id":"asjdhsdfdf",
+     "name":"Carlos",
+     "email":"prueba@gmail.com",
+     "code":"1151505"
+  }
+  ``` 
+
+- Anunciar al microservicio Knowledge service que entró a sesión.
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /login |
+
+  **JSON**
+  ```sh
+  {
+     "token":"asjdhsdfdf"
+  }
+  ``` 
+
+### Microservicio Tutoria MAPEADO, FALTA PROBAR
+
+Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-service
 
 #### Servicio Tutoria
 
 - Permite obtener todas las tutorias.
-  | Metodo  |               Ruta                  |
-  | ------- | ----------------------------------- |
-  |   GET   |    /tutoriaServicio/tutoria/list    |
+  | Metodo | Ruta      |
+  |--------|-----------|
+  | GET    | /tutorias |
 
 - Permite obtener todas las tutorias terminadas.
-  | Metodo  |               Ruta                            |
-  | ------- | --------------------------------------------- |
-  |   GET   |    /tutoriaServicio/tutoria/list/terminadas   |
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | GET    | /tutorias/terminadas |
 
 - Permite obtener todas las tutorias activas.
-  | Metodo  |               Ruta                         |
-  | ------- | ------------------------------------------ |
-  |   GET   |    /tutoriaServicio/tutoria/list/activas   |
+  | Metodo | Ruta              |
+  |--------|-------------------|
+  | GET    | /tutorias/activas |
 
 - Inscribirse a una tutoria
-  | Metodo  |             Ruta                          |
-  | ------- | ----------------------------------------- |
-  |   GET  |    /tutoria/inscribirse/{id}/{idusuario}   |
+  | Metodo | Ruta                                 |
+  |--------|--------------------------------------|
+  | GET    | /tutorias/subscribe/{id}/{idusuario} |
 
   **Header**
   ```sh
@@ -412,9 +547,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Registrar una tutoria
-  | Metodo  |             Ruta                    |
-  | ------- | ----------------------------------- |
-  |   POST  |    /tutoriaServicio/tutoria/save    |
+  | Metodo | Ruta      |
+  |--------|-----------|
+  | POST   | /tutorias |
 
   **Header**
   ```sh
@@ -440,9 +575,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Editar una tutoria
-  | Metodo  |             Ruta               |
-  | ------- | ------------------------------ |
-  |   PUT   |    /tutoriaServicio/tutoria    |
+  | Metodo | Ruta     |
+  |--------|----------|
+  | PUT    | /tutoria |
 
   **JSON**
   ```sh
@@ -511,9 +646,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ```
 
 - Eliminar una tutoria por su **id** y **nombre**
-  | Metodo  |                    Ruta                             |
-  | ------- | --------------------------------------------------- |
-  |   PUT   |    /tutoriaServicio/tutoria/delete/{id}/{nombre}    |
+  | Metodo | Ruta                    |
+  |--------|-------------------------|
+  | PUT    | /tutorias/{id}/{nombre} |
 
   **JSON**
   ```sh
@@ -525,14 +660,14 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 #### Servicio Tema
 
 - Permite obtener todos los temas.
-  | Metodo  |               Ruta               |
-  | ------- | -------------------------------- |
-  |   GET   |    /tutoriaServicio/tema/list    |
+  | Metodo | Ruta   |
+  |--------|--------|
+  | GET    | /temas |
 
 - Permite buscar un tema por su **nombre**.
-  | Metodo  |                       Ruta                          |
-  | ------- | --------------------------------------------------- |
-  |   POST  |    /tutoriaServicio/tema/busquedaNombre/{nombre}    |
+  | Metodo | Ruta            |
+  |--------|-----------------|
+  | POST   | /temas/{nombre} |
 
   **JSON**
   ```sh
@@ -542,9 +677,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Registrar un tema
-  | Metodo  |             Ruta                  |
-  | ------- | --------------------------------- |
-  |   POST  |    /tutoriaServicio/tema/save     |
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /temas |
 
   **JSON**
   ```sh
@@ -555,9 +690,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Editar un tema
-  | Metodo  |         Ruta                |
-  | ------- | --------------------------- |
-  |   PUT   |    /tutoriaServicio/tema    |
+  | Metodo | Ruta   |
+  |--------|--------|
+  | PUT    | /temas |
 
   **JSON**
   ```sh
@@ -568,9 +703,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Eliminar un tema por su **id** y **nombre**
-  | Metodo  |                    Ruta                          |
-  | ------- | ------------------------------------------------ |
-  |   PUT   |    /tutoriaServicio/tema/delete/{id}/{nombre}    |
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | PUT    | /temas/{id}/{nombre} |
 
   **JSON**
   ```sh
@@ -583,14 +718,14 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 #### Servicio Categoria
 
 - Permite obtener todas las categorias.
-  | Metodo  |               Ruta                   |
-  | ------- | ------------------------------------ |
-  |   GET   |    /tutoriaServicio/categoria/list   |
+  | Metodo | Ruta            |
+  |--------|-----------------|
+  | GET    | /categoria/list |
 
 - Registrar una Categoria
-  | Metodo  |             Ruta                       |
-  | ------- | -------------------------------------- |
-  |   POST  |    /tutoriaServicio/categoria/save     |
+  | Metodo | Ruta            |
+  |--------|-----------------|
+  | POST   | /categoria/save |
 
   **JSON**
   ```sh
@@ -601,9 +736,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   ``` 
 
 - Editar una categoria
-  | Metodo  |         Ruta                     |
-  | ------- | -------------------------------- |
-  |   PUT   |    /tutoriaServicio/categoria    |
+  | Metodo | Ruta       |
+  |--------|------------|
+  | PUT    | /categoria |
 
   **JSON**
   ```sh
@@ -613,9 +748,9 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
   }
   ``` 
 - Eliminar una categoria por su **id** y **nombre**
-  | Metodo  |                    Ruta                               |
-  | ------- | ----------------------------------------------------- |
-  |   PUT   |    /tutoriaServicio/categoria/delete/{id}/{nombre}    |
+  | Metodo | Ruta                            |
+  |--------|---------------------------------|
+  | PUT    | /categoria/delete/{id}/{nombre} |
 
   **JSON**
   ```sh
@@ -627,35 +762,66 @@ Para enviar **data** en el body a las peticiones POST utilizamos **POSTMAN**
 
 ### Microservicio Chat
 
+Todas las rutas para acceder a este microservicio tienen el prefix de /chat-service
+
 - Permite obtener una conversación de un usuario por su id
-  | Metodo  |            Ruta               |
-  | ------- | ----------------------------- |
-  |   GET   |    /conversations/{userId}    |
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | GET    | /users/{id}/conversations |
 
 - Permite obtener una conversación entre dos usuarios
-  | Metodo  |                          Ruta                          |
-  | ------- | ------------------------------------------------------ |
-  |   GET   |    /conversations/find/{firstUserId}/{secondUserId}    |
+  | Metodo | Ruta                                 |
+  |--------|--------------------------------------|
+  | GET    | /users/{user1}/{user2}/conversations |
 
 - Permite obtener los mensajes por el id de una conversación
-  | Metodo  |           Ruta                   |
-  | ------- | -------------------------------- |
-  |   GET   |    /messages/{conversationId}    |
+  | Metodo | Ruta                         |
+  |--------|------------------------------|
+  | GET    | /conversations/{id}/messages |
 
 - Permite obtener los mensajes
-  |  Metodo  |     Ruta        |
-  | -------- | --------------- |
-  |   POST   |    /messages    |
+  | Metodo | Ruta      |
+  |--------|-----------|
+  | POST   | /messages |
 
-- Registrar ......
-  |  Metodo  |        Ruta          |
-  | -------- | -------------------- |
-  |   POST   |    /auth/register    |
+- Registrar Usuario dentro del Microservicio
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /users |
 
-- Permite obtener una conversación
-  |  Metodo  |        Ruta          |
-  | -------- | -------------------- |
-  |   POST   |    /conversations    |
+    **JSON**
+  ```sh
+  {
+    "username":"required-string",
+    "email":"required-email",
+    "password": "required-password"
+  }
+  ```
+
+- Permite obtener una conversación, sus mensajes.
+  | Metodo | Ruta                         |
+  |--------|------------------------------|
+  | GET    | /conversations/{id}/messages |
+
+  
+- Registrar una conversación.
+  | Metodo | Ruta           |
+  |--------|----------------|
+  | POST   | /conversations |
+
+    **JSON**
+  ```sh
+  {
+    "sendeId":"required-integer",
+    "receiverId":"required-integer",
+  }
+  ```
+
+### Microservicio Auditoría NO DESPLEGÓ, NO HAY ENDPOINTS
+
+Todas las rutas para acceder a este microservicio tienen el prefix de /audit-service
+
+
 ## Lenguajes Programación, Tecnologias Y Frameworks
 [![debug](https://img.icons8.com/color/48/000000/amazon-web-services.png)](http://18.235.152.56/students)
 [![debug](https://img.icons8.com/office/42/react.png)](http://52.90.33.232/)

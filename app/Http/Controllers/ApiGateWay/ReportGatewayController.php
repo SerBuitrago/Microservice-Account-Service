@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ApiGateWey;
+namespace App\Http\Controllers\ApiGateWay;
 
 use App\Http\Controllers\Controller;
 use App\Services\ReportService;
@@ -10,12 +10,14 @@ class ReportGatewayController extends Controller
 {
     private $reportService;
 
-    public function __construct(ReportService $reportService){
+    public function __construct(ReportService $reportService)
+    {
         $this->reportService = $reportService;
     }
 
-    public function index(){
+    public function index()
+    {
         // TODO
-        
+
     }
 }

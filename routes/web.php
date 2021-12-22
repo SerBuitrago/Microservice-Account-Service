@@ -43,9 +43,15 @@ $router->post('reset/password', 'AccountsController@resetPassword'); //-
 $router->post('/student/register', 'StudentController@store'); //
 
 
+
+$router->get('/studentsForMicroservices', 'StudentController@index'); //-
+
+
 /**
  * AUTENTICACION POR API_TOKEN
  */
+
+$router->get('user/showByToken/{token}', 'UserController@showByToken');
 $router->group(['middleware' => 'auth'], function () use ($router) {
 
 
@@ -113,50 +119,98 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
 | Api Gateway
 |--------------------------------------------------------------------------
 */
-/**
- * Notification
- */
-$router->group(['prefix' => 'notificationService'], function () use ($router) {
-    $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@userNotifications');
-    $router->post('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@store');
-    $router->post('sendMailRegistro', 'ApiGateWay\NotificationGatewayController@sendMailRegistro');
+
+$router->group(['middleware' => ['role:Estudiante', 'auth']], function () use ($router) {
+
+    /**
+     * Notification Microservice
+     */
+
+    $router->group(['prefix' => 'notification-service'], function () use ($router) {
+        $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@showNotification');
+        $router->post('users/notifications', 'ApiGateWay\NotificationGatewayController@storeNotification');
+        $router->put('users/notifications', 'ApiGateWay\NotificationGatewayController@updateNotification');
+        $router->delete('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@destroyNotification');
+        $router->post('users', 'ApiGateWay\NotificationGatewayController@storeUser');
+        $router->put('users/checkNotification', 'ApiGateWay\NotificationGatewayController@readingNotificationsByUserId');
+
+        $router->post('sendNotiToNumber', 'ApiGateWay\NotificationGatewayController@sendNotiToNumber');
+        $router->post('sendMailAuditoria', 'ApiGateWay\NotificationGatewayController@sendMailAuditoria');
+        $router->post('sendMailAsesoria', 'ApiGateWay\NotificationGatewayController@sendMailAsesoria');
+    });
+
+    /**
+     * Knowledge Microservice
+     */
+
+    $router->group(['prefix' => 'knowledge-service'], function () use ($router) {
+
+        $router->post('users', 'ApiGateWay\KnowledgeGatewayController@storeUser');
+        $router->post('login', 'ApiGateWay\KnowledgeGatewayController@loginInApp');
+    });
+
+    /**
+     * Audit Microservice
+     */
+
+    $router->group(['prefix' => 'audit-service'], function () use ($router) {
+        $router->get('/',  'ApiGateWay\AuditGatewayController@list');
+        $router->get('{id}',  'ApiGateWay\AuditGatewayController@show');
+        $router->post('/',  'ApiGateWay\AuditGatewayController@create');
+        $router->put('/',  'ApiGateWay\AuditGatewayController@update');
+        $router->delete('{id}',  'ApiGateWay\AuditGatewayController@destroy');
+    });
+
+    /**
+     * Chat Microservice
+     */
+
+    $router->group(['prefix' => 'chat-service'], function () use ($router) {
+        $router->group(['prefix' => 'conversations'], function () use ($router) {
+            $router->post('messages',  'ApiGateWay\ChatGatewayController@storeMessage');
+            $router->get('{id}/messages', 'ApiGateWay\ChatGatewayController@conversationMessages');
+            $router->post('/', 'ApiGateWay\ChatGatewayController@storeConversation');
+        });
+
+        $router->group(['prefix' => 'users'], function () use ($router) {
+            $router->post('/',  'ApiGateWay\ChatGatewayController@storeUser');
+            $router->get('{id}/conversations',  'ApiGateWay\ChatGatewayController@userConversations');
+            $router->get('{user1}/{user2}/conversations',  'ApiGateWay\ChatGatewayController@usersConversations');
+        });
+    });
+
+    /**
+     * Tutoring Microservice
+     */
+
+    $router->group(['prefix' => 'tutoring-service'], function () use ($router) {
+        $router->group(['prefix' => 'temas'], function () use ($router) {
+            $router->get('/',  'ApiGateWay\TutoringGatewayController@temaList');
+            $router->post('/',  'ApiGateWay\TutoringGatewayController@storeTema');
+            $router->get('{name}',  'ApiGateWay\TutoringGatewayController@searchTemaByName');
+            $router->put('/',  'ApiGateWay\TutoringGatewayController@updateTema');
+            $router->delete('/{id}/{tema}',  'ApiGateWay\TutoringGatewayController@deleteTema');
+        });
+        $router->group(['prefix' => 'tutorias'], function () use ($router) {
+            $router->get('/',  'ApiGateWay\TutoringGatewayController@tutoriaList');
+            $router->post('/',  'ApiGateWay\TutoringGatewayController@storeTutoria');
+            $router->put('/',  'ApiGateWay\TutoringGatewayController@updateTutoria');
+            $router->get('notifications',  'ApiGateWay\TutoringGatewayController@tutoriaNotificationsAll');
+            $router->get('activas',  'ApiGateWay\TutoringGatewayController@activeTutoriaList');
+            $router->get('terminadas',  'ApiGateWay\TutoringGatewayController@finishedTutoriaList');
+            $router->delete('{id}/{name}',  'ApiGateWay\TutoringGatewayController@deleteTutoria');
+            $router->get('{name}', 'ApiGateWay\TutoringGatewayController@fetchReadTutoriaNombre');
+            $router->get('subscribe/{id}/{idusuario}',  'ApiGateWay\TutoringGatewayController@subscribeInTutoria');
+        });
+        $router->group(['prefix' => 'categorias'], function () use ($router) {
+            $router->get('/',  'ApiGateWay\TutoringGatewayController@tutoriaList');
+            $router->post('/',  'ApiGateWay\TutoringGatewayController@storeTutoria');
+            $router->put('/',  'ApiGateWay\TutoringGatewayController@updateTutoria');
+            $router->delete('{id}/{name}',  'ApiGateWay\TutoringGatewayController@deleteTutoria');
+        });
+
+        $router->group(['prefix' => 'usuario'], function () use ($router) {
+            $router->post('/{id}/rol/{rol}',  'ApiGateWay/TutoringGatewayController@createRol');
+        });
+    });
 });
-
-/**
- * Audit
- */
-
-// $router->group(['prefix' => 'audit'], function () use ($router) {
-//     $router->get('/', ['uses' => 'AuditGatewayController@fetchReadAll']);
-//     $router->get('/{id}', ['uses' => 'AuditGatewayController@fetchRead']);
-//     $router->post('/', ['uses' => 'ApiGateWay/NotificationGatewayController@create']);
-//     $router->put('/', ['uses' => 'ApiGateWay/NotificationGatewayController@update']);
-//     $router->delete('/{id}', ['uses' => 'ApiGateWay/NotificationGatewayController@delete']);
-// });
-
-/**
- * Tutoring
- */
-// $router->group(['prefix' => 'tutoringService'], function () use ($router) {
-//     $router->group(['prefix' => 'tema'], function () use ($router) {
-//         $router->get('list',  'ApiGateWay/TutoringGatewayController@fetchReadTemaAll');
-//         $router->get('{nombre}',  'ApiGateWay/TutoringGatewayController@fetchReadTemaNombre');
-//         $router->post('save',  'ApiGateWay/NotificationGatewayController@createTema');
-//         $router->put('/',  'ApiGateWay/NotificationGatewayController@updateTema');
-//         $router->delete('/{id}/{tema}',  'ApiGateWay/NotificationGatewayController@deleteTema');
-//     });
-//     $router->group(['prefix' => 'tutoria'], function () use ($router) {
-//         $router->get('/{nombre}', 'ApiGateWay/TutoringGatewayController@fetchReadTutoriaNombre');
-//         $router->get('/notificacionesall',  'ApiGateWay/TutoringGatewayController@fetchReadTutoriaNotificacionesAll');
-//         $router->get('/list',  'ApiGateWay/TutoringGatewayController@fetchReadTutoriaAll');
-//         $router->get('/activas',  'ApiGateWay/TutoringGatewayController@fetchReadTutoriaActivasAll');
-//         $router->get('/terminadas',  'ApiGateWay/TutoringGatewayController@fetchReadTutoriaTerminadasAll');
-//         $router->get('/{id}/{idusuario}',  'ApiGateWay/TutoringGatewayController@fetchTutoriaInscribirse');
-//         $router->post('/save',  'ApiGateWay/NotificationGatewayController@createTutoria');
-//         $router->put('/',  'ApiGateWay/NotificationGatewayController@updateTutoria');
-//         $router->delete('/{id}/{nombre}',  'ApiGateWay/NotificationGatewayController@deleteTutoria');
-//     });
-//     $router->group(['prefix' => 'usuario'], function () use ($router) {
-//         $router->post('/{id}/rol/{rol}',  'ApiGateWay/NotificationGatewayController@createRol');
-//     });
-// });

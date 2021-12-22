@@ -14,8 +14,8 @@ class User extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->Integer('student_code');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('student_code');
             $table->String('student_email');
             $table->String('password');
             $table->String('api_token')->nullable();

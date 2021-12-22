@@ -19,26 +19,46 @@ class NotificationService
 
     public function allNotificationsByUser($data, $user)
     {
-        return $this->request('GET', $this->baseUri . '/usuarios/notifications' . $user, $data);
+        return $this->request('GET', $this->baseUri . '/usuarios/notifications/' . $user, $data);
     }
 
-    public function store($data, $user)
+    public function deleteNotificationById($id)
     {
-        return $this->request('POST', $this->baseUri . '/usuarios/' . $user . '/notifications', $data);
+        return $this->request('DELETE', $this->baseUri . "/usuarios/notifications/delete/{$id}");
     }
 
-    public function checkNotification($data, $user, $notification)
+    public function storeNotification($data)
     {
-        return $this->request('PATCH', $this->baseUri . '/usuarios/' . $user . '/notifications/' . $notification, $data);
+        return $this->request('POST', $this->baseUri . '/usuarios/notifications', $data);
     }
 
-    public function sendMailRegistro($data)
+    public function updateNotification($data)
     {
-        return $this->request('POST', '/sendMailRegistro', $data);
+        return $this->request('PUT', $this->baseUri . '/usuarios/notifications', $data);
+    }
+
+    public function storeUser($data)
+    {
+        return $this->request('POST', $this->baseUri . '/usuarios/crear', $data);
+    }
+
+    public function checkNotification($data)
+    {
+        return $this->request('PUT', $this->baseUri . '/usuarios/readingNotifications/', $data);
     }
 
     public function sendNotiToNumber($data)
     {
-        # code...
+        return $this->request('POST', $this->baseUri . '/sendNotiToNumber', $data);
+    }
+
+    public function sendMailAsesoria($data)
+    {
+        return $this->request('POST', $this->baseUri . '/sendMailAsesoria', $data);
+    }
+
+    public function sendMailAuditoria($data)
+    {
+        return $this->request('POST', $this->baseUri . '/sendMailAuditoria', $data);
     }
 }

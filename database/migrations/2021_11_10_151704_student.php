@@ -14,7 +14,7 @@ class Student extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->integer('code')->primary();
+            $table->unsignedBigInteger('code', true);
             $table->String('name');
             $table->String('last_name');
             $table->String('address');

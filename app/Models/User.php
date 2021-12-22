@@ -36,6 +36,6 @@ class User extends Model{
 
     public function student()
     {
-        return $this->hasOne(Student::class, 'code', 'student_code');
+        return $this->belongsTo(Student::class, 'code', 'student_code');
     }
 }
