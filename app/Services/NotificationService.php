@@ -44,7 +44,7 @@ class NotificationService
 
     public function checkNotification($data)
     {
-        return $this->request('PATCH', $this->baseUri . '/usuarios/readingNotifications/', $data);
+        return $this->request('PUT', $this->baseUri . '/usuarios/readingNotifications/', $data);
     }
 
     public function sendNotiToNumber($data)

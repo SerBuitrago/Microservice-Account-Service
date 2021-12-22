@@ -25,7 +25,7 @@ class NotificationGatewayController extends Controller
     {
         $request->merge(['id' => $id]);
 
-        $rules = ['id' => ['required', 'integer']];
+        $rules = ['id' => ['required', 'numeric']];
         $messages = ['id.required' => 'El identificador es requerido', 'id.integer' => 'El identificador debe de ser un entero.'];
         $this->validate(request: $request, rules: $rules, messages: $messages);
 
@@ -37,9 +37,9 @@ class NotificationGatewayController extends Controller
         $rules = [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'id_user' => ['required', 'integer'],
-            'id_sender' => ['integer'],
-            'id_type' => ['required', 'id_type']
+            'id_user' => ['required', 'numeric'],
+            'id_sender' => ['numeric'],
+            'id_type' => ['required', 'numeric']
         ];
         $this->validate(request: $request, rules: $rules);
 
@@ -51,9 +51,10 @@ class NotificationGatewayController extends Controller
         $rules = [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'id_user' => ['required', 'integer'],
-            'id_sender' => ['integer'],
-            'id_type' => ['required', 'id_type']
+            'id_user' => ['required', 'numeric'],
+            'id_sender' => ['numeric'],
+            'id_type' => ['required', 'numeric'],
+            'id_state' => ['required', 'boolean']
         ];
         $this->validate(request: $request, rules: $rules);
 
@@ -65,7 +66,7 @@ class NotificationGatewayController extends Controller
         $rules = [
             'fullname' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'id_role' => ['required', 'integer'],
+            'id_role' => ['required', 'numeric'],
         ];
         $this->validate(request: $request, rules: $rules);
 
@@ -75,7 +76,7 @@ class NotificationGatewayController extends Controller
     public function readingNotificationsByUserId(Request $request)
     {
         $rules = [
-            'id' => ['required', 'integer']
+            'id' => ['required', 'numeric']
         ];
         $this->validate(request: $request, rules: $rules);
 

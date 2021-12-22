@@ -430,9 +430,9 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /notificat
   ``` 
 
 - Marcar como vistas, las notificaciones de un usuario.
-  | Metodo | Ruta   |
-  |--------|--------|
-  | PATCH  | /users |
+  | Metodo | Ruta                     |
+  |--------|--------------------------|
+  | PATCH  | /users/checkNotification |
 
     **JSON**
   ```sh
@@ -462,21 +462,25 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /notificat
       **JSON**
   ```sh
   {
-    "numero": "required-string",
-    "mensaje": "required-string"
+    "email":"email@gmail.com", 
+    "username":"Dcris", 
+    "teacher_name":"Milton Vera", 
+    "hora":"4:30 PM"
   }
   ``` 
 
 - Enviar correo de notificación de una auditoría.
-  | Metodo | Ruta              |
-  |--------|-------------------|
-  | POST   | /sendMailAsesoria |
+  | Metodo | Ruta               |
+  |--------|--------------------|
+  | POST   | /sendMailAuditoria |
 
       **JSON**
   ```sh
   {
-    "numero": "required-string",
-    "mensaje": "required-string"
+    "email":"email@gmail.com", 
+    "username":"Dcris", 
+    "teacher_name":"Milton Vera", 
+    "hora":"4:30 PM"
   }
   ``` 
 

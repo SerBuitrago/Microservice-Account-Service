@@ -128,7 +128,7 @@ $router->group(['prefix' => 'notification-service'], function () use ($router) {
     $router->put('users/notifications', 'ApiGateWay\NotificationGatewayController@updateNotification');
     $router->delete('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@destroyNotification');
     $router->post('users', 'ApiGateWay\NotificationGatewayController@storeUser');
-    $router->patch('users/checkNotification', 'ApiGateWay\NotificationGatewayController@readingNotificationsByUserId');
+    $router->put('users/checkNotification', 'ApiGateWay\NotificationGatewayController@readingNotificationsByUserId');
 
     $router->post('sendNotiToNumber', 'ApiGateWay\NotificationGatewayController@sendNotiToNumber');
     $router->post('sendMailAuditoria', 'ApiGateWay\NotificationGatewayController@sendMailAuditoria');
