@@ -525,18 +525,18 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   | GET    | /tutorias |
 
 - Permite obtener todas las tutorias terminadas.
-  | Metodo | Ruta                |
-  |--------|---------------------|
+  | Metodo | Ruta                 |
+  |--------|----------------------|
   | GET    | /tutorias/terminadas |
 
 - Permite obtener todas las tutorias activas.
-  | Metodo | Ruta             |
-  |--------|------------------|
+  | Metodo | Ruta              |
+  |--------|-------------------|
   | GET    | /tutorias/activas |
 
 - Inscribirse a una tutoria
-  | Metodo | Ruta                                  |
-  |--------|---------------------------------------|
+  | Metodo | Ruta                                 |
+  |--------|--------------------------------------|
   | GET    | /tutorias/subscribe/{id}/{idusuario} |
 
   **Header**
@@ -547,8 +547,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Registrar una tutoria
-  | Metodo | Ruta          |
-  |--------|---------------|
+  | Metodo | Ruta      |
+  |--------|-----------|
   | POST   | /tutorias |
 
   **Header**
@@ -575,8 +575,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Editar una tutoria
-  | Metodo | Ruta                     |
-  |--------|--------------------------|
+  | Metodo | Ruta     |
+  |--------|----------|
   | PUT    | /tutoria |
 
   **JSON**
@@ -646,8 +646,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ```
 
 - Eliminar una tutoria por su **id** y **nombre**
-  | Metodo | Ruta                                          |
-  |--------|-----------------------------------------------|
+  | Metodo | Ruta                    |
+  |--------|-------------------------|
   | PUT    | /tutorias/{id}/{nombre} |
 
   **JSON**
@@ -665,8 +665,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   | GET    | /temas |
 
 - Permite buscar un tema por su **nombre**.
-  | Metodo | Ruta                                          |
-  |--------|-----------------------------------------------|
+  | Metodo | Ruta            |
+  |--------|-----------------|
   | POST   | /temas/{nombre} |
 
   **JSON**
@@ -677,8 +677,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Registrar un tema
-  | Metodo | Ruta                       |
-  |--------|----------------------------|
+  | Metodo | Ruta   |
+  |--------|--------|
   | POST   | /temas |
 
   **JSON**
@@ -690,8 +690,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Editar un tema
-  | Metodo | Ruta                  |
-  |--------|-----------------------|
+  | Metodo | Ruta   |
+  |--------|--------|
   | PUT    | /temas |
 
   **JSON**
@@ -703,8 +703,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Eliminar un tema por su **id** y **nombre**
-  | Metodo | Ruta                                       |
-  |--------|--------------------------------------------|
+  | Metodo | Ruta                 |
+  |--------|----------------------|
   | PUT    | /temas/{id}/{nombre} |
 
   **JSON**
@@ -718,13 +718,13 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 #### Servicio Categoria
 
 - Permite obtener todas las categorias.
-  | Metodo | Ruta                            |
-  |--------|---------------------------------|
+  | Metodo | Ruta            |
+  |--------|-----------------|
   | GET    | /categoria/list |
 
 - Registrar una Categoria
-  | Metodo | Ruta                            |
-  |--------|---------------------------------|
+  | Metodo | Ruta            |
+  |--------|-----------------|
   | POST   | /categoria/save |
 
   **JSON**
@@ -736,8 +736,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Editar una categoria
-  | Metodo | Ruta                       |
-  |--------|----------------------------|
+  | Metodo | Ruta       |
+  |--------|------------|
   | PUT    | /categoria |
 
   **JSON**
@@ -748,8 +748,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   }
   ``` 
 - Eliminar una categoria por su **id** y **nombre**
-  | Metodo | Ruta                                            |
-  |--------|-------------------------------------------------|
+  | Metodo | Ruta                            |
+  |--------|---------------------------------|
   | PUT    | /categoria/delete/{id}/{nombre} |
 
   **JSON**
@@ -765,34 +765,57 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 Todas las rutas para acceder a este microservicio tienen el prefix de /chat-service
 
 - Permite obtener una conversación de un usuario por su id
-  | Metodo | Ruta                    |
-  |--------|-------------------------|
-  | GET    | /conversations/{userId} |
+  | Metodo | Ruta                      |
+  |--------|---------------------------|
+  | GET    | /users/{id}/conversations |
 
 - Permite obtener una conversación entre dos usuarios
-  | Metodo | Ruta                                             |
-  |--------|--------------------------------------------------|
-  | GET    | /conversations/find/{firstUserId}/{secondUserId} |
+  | Metodo | Ruta                                 |
+  |--------|--------------------------------------|
+  | GET    | /users/{user1}/{user2}/conversations |
 
 - Permite obtener los mensajes por el id de una conversación
-  | Metodo | Ruta                       |
-  |--------|----------------------------|
-  | GET    | /messages/{conversationId} |
+  | Metodo | Ruta                         |
+  |--------|------------------------------|
+  | GET    | /conversations/{id}/messages |
 
 - Permite obtener los mensajes
   | Metodo | Ruta      |
   |--------|-----------|
   | POST   | /messages |
 
-- Registrar ......
-  | Metodo | Ruta           |
-  |--------|----------------|
-  | POST   | /auth/register |
+- Registrar Usuario dentro del Microservicio
+  | Metodo | Ruta   |
+  |--------|--------|
+  | POST   | /users |
 
-- Permite obtener una conversación
+    **JSON**
+  ```sh
+  {
+    "username":"required-string",
+    "email":"required-email",
+    "password": "required-password"
+  }
+  ```
+
+- Permite obtener una conversación, sus mensajes.
+  | Metodo | Ruta                         |
+  |--------|------------------------------|
+  | GET    | /conversations/{id}/messages |
+
+  
+- Registrar una conversación.
   | Metodo | Ruta           |
   |--------|----------------|
   | POST   | /conversations |
+
+    **JSON**
+  ```sh
+  {
+    "sendeId":"required-integer",
+    "receiverId":"required-integer",
+  }
+  ```
 
 ### Microservicio Auditoría
 
