@@ -32,7 +32,7 @@ class NotificationGatewayController extends Controller
 
         $rules = ['id' => ['required', 'numeric']];
         $messages = ['id.required' => 'El identificador es requerido', 'id.integer' => 'El identificador debe de ser un entero.'];
-        $this->validate(request: $request, rules: $rules, messages: $messages);
+        $this->validate($request,  $rules,  $messages);
 
         return $this->successResponse($this->notificationService->deleteNotificationById($request->get('id')));
     }
@@ -46,7 +46,7 @@ class NotificationGatewayController extends Controller
             'id_sender' => ['numeric'],
             'id_type' => ['required', 'numeric']
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->storeNotification($request->all()));
     }
@@ -61,7 +61,7 @@ class NotificationGatewayController extends Controller
             'id_type' => ['required', 'numeric'],
             'id_state' => ['required', 'booleanD']
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->updateNotification($request->all()));
     }
@@ -73,7 +73,7 @@ class NotificationGatewayController extends Controller
             'email' => ['required', 'email'],
             'id_role' => ['required', 'numeric'],
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->storeUser($request->only(['fullname', 'email', 'id_role'])));
     }
@@ -83,7 +83,7 @@ class NotificationGatewayController extends Controller
         $rules = [
             'id' => ['required', 'numeric']
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->checkNotification($request->only('id')));
     }
@@ -95,7 +95,7 @@ class NotificationGatewayController extends Controller
             'mensaje' => ['required', 'string']
 
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->sendNotiToNumber($request->all()));
     }
@@ -108,7 +108,7 @@ class NotificationGatewayController extends Controller
             'teacher_name' => ['required', 'string'],
             'hora' => ['required', 'string']
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->sendMailAsesoria($request->all()));
     }
@@ -121,7 +121,7 @@ class NotificationGatewayController extends Controller
             'teacher_name' => ['required', 'string'],
             'hora' => ['required', 'string']
         ];
-        $this->validate(request: $request, rules: $rules);
+        $this->validate($request,  $rules);
 
         return $this->successResponse($this->notificationService->sendMailAuditoria($request->all()));
     }
