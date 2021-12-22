@@ -487,8 +487,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /notificat
 Todas las rutas para acceder a este microservicio tienen el prefix de /knowledge-service
 
 - Registrar un nuevo usuario dentro del microservicio (redundar el usuario).
-  | Metodo | Ruta                 |
-  |--------|----------------------|
+  | Metodo | Ruta   |
+  |--------|--------|
   | POST   | /users |
 
   **JSON**
@@ -502,8 +502,8 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /knowledge
   ``` 
 
 - Anunciar al microservicio Knowledge service que entró a sesión.
-  | Metodo | Ruta                 |
-  |--------|----------------------|
+  | Metodo | Ruta   |
+  |--------|--------|
   | POST   | /login |
 
   **JSON**
@@ -513,31 +513,31 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /knowledge
   }
   ``` 
 
-### Microservicio Tutoria AÚN NO FUNCIONAN - TRABAJO EN CURSO !!
+### Microservicio Tutoria MAPEADO, FALTA PROBAR
 
 Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-service
 
 #### Servicio Tutoria
 
 - Permite obtener todas las tutorias.
-  | Metodo | Ruta                          |
-  |--------|-------------------------------|
+  | Metodo | Ruta      |
+  |--------|-----------|
   | GET    | /tutorias |
 
 - Permite obtener todas las tutorias terminadas.
-  | Metodo | Ruta                                     |
-  |--------|------------------------------------------|
-  | GET    | /tutoriaServicio/tutoria/list/terminadas |
+  | Metodo | Ruta                |
+  |--------|---------------------|
+  | GET    | /tutorias/terminadas |
 
 - Permite obtener todas las tutorias activas.
-  | Metodo | Ruta                                  |
-  |--------|---------------------------------------|
-  | GET    | /tutoriaServicio/tutoria/list/activas |
+  | Metodo | Ruta             |
+  |--------|------------------|
+  | GET    | /tutorias/activas |
 
 - Inscribirse a una tutoria
   | Metodo | Ruta                                  |
   |--------|---------------------------------------|
-  | GET    | /tutoria/inscribirse/{id}/{idusuario} |
+  | GET    | /tutorias/subscribe/{id}/{idusuario} |
 
   **Header**
   ```sh
@@ -547,9 +547,9 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
   ``` 
 
 - Registrar una tutoria
-  | Metodo | Ruta                          |
-  |--------|-------------------------------|
-  | POST   | /tutoriaServicio/tutoria/save |
+  | Metodo | Ruta          |
+  |--------|---------------|
+  | POST   | /tutorias |
 
   **Header**
   ```sh
@@ -577,7 +577,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Editar una tutoria
   | Metodo | Ruta                     |
   |--------|--------------------------|
-  | PUT    | /tutoriaServicio/tutoria |
+  | PUT    | /tutoria |
 
   **JSON**
   ```sh
@@ -648,7 +648,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Eliminar una tutoria por su **id** y **nombre**
   | Metodo | Ruta                                          |
   |--------|-----------------------------------------------|
-  | PUT    | /tutoriaServicio/tutoria/delete/{id}/{nombre} |
+  | PUT    | /tutorias/{id}/{nombre} |
 
   **JSON**
   ```sh
@@ -660,14 +660,14 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 #### Servicio Tema
 
 - Permite obtener todos los temas.
-  | Metodo | Ruta                       |
-  |--------|----------------------------|
+  | Metodo | Ruta   |
+  |--------|--------|
   | GET    | /temas |
 
 - Permite buscar un tema por su **nombre**.
   | Metodo | Ruta                                          |
   |--------|-----------------------------------------------|
-  | POST   | /tutoriaServicio/tema/busquedaNombre/{nombre} |
+  | POST   | /temas/{nombre} |
 
   **JSON**
   ```sh
@@ -679,7 +679,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Registrar un tema
   | Metodo | Ruta                       |
   |--------|----------------------------|
-  | POST   | /tutoriaServicio/tema/save |
+  | POST   | /temas |
 
   **JSON**
   ```sh
@@ -692,7 +692,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Editar un tema
   | Metodo | Ruta                  |
   |--------|-----------------------|
-  | PUT    | /tutoriaServicio/tema |
+  | PUT    | /temas |
 
   **JSON**
   ```sh
@@ -705,7 +705,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Eliminar un tema por su **id** y **nombre**
   | Metodo | Ruta                                       |
   |--------|--------------------------------------------|
-  | PUT    | /tutoriaServicio/tema/delete/{id}/{nombre} |
+  | PUT    | /temas/{id}/{nombre} |
 
   **JSON**
   ```sh
@@ -720,12 +720,12 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Permite obtener todas las categorias.
   | Metodo | Ruta                            |
   |--------|---------------------------------|
-  | GET    | /tutoriaServicio/categoria/list |
+  | GET    | /categoria/list |
 
 - Registrar una Categoria
   | Metodo | Ruta                            |
   |--------|---------------------------------|
-  | POST   | /tutoriaServicio/categoria/save |
+  | POST   | /categoria/save |
 
   **JSON**
   ```sh
@@ -738,7 +738,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Editar una categoria
   | Metodo | Ruta                       |
   |--------|----------------------------|
-  | PUT    | /tutoriaServicio/categoria |
+  | PUT    | /categoria |
 
   **JSON**
   ```sh
@@ -750,7 +750,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Eliminar una categoria por su **id** y **nombre**
   | Metodo | Ruta                                            |
   |--------|-------------------------------------------------|
-  | PUT    | /tutoriaServicio/categoria/delete/{id}/{nombre} |
+  | PUT    | /categoria/delete/{id}/{nombre} |
 
   **JSON**
   ```sh

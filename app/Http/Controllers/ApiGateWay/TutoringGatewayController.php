@@ -16,7 +16,7 @@ class TutoringGatewayController extends Controller
     }
 
     /**
-     * Tema
+     * Temas
      */
 
     public function temaList()
@@ -31,7 +31,7 @@ class TutoringGatewayController extends Controller
     public function searchTemaByName($name)
     {
         try {
-            return $this->successResponse($this->tutoringService->searchByName($name));
+            return $this->successResponse($this->tutoringService->searchTemaByName($name));
         } catch (\Exception $error) {
             return response()->json(['response' => $error->getMessage()], 500);
         }
@@ -75,7 +75,7 @@ class TutoringGatewayController extends Controller
     }
 
     /**
-     * Tutoria
+     * Tutorias
      */
 
     public function searchTutoriaByNombre($name)
@@ -171,7 +171,6 @@ class TutoringGatewayController extends Controller
     public function deleteTutoria($id, $nombre)
     {
         try {
-            //code...
             return $this->successResponse($this->tutoringService->deleteTutoria($id, $nombre));
         } catch (\Exception $th) {
             return response()->json(['response' => $th->getMessage()], 500);
@@ -179,16 +178,74 @@ class TutoringGatewayController extends Controller
     }
 
     /**
-     * Usuario
+     * Usuarios
      */
 
     public function createRol($id, $rol)
     {
         try {
-            //code...
             return $this->successResponse($this->tutoringService->createRol($id, $rol));
         } catch (\Exception $th) {
             return response()->json(['response' => $th->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Categorias
+     */
+
+    public function categoriaList()
+    {
+        try {
+            return $this->successResponse($this->tutoringService->temaList());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
+    }
+
+    public function searchCategoriaByName($name)
+    {
+        try {
+            return $this->successResponse($this->tutoringService->searchCategoriaByName($name));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
+    }
+
+    public function storeCategoria(Request $request)
+    {
+        $rules = [
+            'id' => ['required'],
+            'name' => ['required', 'string']
+        ];
+        $this->validate($request, $rules);
+        try {
+            return $this->successResponse($this->tutoringService->storeTema($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
+    }
+
+    public function updateCategoria(Request $request)
+    {
+        $rules = [
+            'id' => ['required'],
+            'name' => ['required', 'string']
+        ];
+        $this->validate($request, $rules);
+        try {
+            return $this->successResponse($this->tutoringService->updateTema($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
+    }
+
+    public function deleteCategoria($id, $nombre)
+    {
+        try {
+            return $this->successResponse($this->tutoringService->deleteTema($id, $nombre));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
         }
     }
 }

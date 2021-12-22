@@ -25,7 +25,7 @@ class TutoringService
         return $this->request('GET', $this->baseUri . '/tutoriaServicio/tema/list');
     }
 
-    public function searchByName($nombre)
+    public function searchTemaByName($nombre)
     {
         return $this->request('GET', $this->baseUri . "/tutoriaServicio/tema/busquedaNombre/{$nombre}");
     }
@@ -65,12 +65,12 @@ class TutoringService
 
     public function activeTutoriaList()
     {
-        return $this->request('GET', $this->baseUri . '/tutoriaServicio/tutoria/activas');
+        return $this->request('GET', $this->baseUri . '/tutoriaServicio/tutoria/list/activas');
     }
 
     public function finishedTutoriaList()
     {
-        return $this->request('GET', $this->baseUri . '/tutoriaServicio/tutoria/terminadas');
+        return $this->request('GET', $this->baseUri . '/tutoriaServicio/tutoria/list/terminadas');
     }
 
     public function subscribeInTutoria($id, $idusuario)
@@ -90,7 +90,7 @@ class TutoringService
 
     public function deleteTutoria($id, $nombre)
     {
-        return $this->request('DELETE', $this->baseUri . "/tutoriaServicio/tutoria/{$id}/{$nombre}");
+        return $this->request('GET', $this->baseUri . "/tutoriaServicio/tutoria/delete/{$id}/{$nombre}");
     }
 
     /**
@@ -99,5 +99,34 @@ class TutoringService
     public function createRol($id, $rol)
     {
         return $this->request('POST', $this->baseUri . "/usuario/{$id}/rol/{$rol}");
+    }
+
+    /**
+     * Categorias
+     */
+
+    public function categoriaList()
+    {
+        return $this->request('GET', $this->baseUri . '/tutoriaServicio/categoria/list');
+    }
+
+    public function searchCategoriaByName($nombre)
+    {
+        return $this->request('GET', $this->baseUri . "/tutoriaServicio/categoria/busquedaNombre/{$nombre}");
+    }
+
+    public function storeCategoria($data)
+    {
+        return $this->request('POST', $this->baseUri . '/tutoriaServicio/categoria/save', $data);
+    }
+
+    public function updateCategoria($data)
+    {
+        return $this->request('PUT', $this->baseUri . "/tutoriaServicio/categoria", $data);
+    }
+
+    public function deleteCategoria($id, $nombre)
+    {
+        return $this->request('DELETE', $this->baseUri . "/tutoriaServicio/categoria/{$id}/{$nombre}");
     }
 }

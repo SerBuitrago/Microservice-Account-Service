@@ -15,33 +15,52 @@ class AuditGatewayController extends Controller
         $this->auditService = $auditService;
     }
 
-    public function index()
+    public function list()
     {
-        return $this->successResponse($this->auditService->fetchReadAll());
+        try {
+            return $this->successResponse($this->auditService->fetchReadAll());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadAll()
+    public function show($id)
     {
-        return $this->successResponse($this->auditService->fetchReadAll());
+        try {
+            return $this->successResponse($this->auditService->fetchRead($id));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchRead($id)
+    public function store(Request $request)
     {
-        return $this->successResponse($this->auditService->fetchRead($id));
-    }
-
-    public function create(Request $request)
-    {
-        return $this->successResponse($this->auditService->create($request->all()));
+        $rules = [
+            
+        ];
+        $this->validate($request, $rules);
+        try {
+            return $this->successResponse($this->auditService->create($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
     public function update(Request $request, $id)
     {
-        return $this->successResponse($this->auditService->update($id, $request->all()));
+        try {
+            return $this->successResponse($this->auditService->update($id, $request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        return $this->successResponse($this->auditService->delete($id));
+        try {
+            return $this->successResponse($this->auditService->delete($id));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 }
