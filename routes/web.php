@@ -120,7 +120,7 @@ $router->group(['middleware' => ['role:Super', 'auth']], function () use ($route
 |--------------------------------------------------------------------------
 */
 /**
- * Notification
+ * Notification Microservice
  */
 $router->group(['prefix' => 'notification-service'], function () use ($router) {
     $router->get('users/{id}/notifications', 'ApiGateWay\NotificationGatewayController@showNotification');
@@ -133,6 +133,13 @@ $router->group(['prefix' => 'notification-service'], function () use ($router) {
     $router->post('sendNotiToNumber', 'ApiGateWay\NotificationGatewayController@sendNotiToNumber');
     $router->post('sendMailAuditoria', 'ApiGateWay\NotificationGatewayController@sendMailAuditoria');
     $router->post('sendMailAsesoria', 'ApiGateWay\NotificationGatewayController@sendMailAsesoria');
+});
+
+/**
+ * Knowledge Microservice
+ */
+
+$router->group(['prefix' => 'knowledge-service'], function () use ($router) {
 });
 
 /**

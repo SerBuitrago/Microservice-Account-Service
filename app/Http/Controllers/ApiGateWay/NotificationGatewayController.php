@@ -18,6 +18,11 @@ class NotificationGatewayController extends Controller
 
     public function showNotification(Request $request, $id)
     {
+        try {
+            return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
         return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
     }
 
@@ -54,7 +59,7 @@ class NotificationGatewayController extends Controller
             'id_user' => ['required', 'numeric'],
             'id_sender' => ['numeric'],
             'id_type' => ['required', 'numeric'],
-            'id_state' => ['required', 'boolean']
+            'id_state' => ['required', 'booleanD']
         ];
         $this->validate(request: $request, rules: $rules);
 
