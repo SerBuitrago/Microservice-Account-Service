@@ -20,7 +20,7 @@ class NotificationGatewayController extends Controller
     {
         try {
             return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
-        } catch (\Throwable $th) {
+        } catch (\Exception $th) {
             return $th->getMessage();
         }
         return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
