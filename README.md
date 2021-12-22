@@ -483,6 +483,35 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /notificat
     "hora":"4:30 PM"
   }
   ``` 
+### Microservicio Knowledge
+Todas las rutas para acceder a este microservicio tienen el prefix de /knowledge-service
+
+- Registrar un nuevo usuario dentro del microservicio (redundar el usuario).
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | POST   | /users |
+
+  **JSON**
+  ```sh
+  {
+     "id":"asjdhsdfdf",
+     "name":"Carlos",
+     "email":"prueba@gmail.com",
+     "code":"1151505"
+  }
+  ``` 
+
+- Anunciar al microservicio Knowledge service que entró a sesión.
+  | Metodo | Ruta                 |
+  |--------|----------------------|
+  | POST   | /login |
+
+  **JSON**
+  ```sh
+  {
+     "token":"asjdhsdfdf"
+  }
+  ``` 
 
 ### Microservicio Tutoria AÚN NO FUNCIONAN - TRABAJO EN CURSO !!
 

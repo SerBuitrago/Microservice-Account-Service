@@ -140,6 +140,9 @@ $router->group(['prefix' => 'notification-service'], function () use ($router) {
  */
 
 $router->group(['prefix' => 'knowledge-service'], function () use ($router) {
+
+    $router->post('users', 'ApiGateWay\KnowledgeGatewayController@storeUser');
+    $router->post('login', 'ApiGateWay\KnowledgeGatewayController@loginInApp');
 });
 
 /**

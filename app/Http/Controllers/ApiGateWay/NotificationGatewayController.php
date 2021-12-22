@@ -18,7 +18,11 @@ class NotificationGatewayController extends Controller
 
     public function showNotification(Request $request, $id)
     {
-        return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
+        try {
+            return $this->successResponse($this->notificationService->allNotificationsByUser($request->all(), $id));
+        } catch (\Exception $error) {
+            return response()->json(false, 500);
+        }
     }
 
     public function destroyNotification(Request $request, $id)
@@ -29,7 +33,11 @@ class NotificationGatewayController extends Controller
         $messages = ['id.required' => 'El identificador es requerido', 'id.integer' => 'El identificador debe de ser un entero.'];
         $this->validate($request,  $rules,  $messages);
 
-        return $this->successResponse($this->notificationService->deleteNotificationById($request->get('id')));
+        try {
+            return $this->successResponse($this->notificationService->deleteNotificationById($request->get('id')));
+        } catch (\Exception $error) {
+            return response()->json(false, 500);
+        }
     }
 
     public function storeNotification(Request $request)
@@ -42,8 +50,11 @@ class NotificationGatewayController extends Controller
             'id_type' => ['required', 'numeric']
         ];
         $this->validate($request,  $rules);
-
-        return $this->successResponse($this->notificationService->storeNotification($request->all()));
+        try {
+            return $this->successResponse($this->notificationService->storeNotification($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(false, 500);
+        }
     }
 
     public function updateNotification(Request $request)
