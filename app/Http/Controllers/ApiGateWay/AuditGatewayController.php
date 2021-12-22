@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ApiGateWey;
+namespace App\Http\Controllers\ApiGateWay;
 
 use App\Http\Controllers\Controller;
 use App\Services\AuditService;
@@ -10,11 +10,13 @@ class AuditGatewayController extends Controller
 {
     private $auditService;
 
-    public function __construct(AuditService $auditService){
+    public function __construct(AuditService $auditService)
+    {
         $this->auditService = $auditService;
     }
 
-    public function index(){
+    public function index()
+    {
         return $this->successResponse($this->auditService->fetchReadAll());
     }
 
@@ -28,7 +30,8 @@ class AuditGatewayController extends Controller
         return $this->successResponse($this->auditService->fetchRead($id));
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         return $this->successResponse($this->auditService->create($request->all()));
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ApiGateWey;
+namespace App\Http\Controllers\ApiGateWay;
 
 use App\Http\Controllers\Controller;
 use App\Services\ChatService;

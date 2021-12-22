@@ -522,7 +522,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Permite obtener todas las tutorias.
   | Metodo | Ruta                          |
   |--------|-------------------------------|
-  | GET    | /tutoriaServicio/tutoria/list |
+  | GET    | /tutorias |
 
 - Permite obtener todas las tutorias terminadas.
   | Metodo | Ruta                                     |
@@ -662,7 +662,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /tutoring-
 - Permite obtener todos los temas.
   | Metodo | Ruta                       |
   |--------|----------------------------|
-  | GET    | /tutoriaServicio/tema/list |
+  | GET    | /temas |
 
 - Permite buscar un tema por su **nombre**.
   | Metodo | Ruta                                          |

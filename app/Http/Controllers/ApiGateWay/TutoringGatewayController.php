@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ApiGateWey;
+namespace App\Http\Controllers\ApiGateWay;
 
 use App\Http\Controllers\Controller;
 use App\Services\TutoringService;
@@ -19,78 +19,163 @@ class TutoringGatewayController extends Controller
      * Tema
      */
 
-    public function fetchReadTemaAll()
+    public function temaList()
     {
-        return $this->successResponse($this->tutoringService->fetchReadTemaAll());
+        try {
+            return $this->successResponse($this->tutoringService->temaList());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadTemaNombre($name)
+    public function searchTemaByName($name)
     {
-        return $this->successResponse($this->tutoringService->fetchReadTemaNombre($name));
+        try {
+            return $this->successResponse($this->tutoringService->searchByName($name));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function createTema(Request $request)
+    public function storeTema(Request $request)
     {
-        return $this->successResponse($this->tutoringService->createTema($request->all()));
+        $rules = [
+            'id' => ['required'],
+            'name' => ['required', 'string']
+        ];
+        $this->validate($request, $rules);
+        try {
+            return $this->successResponse($this->tutoringService->storeTema($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
     public function updateTema(Request $request)
     {
-        return $this->successResponse($this->tutoringService->updateTema($request->all()));
+        $rules = [
+            'id' => ['required'],
+            'name' => ['required', 'string']
+        ];
+        $this->validate($request, $rules);
+        try {
+            return $this->successResponse($this->tutoringService->updateTema($request->all()));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
     public function deleteTema($id, $nombre)
     {
-        return $this->successResponse($this->tutoringService->deleteTema($id, $nombre));
+        try {
+            return $this->successResponse($this->tutoringService->deleteTema($id, $nombre));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
     /**
      * Tutoria
      */
 
-    public function fetchReadTutoriaNombre($name)
+    public function searchTutoriaByNombre($name)
     {
-        return $this->successResponse($this->tutoringService->fetchReadTutoriaNombre($name));
+        try {
+            return $this->successResponse($this->tutoringService->searchTutoriaByNombre($name));
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadTutoriaNotificacionesAll()
+    public function tutoriaNotificationsAll()
     {
-        return $this->successResponse($this->tutoringService->fetchReadTutoriaNotificacionesAll());
+        try {
+            return $this->successResponse($this->tutoringService->tutoriaNotificationsAll());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadTutoriaAll()
+    public function tutoriaList()
     {
-        return $this->successResponse($this->tutoringService->fetchReadTutoriaAll());
+        try {
+            return $this->successResponse($this->tutoringService->tutoriaList());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadTutoriaActivasAll()
+    public function activeTutoriaList()
     {
-        return $this->successResponse($this->tutoringService->fetchReadTutoriaActivasAll());
+        try {
+            return $this->successResponse($this->tutoringService->activeTutoriaList());
+        } catch (\Exception $error) {
+            return response()->json(['response' => $error->getMessage()], 500);
+        }
     }
 
-    public function fetchReadTutoriaTerminadasAll()
+    public function finishedTutoriaList()
     {
-        return $this->successResponse($this->tutoringService->fetchReadTutoriaTerminadasAll());
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->finishedTutoriaList());
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 
-    public function fetchTutoriaInscribirse($id, $idusuario)
+    public function subscribeInTutoria($id, $idusuario)
     {
-        return $this->successResponse($this->tutoringService->fetchTutoriaInscribirse($id, $idusuario));
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->subscribeInTutoria($id, $idusuario));
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 
-    public function createTutoria(Request $request)
+    public function storeTutoria(Request $request)
     {
-        return $this->successResponse($this->tutoringService->createTutoria($request->all()));
+        $rules = [
+            'dateEnd' => ['required', 'date'],
+            'dateStrat' => ['required', 'date'],
+            'description' => ['required', 'string'],
+            'id' => ['required', 'numeric'],
+            'idcategory' => ['required', 'numeric'],
+            'lissubjets' => ['required', 'array'],
+            'reason' => ['required', 'string'],
+            'state' => ['required', 'boolean'],
+            'userCreator' => ['required', 'numeric'],
+            'userTutor' => ['required', 'numeric'],
+        ];
+
+        $this->validate($request, $rules);
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->createTutoria($request->all()));
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 
     public function updateTutoria(Request $request)
     {
-        return $this->successResponse($this->tutoringService->updateTutoria($request->all()));
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->updateTutoria($request->all()));
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 
     public function deleteTutoria($id, $nombre)
     {
-        return $this->successResponse($this->tutoringService->deleteTutoria($id, $nombre));
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->deleteTutoria($id, $nombre));
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 
     /**
@@ -99,6 +184,11 @@ class TutoringGatewayController extends Controller
 
     public function createRol($id, $rol)
     {
-        return $this->successResponse($this->tutoringService->createRol($id, $rol));
+        try {
+            //code...
+            return $this->successResponse($this->tutoringService->createRol($id, $rol));
+        } catch (\Exception $th) {
+            return response()->json(['response' => $th->getMessage()], 500);
+        }
     }
 }
