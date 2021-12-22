@@ -817,7 +817,7 @@ Todas las rutas para acceder a este microservicio tienen el prefix de /chat-serv
   }
   ```
 
-### Microservicio Auditoría
+### Microservicio Auditoría NO DESPLEGÓ, NO HAY ENDPOINTS
 
 Todas las rutas para acceder a este microservicio tienen el prefix de /audit-service
 
